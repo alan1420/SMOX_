@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background3">
+
+    <ImageView
+        android:id="@+id/account"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:src="@drawable/back"
+        android:alpha="0.9">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INFORMATION"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:alpha="0.9"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/brown"
+        android:textSize="18sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Caretaker :"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="100dp"
+        android:alpha="0.9"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/brown"
+        android:textSize="18sp">
+    </TextView>
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/roundedwhite"
+        android:id="@+id/aspatient">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/caretaker">
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="25dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="Nama : "
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="50dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="Birthday : "
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="75dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="Email : "
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="100dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="Phone Number: "
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="">
+        </TextView>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="330dp"
+        android:layout_marginTop="260dp"
+        android:src="@drawable/call">
+    </ImageView>
+
+</RelativeLayout>

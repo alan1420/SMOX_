@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background5">
+
+    <ImageView
+        android:id="@+id/account"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:src="@drawable/back"
+        android:alpha="0.9">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HISTORY"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:alpha="0.9"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/brown"
+        android:textSize="18sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Achievement"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:alpha="0.9"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/brown"
+        android:textSize="18sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/circle">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/brown"
+            android:textSize="80sp">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DAYS"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="110dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto_thin_italic"
+            android:textColor="@color/brown"
+            android:textSize="36sp">
+        </TextView>
+
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="370dp">
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </CalendarView>
+    </RelativeLayout>
+
+</RelativeLayout>
