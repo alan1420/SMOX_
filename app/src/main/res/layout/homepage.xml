@@ -15,32 +15,34 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/welcome">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="53dp"
-            android:text="HELLO, ADE"
+            android:text="HELLO, PARK"
             android:textSize="24sp"
             android:textColor="@color/white"
-            android:fontFamily="@font/opensans_extrabold">
+            android:fontFamily="@font/opensans_extrabold"
+            android:layout_marginStart="53dp">
         </TextView>
         <ImageView
-            android:layout_width="150dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
             android:src="@drawable/homepage_patient"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp">
         </ImageView>
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="320dp"
-        android:layout_height="150dp"
+        android:layout_height="145dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/rectgreen"
         android:id="@+id/upcoming">
 
@@ -66,7 +68,7 @@
         android:layout_height="150dp"
         android:layout_below="@id/upcoming"
         android:layout_marginLeft="45dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rectwhite">
 
         <ImageView
@@ -95,7 +97,7 @@
         android:layout_height="150dp"
         android:layout_marginLeft="215dp"
         android:layout_below="@id/upcoming"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rectwhite"
         android:id="@+id/schedule">
 
@@ -125,7 +127,7 @@
         android:layout_height="150dp"
         android:layout_marginLeft="45dp"
         android:layout_below="@id/schedule"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rectwhite"
         android:id="@+id/history">
 
@@ -155,7 +157,7 @@
         android:layout_height="150dp"
         android:layout_marginLeft="215dp"
         android:layout_below="@id/schedule"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rectwhite"
         android:id="@+id/infromation">
 
@@ -185,15 +187,8 @@
         android:layout_width="120dp"
         android:layout_height="30dp"
         android:layout_below="@id/history"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo3">
     </ImageView>
-
-
-
-
-
-
-
 </RelativeLayout>

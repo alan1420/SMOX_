@@ -30,7 +30,7 @@
         android:layout_width="325dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/rectwhite"
         android:id="@+id/aspatient">
 
@@ -152,7 +152,7 @@
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/aspatient"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/rectwhite">
 
 
@@ -270,17 +270,17 @@
     <ImageView
         android:id="@+id/cardholder"
         android:layout_width="35dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="245dp"
+        android:layout_marginTop="80dp"
         android:layout_marginLeft="315dp"
         android:src="@drawable/background4">
     </ImageView>
 
     <ImageView
         android:layout_width="35dp"
-        android:layout_height="250dp"
+        android:layout_height="245dp"
         android:layout_below="@id/cardholder"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="315dp"
         android:src="@drawable/background4">
     </ImageView>

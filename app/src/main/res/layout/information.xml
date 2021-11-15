@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Your Caretaker :"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:alpha="0.9"
         android:fontFamily="@font/roboto"
         android:textColor="@color/brown"
@@ -42,7 +42,7 @@
         android:layout_width="350dp"
         android:layout_height="160dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/rectwhite"
         android:id="@+id/aspatient">
 
@@ -115,7 +115,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="330dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="230dp"
         android:src="@drawable/call">
     </ImageView>
 
