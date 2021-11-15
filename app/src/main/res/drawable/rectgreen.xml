@@ -5,49 +5,49 @@
         <shape>
             <padding android:top="0dp" android:right="1dp" android:bottom="1dp" android:left="0dp" />
             <stroke android:color="#02000000" android:width="1dp"  />
-            <corners android:radius="14dp" />
+            <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="0dp" android:right="1dp" android:bottom="1dp" android:left="0dp" />
             <stroke android:color="#05000000" android:width="1dp" />
-            <corners android:radius="13dp" />
+            <corners android:radius="7dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="0dp" android:right="1dp" android:bottom="1dp" android:left="0dp" />
             <stroke android:color="#10000000" android:width="1dp" />
-            <corners android:radius="13dp" />
+            <corners android:radius="6dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="0dp" android:right="1dp" android:bottom="1dp" android:left="0dp" />
             <stroke android:color="#15000000" android:width="1dp" />
-            <corners android:radius="12dp" />
+            <corners android:radius="5dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="0dp" android:right="1dp" android:bottom="1dp" android:left="0dp" />
             <stroke android:color="#20000000" android:width="1dp" />
-            <corners android:radius="11dp" />
+            <corners android:radius="4dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="0dp" android:right="1dp" android:bottom="1dp" android:left="0dp" />
             <stroke android:color="#25000000" android:width="1dp" />
-            <corners android:radius="10dp" />
+            <corners android:radius="3dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="0dp" android:right="1dp" android:bottom="1dp" android:left="0dp" />
             <stroke android:color="#30000000" android:width="1dp" />
-            <corners android:radius="10dp" />
+            <corners android:radius="3dp" />
         </shape>
     </item>
 
@@ -55,7 +55,7 @@
     <item>
         <shape>
             <solid android:color="#D5EEBB" />
-            <corners android:radius="10dp" />
+            <corners android:radius="5dp" />
         </shape>
     </item>
 </layer-list>

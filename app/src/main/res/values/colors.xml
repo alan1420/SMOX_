@@ -10,4 +10,6 @@
     <color name="green">#D5EEBB</color>
     <color name="brown">#2B2B2B</color>
     <color name="green_dark">#679880</color>
+    <color name="TransparentGrey">#7F000000</color>
+
 </resources>

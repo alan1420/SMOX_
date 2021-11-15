@@ -41,7 +41,7 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="145dp"
-        android:background="@drawable/roundedgreen5"
+        android:background="@drawable/rectgreen"
         android:id="@+id/upcoming">
 
 
@@ -67,7 +67,7 @@
         android:layout_below="@id/upcoming"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/roundedwhite">
+        android:background="@drawable/rectwhite">
 
         <ImageView
             android:layout_width="90dp"
@@ -96,7 +96,7 @@
         android:layout_marginLeft="215dp"
         android:layout_below="@id/upcoming"
         android:layout_marginTop="30dp"
-        android:background="@drawable/roundedwhite"
+        android:background="@drawable/rectwhite"
         android:id="@+id/schedule">
 
         <ImageView
@@ -126,7 +126,7 @@
         android:layout_marginLeft="45dp"
         android:layout_below="@id/schedule"
         android:layout_marginTop="20dp"
-        android:background="@drawable/roundedwhite"
+        android:background="@drawable/rectwhite"
         android:id="@+id/history">
 
         <ImageView
@@ -156,7 +156,7 @@
         android:layout_marginLeft="215dp"
         android:layout_below="@id/schedule"
         android:layout_marginTop="20dp"
-        android:background="@drawable/roundedwhite"
+        android:background="@drawable/rectwhite"
         android:id="@+id/infromation">
 
         <ImageView

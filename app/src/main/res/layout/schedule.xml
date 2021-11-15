@@ -31,7 +31,7 @@
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:background="@drawable/roundedwhite"
+        android:background="@drawable/rectwhite"
         android:id="@+id/aspatient">
 
         <TextView
@@ -153,7 +153,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/aspatient"
         android:layout_marginTop="50dp"
-        android:background="@drawable/roundedwhite">
+        android:background="@drawable/rectwhite">
 
 
         <TextView

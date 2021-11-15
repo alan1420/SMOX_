@@ -32,7 +32,11 @@
             android:fontFamily="@font/opensans"
             android:textColor="@color/green"
             android:textSize="36sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            android:shadowColor="@color/brown"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3">
         </TextView>
     </RelativeLayout>
 
@@ -161,7 +165,8 @@
             android:fontFamily="@font/opensans"
             android:textColor="@color/brown"
             android:alpha="0.8"
-            android:layout_centerInParent="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"/>
     </RelativeLayout>
 
     <ImageView

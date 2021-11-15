@@ -9,7 +9,7 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
-        android:background="@drawable/roundedwhite"
+        android:background="@drawable/rectwhite"
         android:id="@+id/aspatient">
 
         <ImageView
@@ -55,7 +55,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/aspatient"
         android:layout_marginTop="30dp"
-        android:background="@drawable/roundedwhite">
+        android:background="@drawable/rectwhite">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
