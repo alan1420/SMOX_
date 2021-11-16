@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background6">
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/rectwhite"
+        android:id="@+id/aspatient">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="Connect with the patient"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans_italic"
+            android:text="by entering the patients’s username"
+            android:textColor="@color/brown"
+            android:textSize="12sp">
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/email"
+            android:layout_width="225dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp">
+            <RelativeLayout
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:background="@drawable/rounded_stroke"
+                android:id="@+id/iconemail">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/user_black">
+                </ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_height="35dp">
+
+                <EditText
+                    android:id="@+id/siginemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_stroke"
+                    android:hint="Enter the patient's username"
+                    android:textSize="12sp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="15dp"
+                    android:textColorHint="@color/green_dark"
+                    android:fontFamily="@font/opensans"
+                    android:textColor="@color/brown">
+                </EditText>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="175dp"
+            android:background="@drawable/roundedgreen10"
+            android:id="@+id/signinbutton">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Connect"
+                android:fontFamily="@font/opensans"
+                android:textColor="@color/brown"
+                android:alpha="0.8"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

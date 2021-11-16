@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SMOX">
-        <activity android:name="com.example.smox.MainActivity">
+        <activity android:name="com.example.smox.connect">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

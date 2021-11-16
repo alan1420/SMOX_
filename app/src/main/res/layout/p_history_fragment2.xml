@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    android:background="@drawable/rectwhite20">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="The Medicine"
+            android:textColor="@color/green_dark"
+            android:textSize="14sp">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="45dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="-"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="textEnd"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="Period"
+            android:textColor="@color/green_dark"
+            android:textSize="14sp"
+            android:gravity="end">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="45dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="-"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="end">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:textAlignment="textEnd"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="Your Achievement"
+            android:textColor="@color/green_dark"
+            android:textSize="14sp"
+            android:gravity="end"
+            android:layout_centerHorizontal="true">
+        </TextView>
+
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/circle">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/brown"
+                android:textSize="80sp">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DAYS"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="110dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto_thin_italic"
+                android:textColor="@color/brown"
+                android:textSize="36sp">
+            </TextView>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto_light"
+            android:text="Click the card for the detail"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+        </TextView>
+    </RelativeLayout>
+</RelativeLayout>

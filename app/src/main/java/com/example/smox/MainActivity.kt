@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sign_in)
+        setContentView(R.layout.p_sign_in)
         mPassword = findViewById<View>(R.id.signinpass) as EditText
         mPassword!!.setOnTouchListener(OnTouchListener { v, event ->
             val RIGHT = 2

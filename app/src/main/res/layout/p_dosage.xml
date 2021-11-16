@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SCHEDULE"
+        android:text="DOSAGE"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:alpha="0.9"
@@ -81,7 +81,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="130dp"
             android:alpha="0.9"
-            android:fontFamily="@font/opensans"
+            android:fontFamily="@font/roboto"
             android:text="2 MONTHS"
             android:textColor="@color/brown"
             android:textSize="14sp"
@@ -110,7 +110,7 @@
             android:layout_marginTop="60dp"
             android:alpha="0.9"
             android:fontFamily="@font/roboto"
-            android:text="Interval"
+            android:text="Dosage"
             android:textColor="@color/green_dark"
             android:textSize="14sp">
         </TextView>
@@ -125,7 +125,7 @@
             android:textAlignment="center"
             android:alpha="0.9"
             android:fontFamily="@font/roboto"
-            android:text="24"
+            android:text="1"
             android:textColor="@color/brown"
             android:textSize="72sp">
         </TextView>
@@ -138,7 +138,7 @@
             android:layout_marginTop="160dp"
             android:alpha="0.9"
             android:fontFamily="@font/roboto_thin_italic"
-            android:text="HOURS"
+            android:text="TABLET"
             android:textColor="@color/brown"
             android:textSize="24sp"
             android:textStyle="bold">
@@ -232,7 +232,7 @@
             android:layout_marginTop="60dp"
             android:alpha="0.9"
             android:fontFamily="@font/roboto"
-            android:text="Interval"
+            android:text="Dosage"
             android:textColor="@color/green_dark"
             android:textSize="14sp">
         </TextView>
@@ -260,7 +260,7 @@
             android:layout_marginTop="160dp"
             android:alpha="0.9"
             android:fontFamily="@font/roboto_thin_italic"
-            android:text="HOURS"
+            android:text="TABLET"
             android:textColor="@color/brown"
             android:textSize="24sp"
             android:textStyle="bold">
