@@ -1,3 +1,21 @@
 # Default ignored files
 /shelf/
-/workspace.xml
+workspace.xml
+discord.xml
+gradle.xml
+# User-specific configurations
+/caches/
+/libraries/
+.name
+compiler.xml
+/copyright/profiles_settings.xml
+encodings.xml
+misc.xml
+/scopes/scope_settings.xml
+vcs.xml
+jsLibraryMappings.xml
+datasources.xml
+dataSources.ids
+sqlDataSources.xml
+dynamic.xml
+uiDesigner.xml
