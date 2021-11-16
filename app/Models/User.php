@@ -24,9 +24,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
+    protected $casts = [
+        // 'email_verified_at' => 'datetime',
+        'birthday' => 'date',
+    ];
     
     public function caretaker(){
         return $this->hasOne(PatientAssignment::class, 'caretaker_id', 'id');
