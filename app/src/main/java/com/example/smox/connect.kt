@@ -8,4 +8,8 @@ class connect : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.c_connect)
     }
+    //Ini hanya test
+    fun signIn() {
+
+    }
 }
