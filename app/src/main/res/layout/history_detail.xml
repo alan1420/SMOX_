@@ -68,10 +68,7 @@
             android:textSize="36sp">
         </TextView>
 
-
-
     </RelativeLayout>
-
 
     <RelativeLayout
         android:layout_centerHorizontal="true"
@@ -79,10 +76,11 @@
         android:layout_height="400dp"
         android:layout_marginTop="330dp">
         <CalendarView
-            android:id="@+id/calendar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="360dp"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true">
         </CalendarView>
+
     </RelativeLayout>
 
 </RelativeLayout>

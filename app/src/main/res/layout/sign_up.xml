@@ -321,11 +321,11 @@
 
     <ImageView
         android:id="@+id/google"
-        android:layout_below="@id/signupbutton"
+        android:layout_above="@id/gotosignin"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/google"
         android:shadowColor="@color/brown"
         android:shadowDx="3"
@@ -335,11 +335,11 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_below="@id/google"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:id="@+id/gotosignup">
+        android:layout_marginBottom="20dp"
+        android:id="@+id/gotosignin">
 
         <TextView
             android:layout_width="wrap_content"

@@ -5,12 +5,11 @@
     android:background="@drawable/background6">
 
     <RelativeLayout
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+        android:layout_width="335dp"
+        android:layout_height="335dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/rectwhite"
-        android:id="@+id/aspatient">
+        android:background="@drawable/rectwhite">
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,21 +20,19 @@
             android:fontFamily="@font/opensans"
             android:text="Set your username"
             android:textColor="@color/brown"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold">
         </TextView>
 
         <LinearLayout
-            android:id="@+id/email"
-            android:layout_width="225dp"
-            android:layout_height="35dp"
+            android:layout_width="275dp"
+            android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="75dp">
+            android:layout_marginTop="80dp">
             <RelativeLayout
-                android:layout_width="25dp"
-                android:layout_height="35dp"
-                android:background="@drawable/rounded_stroke"
-                android:id="@+id/iconemail">
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_stroke">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -46,18 +43,16 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="200dp"
-                android:layout_height="35dp">
+                android:layout_width="225dp"
+                android:layout_height="50dp">
 
                 <EditText
-                    android:id="@+id/siginemail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_stroke"
                     android:hint="Enter your username"
-                    android:textSize="12sp"
+                    android:textSize="18sp"
                     android:paddingLeft="5dp"
-                    android:paddingRight="15dp"
                     android:textColorHint="@color/green_dark"
                     android:fontFamily="@font/opensans"
                     android:textColor="@color/brown">
@@ -66,28 +61,29 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="225dp"
+            android:layout_width="275dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="135dp"
             android:alpha="0.9"
             android:fontFamily="@font/opensans_italic"
-            android:text="*This username will be used when the caretaker connects his account with your account"
+            android:text="This username will be used when the caretaker connects his account with your account"
             android:textColor="@color/brown"
-            android:textSize="12sp">
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:gravity="center_horizontal">
         </TextView>
 
         <RelativeLayout
             android:layout_width="110dp"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="210dp"
-            android:background="@drawable/roundedgreen10"
-            android:id="@+id/signinbutton">
+            android:layout_marginTop="250dp"
+            android:background="@drawable/roundedgreen10">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:text="Set"
                 android:fontFamily="@font/opensans"
                 android:textColor="@color/brown"

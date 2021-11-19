@@ -5,12 +5,11 @@
     android:background="@drawable/background6">
 
     <RelativeLayout
-        android:layout_width="280dp"
-        android:layout_height="250dp"
+        android:layout_width="335dp"
+        android:layout_height="335dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/rectwhite"
-        android:id="@+id/aspatient">
+        android:background="@drawable/rectwhite">
 
         <TextView
             android:layout_width="wrap_content"
@@ -19,35 +18,35 @@
             android:layout_centerHorizontal="true"
             android:alpha="0.9"
             android:fontFamily="@font/opensans"
-            android:text="Connect with the patient"
+            android:text="Connect with your patient"
             android:textColor="@color/brown"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold">
         </TextView>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="275dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="55dp"
             android:alpha="0.9"
             android:fontFamily="@font/opensans_italic"
-            android:text="by entering the patients’s username"
+            android:text="by entering the patient's username"
             android:textColor="@color/brown"
-            android:textSize="12sp">
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:gravity="center_horizontal">
         </TextView>
 
         <LinearLayout
-            android:id="@+id/email"
-            android:layout_width="225dp"
-            android:layout_height="35dp"
+            android:layout_width="275dp"
+            android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="135dp">
             <RelativeLayout
-                android:layout_width="25dp"
-                android:layout_height="35dp"
-                android:background="@drawable/rounded_stroke"
-                android:id="@+id/iconemail">
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_stroke">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -58,18 +57,16 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="200dp"
-                android:layout_height="35dp">
+                android:layout_width="225dp"
+                android:layout_height="50dp">
 
                 <EditText
-                    android:id="@+id/siginemail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_stroke"
-                    android:hint="Enter the patient's username"
-                    android:textSize="12sp"
+                    android:hint="Enter patient's username"
+                    android:textSize="18sp"
                     android:paddingLeft="5dp"
-                    android:paddingRight="15dp"
                     android:textColorHint="@color/green_dark"
                     android:fontFamily="@font/opensans"
                     android:textColor="@color/brown">
@@ -79,15 +76,14 @@
 
         <RelativeLayout
             android:layout_width="110dp"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="175dp"
-            android:background="@drawable/roundedgreen10"
-            android:id="@+id/signinbutton">
+            android:layout_marginTop="250dp"
+            android:background="@drawable/roundedgreen10">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:text="Connect"
                 android:fontFamily="@font/opensans"
                 android:textColor="@color/brown"

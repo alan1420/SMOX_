@@ -65,7 +65,7 @@
             android:layout_height="45dp">
 
             <EditText
-                android:id="@+id/siginemail"
+                android:id="@+id/signinemail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/roundedinputext"
@@ -120,18 +120,23 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/forgotpass"
         android:layout_below="@id/password"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="240dp"
-        android:layout_marginStart="240dp"
-        android:text="Forgot password?"
-        android:fontFamily="@font/opensans"
-        android:textColor="@color/brown"
-        android:alpha="0.9" />
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Forgot password?"
+            android:fontFamily="@font/opensans"
+            android:textColor="@color/brown"
+            android:alpha="0.9" />
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="300dp"
@@ -155,20 +160,20 @@
 
     <ImageView
         android:id="@+id/google"
-        android:layout_below="@id/signinbutton"
+        android:layout_above="@id/gotosignup"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="110dp"
+        android:layout_marginBottom="15dp"
         android:src="@drawable/google">
     </ImageView>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_below="@id/google"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/gotosignup">
 
         <TextView

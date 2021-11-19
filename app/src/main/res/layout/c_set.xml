@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background3">
+
+    <ImageView
+        android:id="@+id/account"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:src="@drawable/back"
+        android:alpha="0.9">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:alpha="0.9"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/brown"
+        android:textSize="18sp">
+    </TextView>
+
+    <RelativeLayout
+        android:layout_width="325dp"
+        android:layout_height="480dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/rectwhite"
+        android:id="@+id/aspatient">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/save_slot1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/green"
+            android:src="@drawable/save">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="480dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/background7">
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="110dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="15dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="SLOT 1"
+            android:textColor="@color/brown"
+            android:textSize="24sp">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="60dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="The Medicine"
+            android:textColor="@color/green_dark"
+            android:textSize="14sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="240dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rect_stroke"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="85dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="130dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="Interval"
+            android:textColor="@color/green_dark"
+            android:textSize="14sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="190dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rect_stroke"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="155dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginTop="160dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="Hours"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:layout_alignParentRight="true">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="200dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="Dosage"
+            android:textColor="@color/green_dark"
+            android:textSize="14sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="190dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rect_stroke"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="225dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginTop="230dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="Tablet"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:layout_alignParentRight="true">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="270dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="Instruction for use"
+            android:textColor="@color/green_dark"
+            android:textSize="14sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="240dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rect_stroke"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="295dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="340dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto"
+            android:text="Period"
+            android:textColor="@color/green_dark"
+            android:textSize="14sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="240dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rect_stroke"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="365dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </EditText>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="400dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/roboto_thin_italic"
+            android:text="*This term can change according to the patient's condition"
+            android:textColor="@color/brown"
+            android:textSize="11sp"
+            android:textStyle="">
+        </TextView>
+    </RelativeLayout>
+</RelativeLayout>

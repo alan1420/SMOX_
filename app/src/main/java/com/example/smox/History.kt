@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import kotlinx.android.synthetic.main.p_history.*
+import kotlinx.android.synthetic.main.history.*
 
 class History : AppCompatActivity()
 {
@@ -19,11 +19,11 @@ class History : AppCompatActivity()
     private var dotscount = 0
     private lateinit var dots: Array<ImageView>
 
-    val myViews : Array<Int> = arrayOf(R.layout.p_history_fragment1, R.layout.p_history_fragment2)
+    val myViews : Array<Int> = arrayOf(R.layout.history_fragment1, R.layout.history_fragment2)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.p_history)
+        setContentView(R.layout.history)
         pager.adapter = MyAdapter(myViews, this@History)
     }
 }

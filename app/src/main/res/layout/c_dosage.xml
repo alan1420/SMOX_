@@ -39,6 +39,20 @@
             android:background="@drawable/rectwhite"
             android:id="@+id/aspatient">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editslot1_dosage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom|end"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/green"
+                android:src="@drawable/edit">
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="245dp"
@@ -83,7 +97,7 @@
                 android:layout_marginTop="130dp"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="Procedure"
+                android:text="Instruction for use"
                 android:textColor="@color/green_dark"
                 android:textSize="14sp">
             </TextView>
@@ -155,6 +169,20 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/rectwhite">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editslot2_dosage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom|end"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/green"
+                android:src="@drawable/edit">
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="245dp"
@@ -163,6 +191,7 @@
                 android:layout_marginRight="15dp"
                 android:src="@drawable/background4">
             </ImageView>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -199,7 +228,7 @@
                 android:layout_marginTop="130dp"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="Procedure"
+                android:text="Instruction for use"
                 android:textColor="@color/green_dark"
                 android:textSize="14sp">
             </TextView>
@@ -261,8 +290,6 @@
             </TextView>
         </RelativeLayout>
     </RelativeLayout>
-
-
 
 
 </RelativeLayout>

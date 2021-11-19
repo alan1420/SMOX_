@@ -1,6 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background6">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="340dp"
+        android:layout_height="380dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/rectwhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="Confirm your patient"
+            android:textColor="@color/brown"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans_italic"
+            android:gravity="center_horizontal"
+            android:text="make sure the data below belongs to your patient"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="18sp">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="135dp">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:text="Name"
+                android:textColor="@color/brown"
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:text=":"
+                android:textColor="@color/brown"
+                android:textSize="18sp">
+            </TextView>
+
+
+            <TextView
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="Park Ae-ri"
+                android:textColor="@color/green_dark"
+                android:textSize="18sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="165dp">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:text="Birthday"
+                android:textColor="@color/brown"
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:text=":"
+                android:textColor="@color/brown"
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="04 December 2002"
+                android:textColor="@color/green_dark"
+                android:textSize="18sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="195dp">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:text="Email"
+                android:textColor="@color/brown"
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:text=":"
+                android:textColor="@color/brown"
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="aoi.rohma04@gmail.com"
+                android:textColor="@color/green_dark"
+                android:textSize="18sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="225dp">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:text="Call"
+                android:textColor="@color/brown"
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:text=":"
+                android:textColor="@color/brown"
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="082143604036"
+                android:textColor="@color/green_dark"
+                android:textSize="18sp">
+            </TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="290dp"
+            android:background="@drawable/roundedgreen10">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Confirm"
+                android:fontFamily="@font/opensans"
+                android:textColor="@color/brown"
+                android:alpha="0.8"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

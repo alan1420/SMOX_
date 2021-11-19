@@ -13,30 +13,40 @@
         android:src="@drawable/account">
     </ImageView>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/welcome">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="53dp"
-            android:text="HELLO, PARK"
-            android:textSize="24sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/opensans_extrabold"
-            android:layout_marginStart="53dp">
-        </TextView>
-        <ImageView
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp">
+        <RelativeLayout
+            android:layout_width="220dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/welcome">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="HELLO, PARK"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/opensans_extrabold">
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/homepage_patient"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp">
-        </ImageView>
-    </LinearLayout>
+            android:layout_height="110dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/homepage_patient">
+            </ImageView>
+        </RelativeLayout>
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="320dp"
@@ -62,132 +72,143 @@
         </TextView>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/dosage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_below="@id/upcoming"
-        android:layout_marginLeft="45dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rectwhite">
-
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/schedule">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="115dp"
-            android:alpha="0.9"
-            android:text="SCHEDULE"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="">
-        </TextView>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="215dp"
+        android:gravity="center"
         android:layout_below="@id/upcoming"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rectwhite"
-        android:id="@+id/schedule">
+        android:id="@+id/row1">
 
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/dosage">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="115dp"
-            android:alpha="0.9"
-            android:text="DOSAGE"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="">
-        </TextView>
-    </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/dosage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/rectwhite">
 
-    <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="45dp"
-        android:layout_below="@id/schedule"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rectwhite"
-        android:id="@+id/history">
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/schedule">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="115dp"
+                android:alpha="0.9"
+                android:text="SCHEDULE"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/brown"
+                android:textSize="14sp"
+                android:textStyle="">
+            </TextView>
+        </RelativeLayout>
 
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/history">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="115dp"
-            android:alpha="0.9"
-            android:text="HISTORY"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="">
-        </TextView>
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/rectwhite"
+            android:id="@+id/schedule">
 
-    <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="215dp"
-        android:layout_below="@id/schedule"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rectwhite"
-        android:id="@+id/infromation">
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/dosage">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="115dp"
+                android:alpha="0.9"
+                android:text="DOSAGE"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/brown"
+                android:textSize="14sp"
+                android:textStyle="">
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
 
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/infromation">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="115dp"
-            android:alpha="0.9"
-            android:text="INFROMATION"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="">
-        </TextView>
-    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/row1"
+        android:id="@+id/row2">
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/schedule"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectwhite"
+            android:id="@+id/history">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/history">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="115dp"
+                android:alpha="0.9"
+                android:text="HISTORY"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/brown"
+                android:textSize="14sp"
+                android:textStyle="">
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectwhite"
+            android:id="@+id/infromation">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/infromation">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="115dp"
+                android:alpha="0.9"
+                android:text="INFROMATION"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/brown"
+                android:textSize="14sp"
+                android:textStyle="">
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="120dp"
         android:layout_height="30dp"
-        android:layout_below="@id/history"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo3">
     </ImageView>
