@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::post('signup', [UserController::class, 'store']);
+
+Route::post('signin', [UserController::class, 'signin']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('data', function() {
+        $data = request()->user();
+        $data2 = $data->first_name;
+        return "You are signed in, $data2";
+    });
+
+    Route::post('signup-finalize', [UserController::class, 'storeFinal']);
 });
