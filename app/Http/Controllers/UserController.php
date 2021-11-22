@@ -38,6 +38,7 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Register untuk user baru
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -74,25 +75,30 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
+    //Registrasi final untuk role dan username (pasien)
     public function storeFinal(Request $request)
     {
         $data_req = $request->all();
-
         $token = $request->bearerToken();
 
         try {
             $verifiedIdToken = $this->auth->verifyIdToken($token);
-        } catch (InvalidToken $e) {
-            echo 'The token is invalid: '.$e->getMessage();
-        } catch (\InvalidArgumentException $e) {
-            echo 'The token could not be parsed: '.$e->getMessage();
-        }       
-        // if you're using lcobucci/jwt ^4.0
-        $uid = $verifiedIdToken->claims()->get('sub');
-        $data_out = User::where('uid', $uid)
-                    ->update($data_req);
 
-        return response()->json($data_out, 200);
+            $uid = $verifiedIdToken->claims()->get('sub');
+            $data = User::where('uid', $uid);
+            $data_nama = $data->first();
+            $data->update($data_req);
+            $status = [
+                "name" => $data_nama['last_name']
+            ];
+            return response()->json($status, 200);
+        } catch (InvalidToken $e) {
+            //echo 'The token is invalid: '.$e->getMessage();
+            return response('', 500);
+        } catch (\InvalidArgumentException $e) {
+            //echo 'The token could not be parsed: '.$e->getMessage();
+            return response('', 500);
+        }       
     }
 
     /**
@@ -104,41 +110,6 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-    }
-
-    public function signin(Request $request)
-    {
-        $token = $request->token;
-
-        try {
-            $verifiedIdToken = $this->auth->verifyIdToken($token);
-        } catch (InvalidToken $e) {
-            echo 'The token is invalid: '.$e->getMessage();
-        } catch (\InvalidArgumentException $e) {
-            echo 'The token could not be parsed: '.$e->getMessage();
-        }       
-        // if you're using lcobucci/jwt ^4.0
-        $uid = $verifiedIdToken->claims()->get('sub');
-        $data = User::where('uid', $uid)->first();
-        if ($data->exists()) {
-            $data_out = [
-                "is_registered" => "true"
-            ];
-            if (!is_null($data->role)) 
-                $data_out = array_merge($data_out, array("is_completed" => "true"));
-            else 
-                $data_out = array_merge($data_out, array("is_completed" => "false"));
-            // exists
-            //store_google($uid);
-            //return "User didn't exist";
-        } else {
-            $data_out = [
-                "is_registered" => "false"
-            ];
-            
-        }
-        //return $data->get();
-        return response()->json($data_out, 200);        
     }
 
     /**

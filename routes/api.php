@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('signup', [UserController::class, 'store']);
 
-Route::post('signin', [UserController::class, 'signin']);
+Route::post('signinCheck', [LoginController::class, 'signinCheck']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('data', function() {
