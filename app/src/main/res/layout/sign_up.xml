@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context=".SignUp">
 
     <ImageView
         android:id="@+id/logo"
@@ -127,12 +127,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/roundedinputext"
-                android:hint="Birthday"
-                android:textColorHint="@color/whiteTrans"
-                android:paddingRight="15dp"
                 android:fontFamily="@font/opensans"
-                android:textColor="@color/white">
-            </EditText>
+                android:hint="Birthday"
+                android:inputType="date"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/whiteTrans"></EditText>
         </RelativeLayout>
     </LinearLayout>
 
@@ -166,12 +166,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/roundedinputext"
-                android:hint="Phone Number"
-                android:textColorHint="@color/whiteTrans"
-                android:paddingRight="15dp"
                 android:fontFamily="@font/opensans"
-                android:textColor="@color/white">
-            </EditText>
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/whiteTrans"></EditText>
         </RelativeLayout>
     </LinearLayout>
 
@@ -244,15 +244,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/roundedinputext"
-                android:inputType="textPassword"
                 android:drawableRight="@drawable/hide"
-                android:longClickable="false"
-                android:hint="Password"
-                android:textColorHint="@color/whiteTrans"
-                android:paddingRight="15dp"
                 android:fontFamily="@font/opensans"
-                android:textColor="@color/white">
-            </EditText>
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:longClickable="false"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/whiteTrans"></EditText>
         </RelativeLayout>
     </LinearLayout>
 
@@ -300,23 +299,26 @@
 
 
     <RelativeLayout
+        android:id="@+id/signupbutton"
         android:layout_width="300dp"
         android:layout_height="45dp"
+        android:layout_below="@id/confirmpassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:background="@drawable/roundedgreen10"
-        android:layout_below="@id/confirmpassword"
-        android:id="@+id/signupbutton">
+        android:clickable="true"
+        android:onClick="register">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="Sign Up"
-            android:fontFamily="@font/opensans"
-            android:textColor="@color/brown"
-            android:alpha="0.8"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:alpha="0.8"
+            android:fontFamily="@font/opensans"
+            android:text="Sign Up"
+            android:textColor="@color/brown"
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <ImageView
@@ -349,15 +351,18 @@
             android:fontFamily="@font/opensans"
             android:textColor="@color/brown"
             android:alpha="0.9"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text=" Sign In"
+            android:alpha="0.9"
+            android:clickable="true"
             android:fontFamily="@font/opensans"
+            android:onClick="signinPage"
+            android:text=" Sign In"
             android:textColor="@color/brown"
-            android:textStyle="bold"
-            android:alpha="0.9" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>

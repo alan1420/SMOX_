@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background6">
+    android:background="@drawable/background"
+    tools:context=".CreateUsername">
 
     <RelativeLayout
         android:layout_width="335dp"
@@ -14,32 +16,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
             android:alpha="0.9"
             android:fontFamily="@font/opensans"
             android:text="Set your username"
             android:textColor="@color/brown"
             android:textSize="20sp"
-            android:textStyle="bold">
-        </TextView>
+            android:textStyle="bold"></TextView>
 
         <LinearLayout
             android:layout_width="275dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp">
+
             <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/rounded_stroke">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/user_black">
-                </ImageView>
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/user_black"></ImageView>
             </RelativeLayout>
 
             <RelativeLayout
@@ -47,16 +49,16 @@
                 android:layout_height="50dp">
 
                 <EditText
+                    android:id="@+id/enterusername"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_stroke"
-                    android:hint="Enter your username"
-                    android:textSize="18sp"
-                    android:paddingLeft="5dp"
-                    android:textColorHint="@color/green_dark"
                     android:fontFamily="@font/opensans"
-                    android:textColor="@color/brown">
-                </EditText>
+                    android:hint="Enter your username"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/brown"
+                    android:textColorHint="@color/green_dark"
+                    android:textSize="18sp"></EditText>
             </RelativeLayout>
         </LinearLayout>
 
@@ -67,29 +69,31 @@
             android:layout_marginTop="135dp"
             android:alpha="0.9"
             android:fontFamily="@font/opensans_italic"
+            android:gravity="center_horizontal"
             android:text="This username will be used when the caretaker connects his account with your account"
-            android:textColor="@color/brown"
             android:textAlignment="center"
-            android:textSize="16sp"
-            android:gravity="center_horizontal">
-        </TextView>
+            android:textColor="@color/brown"
+            android:textSize="16sp"></TextView>
 
         <RelativeLayout
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="250dp"
-            android:background="@drawable/roundedgreen10">
+            android:background="@drawable/roundedgreen10"
+            android:clickable="true"
+            android:onClick="register_p">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Set"
-                android:fontFamily="@font/opensans"
-                android:textColor="@color/brown"
-                android:alpha="0.8"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:alpha="0.8"
+                android:fontFamily="@font/opensans"
+                android:text="Set"
+                android:textColor="@color/brown"
+                android:textSize="20sp" />
         </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

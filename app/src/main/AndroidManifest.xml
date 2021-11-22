@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.smox">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.smox">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="SMOX"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SMOX">
-        <activity android:name="com.example.smox.test">
+        android:theme="@style/Theme.SMOX"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".patient.Homepage"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.Homepage"
+            android:exported="false" />
+        <activity
+            android:name=".SignIn"
+            android:exported="false" />
+        <activity
+            android:name=".SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".CreateUsername"
+            android:exported="false" />
+        <activity
+            android:name=".ConfirmRole"
+            android:exported="false" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
