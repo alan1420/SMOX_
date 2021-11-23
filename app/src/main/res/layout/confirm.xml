@@ -21,7 +21,8 @@
             android:layout_height="100dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/patient"></ImageView>
+            android:src="@drawable/patient">
+        </ImageView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,7 +35,8 @@
             android:text="AS PATIENT"
             android:textColor="@color/brown"
             android:textSize="14sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+        </TextView>
 
         <TextView
             android:layout_width="144dp"
@@ -47,7 +49,8 @@
             android:text="The one who takes the medicine. Can’t manage the schedule and the dosage."
             android:textColor="@color/brown"
             android:textSize="12sp"
-            android:textStyle=""></TextView>
+            android:textStyle="">
+        </TextView>
     </RelativeLayout>
 
     <RelativeLayout
@@ -65,7 +68,8 @@
             android:layout_height="100dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/caretaker"></ImageView>
+            android:src="@drawable/caretaker">
+        </ImageView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,7 +82,8 @@
             android:text="AS CARETAKER"
             android:textColor="@color/brown"
             android:textSize="14sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+        </TextView>
 
         <TextView
             android:layout_width="144dp"
@@ -91,7 +96,8 @@
             android:text="The keeper. This person manages the schedule and the dosage for the patient."
             android:textColor="@color/brown"
             android:textSize="12sp"
-            android:textStyle=""></TextView>
+            android:textStyle="">
+        </TextView>
     </RelativeLayout>
 
 </RelativeLayout>

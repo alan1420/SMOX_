@@ -13,11 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SMOX"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".patient.Homepage"
-            android:exported="false" />
-        <activity
-            android:name=".caretaker.Homepage"
             android:exported="false" />
         <activity
             android:name=".SignIn"
@@ -31,7 +29,50 @@
         <activity
             android:name=".ConfirmRole"
             android:exported="false" />
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".patient.Schedule"
+            android:exported="false" />
+        <activity
+            android:name=".patient.Dosage"
+            android:exported="false" />
+        <activity
+            android:name=".patient.Information"
+            android:exported="false" />
+        <activity
+            android:name=".patient.History"
+            android:exported="false" />
+        <activity
+            android:name=".patient.HistoryDetailOne"
+            android:exported="false" />
+        <activity
+            android:name=".patient.HistoryDetailTwo"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.Schedule"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.Dosage"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.SetOne"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.SetTwo"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.Information"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.History"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.HistoryDetailOne"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.HistoryDetailTwo"
+            android:exported="false" />
+
+        <activity android:name=".caretaker.Homepage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

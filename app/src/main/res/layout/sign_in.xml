@@ -150,9 +150,9 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
             android:alpha="0.8"
             android:fontFamily="@font/opensans"
             android:text="Sign In"

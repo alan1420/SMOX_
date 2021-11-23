@@ -4,15 +4,20 @@
     android:layout_height="match_parent"
     android:background="@drawable/background3">
 
-    <ImageView
-        android:id="@+id/account"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginLeft="13dp"
-        android:src="@drawable/back"
-        android:alpha="0.9">
-    </ImageView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="backtoHome">
+        <ImageView
+            android:id="@+id/account"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/back"
+            android:alpha="0.9">
+        </ImageView>
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"

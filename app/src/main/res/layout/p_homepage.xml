@@ -65,13 +65,112 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:alpha="0.9"
             android:fontFamily="@font/opensans"
             android:text="UPCOMING"
             android:textColor="@color/brown"
             android:textSize="14sp"
             android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="35dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="09"
+            android:textColor="@color/brown"
+            android:textSize="64sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="95dp"
+            android:layout_marginLeft="95dp"
+            android:layout_marginTop="65dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="."
+            android:textColor="@color/brown"
+            android:textSize="36sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="105dp"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="55dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="PM"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="105dp"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="65dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="30"
+            android:textColor="@color/brown"
+            android:textSize="36sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="MIRTAZAPINE"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="1 TABLET"
+            android:textColor="@color/brown"
+            android:textSize="14sp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="75dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:text="Sesudah makan &amp; Sebelum tidur"
+            android:textAlignment="textEnd"
+            android:textColor="@color/brown"
+            android:textSize="14sp">
         </TextView>
     </RelativeLayout>
 
@@ -88,7 +187,8 @@
             android:id="@+id/dosage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:background="@drawable/rectwhite">
+            android:background="@drawable/rectwhite"
+            android:onClick="gotoSchedule">
 
             <ImageView
                 android:layout_width="90dp"
@@ -116,7 +216,8 @@
             android:layout_height="150dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/rectwhite"
-            android:id="@+id/schedule">
+            android:id="@+id/schedule"
+            android:onClick="gotoDosage">
 
             <ImageView
                 android:layout_width="90dp"
@@ -153,7 +254,8 @@
             android:layout_below="@id/schedule"
             android:layout_marginTop="10dp"
             android:background="@drawable/rectwhite"
-            android:id="@+id/history">
+            android:id="@+id/history"
+            android:onClick="gotoHistory">
 
             <ImageView
                 android:layout_width="90dp"
@@ -182,7 +284,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rectwhite"
-            android:id="@+id/infromation">
+            android:id="@+id/infromation"
+            android:onClick="gotoInformation">
 
             <ImageView
                 android:layout_width="90dp"

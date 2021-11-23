@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SMOX</string>
+    <string-array name="period_list">
+        <item>Days</item>
+        <item>Weeks</item>
+        <item>Months</item>
+        <item>Years</item>
+    </string-array>
+    <string name="period">Period</string>
 </resources>
+
+

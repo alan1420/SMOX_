@@ -4,15 +4,20 @@
     android:layout_height="match_parent"
     android:background="@drawable/background3">
 
-    <ImageView
-        android:id="@+id/account"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginLeft="13dp"
-        android:src="@drawable/back"
-        android:alpha="0.9">
-    </ImageView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="backtoHome">
+        <ImageView
+            android:id="@+id/account"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/back"
+            android:alpha="0.9">
+        </ImageView>
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,7 +72,8 @@
             android:fontFamily="@font/roboto"
             android:text="SLOT 1"
             android:textColor="@color/brown"
-            android:textSize="24sp">
+            android:textSize="24sp"
+            android:id="@+id/slot">
         </TextView>
 
         <TextView
@@ -90,10 +96,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="85dp"
+            android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="bold">
+            android:textSize="14sp">
         </EditText>
 
         <TextView
@@ -116,10 +122,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="155dp"
+            android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="bold">
+            android:textSize="14sp">
         </EditText>
 
         <TextView
@@ -156,10 +162,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="225dp"
+            android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="bold">
+            android:textSize="14sp">
         </EditText>
 
         <TextView
@@ -196,10 +202,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="295dp"
+            android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="bold">
+            android:textSize="14sp">
         </EditText>
 
         <TextView
@@ -216,24 +222,43 @@
         </TextView>
 
         <EditText
-            android:layout_width="240dp"
-            android:layout_height="32dp"
+            android:layout_width="120dp"
+            android:layout_height="37dp"
             android:background="@drawable/rect_stroke"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="365dp"
+            android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="bold">
+            android:textSize="16sp">
         </EditText>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="110dp"
+            android:layout_height="42dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="360dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp">
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                android:text="Days"
+                android:textSize="14sp"
+                android:textColor="@color/brown"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="410dp"
             android:alpha="0.9"
             android:fontFamily="@font/roboto_thin_italic"
             android:text="*This term can change according to the patient's condition"

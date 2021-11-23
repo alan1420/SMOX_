@@ -1,15 +1,14 @@
 package com.example.smox
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 
 class test : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.c_confirm_patient)
-    }
-    //Ini hanya test
-    fun signIn() {
+        setContentView(R.layout.history)
 
     }
 }
