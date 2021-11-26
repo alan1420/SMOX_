@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Classes\FirebaseToken;
 use App\Models\User;
+use App\Models\PatientAssignment;
+use App\Models\PatientHistory;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +34,7 @@ Route::get('/data', function () {
     //    config('services.firebase.project_id')
     // );
 
-    // ddd($users);  
-
+    // ddd($users);
     foreach ($users as $user) {        
         echo(json_encode($user));
     }
@@ -45,6 +48,67 @@ Route::get('/coba', function () {
 });
 
 Route::get('/coba2', function () {
-    ddd(User::where('uid', "FkXwQvivtUPb9sIt0TTvIsjz3aR2")->get());
+    //ddd(User::where('uuid', "FkXwQvivtUPb9sIt0TTvIsjz3aR2")->get());
+    return User::find('wKavDnuE9BZzPFxgvU60OGwFF4S2');
 //return $string;
 });
+
+Route::get('/error', function () {
+    return response('', 500);
+});
+
+Route::get('/replace', function () {
+    $number = "+6285346208308";
+    $phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
+    $numberID = $phoneUtil->parse($number, "ID");
+    echo $phoneUtil->format($numberID, \libphonenumber\PhoneNumberFormat::E164);
+    //echo substr_replace("085346208308", "");
+    //return response('', 500);
+});
+
+Route::get('/usertest', function () {
+    //return User::where('uuid', 'uaIPsRute7OrFQBDZL2OUGQSgnM2')->first()->id;
+    return User::where('username', 'alan14')->first();
+});
+
+Route::get('/historytest', function () {
+    //return User::where('uuid', 'uaIPsRute7OrFQBDZL2OUGQSgnM2')->first()->id;
+    //ddd(User::where('username', 'alan14')->first()->patientMedicine()->get());
+    if (is_null(User::where('username', 'alan14')->first()->patientMedicine()->first())) {
+        return "kosong";
+    } else {
+        return "ada";
+    }
+    //ddd(User::where('username', 'alan14')->first()->patientMedicine()->where('slot', '1')->first()->patientHistory()->get());
+    //return User::where('username', 'alan14')->first()->patientMedicine()->where('slot', '1')->first()->patientHistory()->get();
+});
+
+Route::get('/errortest', function () {
+    try {
+        PatientAssignment::create([
+            "caretaker_id" => 3,
+            "patient_id" => 2
+        ]); 
+    } catch(\Illuminate\Database\QueryException $e){
+        $errorCode = $e->errorInfo[1];
+        if($errorCode == '1062'){
+            dd('Duplicate Entry');
+        }
+    }
+});
+
+// Route::get('/usertest2', function () {
+//     //return User::where('uuid', 'uaIPsRute7OrFQBDZL2OUGQSgnM2')->first()->id;
+//     return User::where('username', 'alan14')->first()->created_at->diffForHumans();
+// });
+
+Route::get('/data', function () {
+    //return User::where('uuid', 'uaIPsRute7OrFQBDZL2OUGQSgnM2')->first()->id;
+    // return PatientHistory::select('id', DB::raw('DATE(created_at) as date'))
+    //       ->get()
+    //       ->groupBy('date');
+    return PatientHistory::select(DB::raw('DATE(created_at) as date'))
+    ->groupBy('date')
+    ->get()->first();
+});
+

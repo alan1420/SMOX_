@@ -31,7 +31,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store_google($uid)
+    public function store_google($uuid)
     {
 
     }
@@ -49,6 +49,10 @@ class UserController extends Controller
 
         $fullname = $data['first_name'] . " " . $data['last_name'];
 
+        $phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
+        $numberID = $phoneUtil->parse($data['phoneNumber'], "ID");
+        $data['phoneNumber'] = $phoneUtil->format($numberID, \libphonenumber\PhoneNumberFormat::E164);
+
         $userProperties = [
             'email' => $data['email'],
             'emailVerified' => false,
@@ -64,8 +68,8 @@ class UserController extends Controller
 
         $createdUser = $this->auth->createUser($userProperties);
 
-        $uid = array("uid" => $createdUser->uid);
-        $data = array_merge($data, $uid);
+        $uuid = array("uuid" => $createdUser->uid);
+        $data = array_merge($data, $uuid);
 
         $data['birthday'] = str_replace('/', '-', $data['birthday']);
         $data['birthday'] = date("Y-m-d", strtotime($data['birthday']));
@@ -75,7 +79,7 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
-    //Registrasi final untuk role dan username (pasien)
+    //Registrasi final untuk role dan username (khusus pasien)
     public function storeFinal(Request $request)
     {
         $data_req = $request->all();
@@ -84,8 +88,8 @@ class UserController extends Controller
         try {
             $verifiedIdToken = $this->auth->verifyIdToken($token);
 
-            $uid = $verifiedIdToken->claims()->get('sub');
-            $data = User::where('uid', $uid);
+            $uuid = $verifiedIdToken->claims()->get('sub');
+            $data = User::where('uuid', $uuid);
             $data_nama = $data->first();
             $data->update($data_req);
             $status = [

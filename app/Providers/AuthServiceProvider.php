@@ -36,13 +36,13 @@ class AuthServiceProvider extends ServiceProvider
     
                 try {
                     $verifiedIdToken = $auth->verifyIdToken($token);
-                    $uid = $verifiedIdToken->claims()->get('sub');
+                    $uuid = $verifiedIdToken->claims()->get('sub');
     
-                    return User::find($uid);
+                    return User::where('uuid', $uuid)->first();
                 } catch (InvalidToken $e) {
-                    echo 'The token is invalid: '.$e->getMessage();
+                    //echo 'The token is invalid: '.$e->getMessage();
                 } catch (\InvalidArgumentException $e) {
-                    echo 'The token could not be parsed: '.$e->getMessage();
+                    //echo 'The token could not be parsed: '.$e->getMessage();
                 }
             }            
         });

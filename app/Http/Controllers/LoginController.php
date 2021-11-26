@@ -28,8 +28,8 @@ class LoginController extends Controller
             echo 'The token could not be parsed: ' . $e->getMessage();
         }
         // if you're using lcobucci/jwt ^4.0
-        $uid = $verifiedIdToken->claims()->get('sub');
-        $data = User::where('uid', $uid)->first();
+        $uuid = $verifiedIdToken->claims()->get('sub');
+        $data = User::where('uuid', $uuid)->first();
         if (!is_null($data)) {
             $data_out = [
                 "is_registered" => "true"
@@ -42,7 +42,7 @@ class LoginController extends Controller
             else
                 $data_out = array_merge($data_out, array("is_completed" => "false"));
             // exists
-            //store_google($uid);
+            //store_google($uuid);
             //return "User didn't exist";
         } else {
             $data_out = [

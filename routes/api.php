@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CaretakerController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +32,10 @@ Route::middleware('auth:api')->group(function () {
         $data2 = $data->first_name;
         return "You are signed in, $data2";
     });
-
     Route::post('signup-finalize', [UserController::class, 'storeFinal']);
+    Route::post('assign-patient', [CaretakerController::class, 'assignPatient']);
 });
+
+Route::post('add-medicine', [CaretakerController::class, 'addPatientMedicine']);
+Route::post('show-history', [PatientController::class, 'showHistory']);
+
