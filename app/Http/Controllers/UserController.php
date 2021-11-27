@@ -83,59 +83,11 @@ class UserController extends Controller
     public function storeFinal(Request $request)
     {
         $data_req = $request->all();
-        $token = $request->bearerToken();
-
-        try {
-            $verifiedIdToken = $this->auth->verifyIdToken($token);
-
-            $uuid = $verifiedIdToken->claims()->get('sub');
-            $data = User::where('uuid', $uuid);
-            $data_nama = $data->first();
-            $data->update($data_req);
-            $status = [
-                "name" => $data_nama['last_name']
-            ];
-            return response()->json($status, 200);
-        } catch (InvalidToken $e) {
-            //echo 'The token is invalid: '.$e->getMessage();
-            return response('', 500);
-        } catch (\InvalidArgumentException $e) {
-            //echo 'The token could not be parsed: '.$e->getMessage();
-            return response('', 500);
-        }       
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
+        $data = $request->user();
+        $data->update($data_req);
+        $status = [
+            "name" => $data->last_name
+        ];
+        return response()->json($status, 200);     
     }
 }

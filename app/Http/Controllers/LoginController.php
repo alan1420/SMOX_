@@ -16,20 +16,8 @@ class LoginController extends Controller
     }
 
     //Mengecek apakah user firebase sudah terdaftar di database?
-    public function signinCheck(Request $request)
-    {
-        $token = $request->token;
-
-        try {
-            $verifiedIdToken = $this->auth->verifyIdToken($token);
-        } catch (InvalidToken $e) {
-            echo 'The token is invalid: ' . $e->getMessage();
-        } catch (\InvalidArgumentException $e) {
-            echo 'The token could not be parsed: ' . $e->getMessage();
-        }
-        // if you're using lcobucci/jwt ^4.0
-        $uuid = $verifiedIdToken->claims()->get('sub');
-        $data = User::where('uuid', $uuid)->first();
+    public function signinCheck(Request $request) {
+        $data = $request->user();
         if (!is_null($data)) {
             $data_out = [
                 "is_registered" => "true"
@@ -38,18 +26,8 @@ class LoginController extends Controller
                 $data_out = array_merge($data_out, array("is_completed" => "true"));
                 $data_out = array_merge($data_out, array("role" => $data->role));
                 $data_out = array_merge($data_out, array("last_name" => $data->last_name));
-            }
-            else
+            } else
                 $data_out = array_merge($data_out, array("is_completed" => "false"));
-            // exists
-            //store_google($uuid);
-            //return "User didn't exist";
-        } else {
-            $data_out = [
-                "is_registered" => "false"
-            ];
         }
-        //return $data->get();
-        return response()->json($data_out, 200);
     }
 }

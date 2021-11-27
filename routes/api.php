@@ -24,18 +24,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('signup', [UserController::class, 'store']);
 
-Route::post('signinCheck', [LoginController::class, 'signinCheck']);
-
 Route::middleware('auth:api')->group(function () {
-    Route::get('data', function() {
-        $data = request()->user();
-        $data2 = $data->first_name;
-        return "You are signed in, $data2";
-    });
+    Route::post('signinCheck', [LoginController::class, 'signinCheck']);
     Route::post('signup-finalize', [UserController::class, 'storeFinal']);
     Route::post('assign-patient', [CaretakerController::class, 'assignPatient']);
+    Route::get('show-patient', [CaretakerController::class, 'showPatient']);
+    Route::post('add-medicine', [CaretakerController::class, 'addPatientMedicine']);
+    Route::post('show-history', [PatientController::class, 'showHistory']);
 });
-
-Route::post('add-medicine', [CaretakerController::class, 'addPatientMedicine']);
-Route::post('show-history', [PatientController::class, 'showHistory']);
 

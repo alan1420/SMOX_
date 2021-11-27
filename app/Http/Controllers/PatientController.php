@@ -34,22 +34,12 @@ class PatientController extends Controller
                             ->get();
             $out_data = [];
             if ($history_slot1->isNotEmpty()) {
-                $history_date = [];
-                foreach ($history_slot1 as $data) {
-                    # code...                   ;
-                    array_push($history_date, $data['date']);
-                }
-                //return $history_date;
-                $out_data = array_merge($out_data, array("history1" => $history_date));
+                $out_data = array_merge($out_data, array("history1" => 
+                            array_column($history_slot1->toArray(), 'date')));
             }
             if ($history_slot2->isNotEmpty()) {
-                $history_date = [];
-                foreach ($history_slot2 as $data) {
-                    # code...                   ;
-                    array_push($history_date, $data['date']);
-                }
-                //return $history_date;
-                $out_data = array_merge($out_data, array("history2" => $history_date));
+                $out_data = array_merge($out_data, array("history2" => 
+                            array_column($history_slot2->toArray(), 'date')));
             }  
             return response()->json($out_data, 200);
         }      
