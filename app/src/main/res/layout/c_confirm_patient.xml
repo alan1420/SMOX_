@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/background4">
 
     <RelativeLayout
-        android:layout_width="340dp"
+        android:layout_width="335dp"
         android:layout_height="380dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/rectwhite">
+        android:background="@drawable/rect_white">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
             android:fontFamily="@font/opensans"
             android:text="Confirm your patient"
             android:textColor="@color/brown"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold">
         </TextView>
 
@@ -35,7 +35,7 @@
             android:text="make sure the data below belongs to your patient"
             android:textAlignment="center"
             android:textColor="@color/brown"
-            android:textSize="18sp">
+            android:textSize="18dp">
         </TextView>
 
         <LinearLayout
@@ -51,7 +51,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Name"
                 android:textColor="@color/brown"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
 
             <TextView
@@ -61,7 +61,7 @@
                 android:fontFamily="@font/roboto"
                 android:text=":"
                 android:textColor="@color/brown"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
 
 
@@ -71,7 +71,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Park Ae-ri"
                 android:textColor="@color/green_dark"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
         </LinearLayout>
 
@@ -88,7 +88,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Birthday"
                 android:textColor="@color/brown"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
 
             <TextView
@@ -98,7 +98,7 @@
                 android:fontFamily="@font/roboto"
                 android:text=":"
                 android:textColor="@color/brown"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
 
             <TextView
@@ -107,7 +107,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="04 December 2002"
                 android:textColor="@color/green_dark"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
         </LinearLayout>
 
@@ -124,7 +124,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Email"
                 android:textColor="@color/brown"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
 
             <TextView
@@ -134,7 +134,7 @@
                 android:fontFamily="@font/roboto"
                 android:text=":"
                 android:textColor="@color/brown"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
 
             <TextView
@@ -143,7 +143,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="aoi.rohma04@gmail.com"
                 android:textColor="@color/green_dark"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
         </LinearLayout>
 
@@ -160,7 +160,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Call"
                 android:textColor="@color/brown"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
 
             <TextView
@@ -170,7 +170,7 @@
                 android:fontFamily="@font/roboto"
                 android:text=":"
                 android:textColor="@color/brown"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
 
             <TextView
@@ -179,7 +179,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="082143604036"
                 android:textColor="@color/green_dark"
-                android:textSize="18sp">
+                android:textSize="18dp">
             </TextView>
         </LinearLayout>
 
@@ -188,11 +188,12 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="290dp"
-            android:background="@drawable/roundedgreen10">
+            android:background="@drawable/rect_green_10"
+            android:onClick="confirm">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:text="Confirm"
                 android:fontFamily="@font/opensans"
                 android:textColor="@color/brown"

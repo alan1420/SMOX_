@@ -6,22 +6,12 @@
     android:background="@drawable/background"
     tools:context=".SignIn">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="140dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="65dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo2">
-    </ImageView>
-
     <RelativeLayout
         android:id="@+id/signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/logo"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="100dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +20,7 @@
             android:text="Sign In"
             android:fontFamily="@font/opensans"
             android:textColor="@color/green"
-            android:textSize="36sp"
+            android:textSize="40dp"
             android:textStyle="bold"
             android:shadowColor="@color/brown"
             android:shadowDx="3"
@@ -49,14 +39,15 @@
         <RelativeLayout
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/roundedicon"
+            android:background="@drawable/rect_icon"
             android:id="@+id/iconemail">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/email">
+                android:src="@drawable/i_email"
+                android:alpha="0.5">
             </ImageView>
         </RelativeLayout>
 
@@ -68,7 +59,7 @@
                 android:id="@+id/signinemail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/roundedinputext"
+                android:background="@drawable/rect_input"
                 android:fontFamily="@font/opensans"
                 android:hint="Email"
                 android:paddingRight="15dp"
@@ -87,14 +78,15 @@
         <RelativeLayout
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/roundedicon"
+            android:background="@drawable/rect_icon"
             android:id="@+id/iconpass">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"
+                android:alpha="0.5"
                 android:layout_centerInParent="true"
-                android:src="@drawable/lock">
+                android:src="@drawable/i_lock">
             </ImageView>
         </RelativeLayout>
 
@@ -106,9 +98,9 @@
                 android:id="@+id/signinpass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/roundedinputext"
+                android:background="@drawable/rect_input"
                 android:inputType="textPassword"
-                android:drawableRight="@drawable/hide"
+                android:drawableRight="@drawable/i_hide"
                 android:longClickable="false"
                 android:hint="Password"
                 android:textColorHint="@color/whiteTrans"
@@ -144,7 +136,7 @@
         android:layout_below="@id/forgotpass"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:background="@drawable/roundedgreen10"
+        android:background="@drawable/rect_green_10"
         android:clickable="true"
         android:onClick="signInEmail">
 
@@ -157,7 +149,7 @@
             android:fontFamily="@font/opensans"
             android:text="Sign In"
             android:textColor="@color/brown"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <ImageView
@@ -169,7 +161,7 @@
         android:layout_marginBottom="15dp"
         android:clickable="true"
         android:onClick="signInGoogle"
-        android:src="@drawable/google" />
+        android:src="@drawable/im_google" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -182,7 +174,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:text="Don't have an account?"
             android:fontFamily="@font/opensans"
             android:textColor="@color/brown"
@@ -197,7 +189,7 @@
             android:onClick="signupPage"
             android:text=" Sign Up"
             android:textColor="@color/brown"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>
 

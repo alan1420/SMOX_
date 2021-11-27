@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/background4"
     tools:context=".CreateUsername">
 
     <RelativeLayout
-        android:layout_width="335dp"
+        android:layout_width="330dp"
         android:layout_height="335dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/rectwhite">
+        android:background="@drawable/rect_white">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,8 +22,9 @@
             android:fontFamily="@font/opensans"
             android:text="Set your username"
             android:textColor="@color/brown"
-            android:textSize="20sp"
-            android:textStyle="bold"></TextView>
+            android:textSize="20dp"
+            android:textStyle="bold">
+        </TextView>
 
         <LinearLayout
             android:layout_width="275dp"
@@ -34,14 +35,16 @@
             <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/rounded_stroke">
+                android:background="@drawable/rect_stroke_bottom">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/user_black"></ImageView>
+                    android:layout_centerInParent="true"
+                    android:alpha="0.7"
+                    android:src="@drawable/i_user_black">
+                </ImageView>
             </RelativeLayout>
 
             <RelativeLayout
@@ -52,13 +55,13 @@
                     android:id="@+id/enterusername"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/rounded_stroke"
+                    android:background="@drawable/rect_stroke_bottom"
                     android:fontFamily="@font/opensans"
                     android:hint="Enter your username"
                     android:paddingLeft="5dp"
                     android:textColor="@color/brown"
                     android:textColorHint="@color/green_dark"
-                    android:textSize="18sp"></EditText>
+                    android:textSize="18dp"></EditText>
             </RelativeLayout>
         </LinearLayout>
 
@@ -73,14 +76,14 @@
             android:text="This username will be used when the caretaker connects his account with your account"
             android:textAlignment="center"
             android:textColor="@color/brown"
-            android:textSize="16sp"></TextView>
+            android:textSize="16dp"></TextView>
 
         <RelativeLayout
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="250dp"
-            android:background="@drawable/roundedgreen10"
+            android:background="@drawable/rect_green_10"
             android:clickable="true"
             android:onClick="register_p">
 
@@ -93,7 +96,7 @@
                 android:fontFamily="@font/opensans"
                 android:text="Set"
                 android:textColor="@color/brown"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
         </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

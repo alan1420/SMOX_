@@ -10,11 +10,11 @@
         android:onClick="backtoHome">
         <ImageView
             android:id="@+id/account"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="13dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="13dp"
-            android:src="@drawable/back"
+            android:src="@drawable/i_back"
             android:alpha="0.9">
         </ImageView>
     </RelativeLayout>
@@ -27,8 +27,8 @@
         android:layout_marginTop="10dp"
         android:alpha="0.9"
         android:fontFamily="@font/roboto"
-        android:textColor="@color/brown"
-        android:textSize="18sp">
+        android:textColor="@color/white"
+        android:textSize="18dp">
     </TextView>
 
     <RelativeLayout
@@ -42,8 +42,8 @@
             android:layout_width="325dp"
             android:layout_height="250dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/rectwhite"
-            android:id="@+id/aspatient">
+            android:background="@drawable/rect_white"
+            android:id="@+id/adpatient">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/editslot1_schedule"
@@ -55,18 +55,18 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/green"
-                android:src="@drawable/edit"
+                android:src="@drawable/i_edit"
                 android:onClick="gotoSetOne">
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
             <ImageView
                 android:layout_width="35dp"
-                android:layout_height="245dp"
+                android:layout_height="250dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/background4">
+                android:src="@drawable/background_rect">
             </ImageView>
 
             <TextView
@@ -79,7 +79,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="The Medicine"
                 android:textColor="@color/green_dark"
-                android:textSize="14sp">
+                android:textSize="14dp">
             </TextView>
 
             <TextView
@@ -92,7 +92,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="MIRTAZAPINE"
                 android:textColor="@color/brown"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textStyle="bold">
             </TextView>
 
@@ -106,7 +106,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Period"
                 android:textColor="@color/green_dark"
-                android:textSize="14sp">
+                android:textSize="14dp">
             </TextView>
 
             <TextView
@@ -119,7 +119,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="2 MONTHS"
                 android:textColor="@color/brown"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textStyle="bold">
             </TextView>
 
@@ -133,7 +133,7 @@
                 android:fontFamily="@font/roboto_thin_italic"
                 android:text="*This term can change according to the patient's condition"
                 android:textColor="@color/brown"
-                android:textSize="11sp"
+                android:textSize="11dp"
                 android:textStyle="">
             </TextView>
 
@@ -147,7 +147,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Interval"
                 android:textColor="@color/green_dark"
-                android:textSize="14sp">
+                android:textSize="14dp">
             </TextView>
 
             <TextView
@@ -162,7 +162,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="24"
                 android:textColor="@color/brown"
-                android:textSize="72sp">
+                android:textSize="72dp">
             </TextView>
 
             <TextView
@@ -175,7 +175,7 @@
                 android:fontFamily="@font/roboto_thin_italic"
                 android:text="HOURS"
                 android:textColor="@color/brown"
-                android:textSize="24sp"
+                android:textSize="24dp"
                 android:textStyle="bold">
             </TextView>
 
@@ -185,9 +185,9 @@
             android:layout_width="325dp"
             android:layout_height="250dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/aspatient"
+            android:layout_below="@id/adpatient"
             android:layout_marginTop="25dp"
-            android:background="@drawable/rectwhite">
+            android:background="@drawable/rect_white">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/editslot2_schedule"
@@ -199,18 +199,18 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/green"
-                android:src="@drawable/edit"
+                android:src="@drawable/i_edit"
                 android:onClick="gotoSetTwo">
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
             <ImageView
                 android:layout_width="35dp"
-                android:layout_height="245dp"
+                android:layout_height="250dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/background4">
+                android:src="@drawable/background_rect">
             </ImageView>
 
 
@@ -224,7 +224,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="The Medicine"
                 android:textColor="@color/green_dark"
-                android:textSize="14sp">
+                android:textSize="14dp">
             </TextView>
 
             <TextView
@@ -237,7 +237,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="-"
                 android:textColor="@color/brown"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textStyle="bold">
             </TextView>
 
@@ -251,7 +251,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Period"
                 android:textColor="@color/green_dark"
-                android:textSize="14sp">
+                android:textSize="14dp">
             </TextView>
 
             <TextView
@@ -264,7 +264,7 @@
                 android:fontFamily="@font/opensans"
                 android:text="-"
                 android:textColor="@color/brown"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textStyle="bold">
             </TextView>
 
@@ -278,7 +278,7 @@
                 android:fontFamily="@font/roboto_thin_italic"
                 android:text="*This term can change according to the patient's condition"
                 android:textColor="@color/brown"
-                android:textSize="11sp"
+                android:textSize="11dp"
                 android:textStyle="">
             </TextView>
 
@@ -292,7 +292,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="Interval"
                 android:textColor="@color/green_dark"
-                android:textSize="14sp">
+                android:textSize="14dp">
             </TextView>
 
             <TextView
@@ -307,7 +307,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="-"
                 android:textColor="@color/brown"
-                android:textSize="72sp">
+                android:textSize="72dp">
             </TextView>
 
             <TextView
@@ -320,7 +320,7 @@
                 android:fontFamily="@font/roboto_thin_italic"
                 android:text="HOURS"
                 android:textColor="@color/brown"
-                android:textSize="24sp"
+                android:textSize="24dp"
                 android:textStyle="bold">
             </TextView>
         </RelativeLayout>

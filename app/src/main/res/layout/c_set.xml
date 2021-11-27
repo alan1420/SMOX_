@@ -10,11 +10,11 @@
         android:onClick="backtoHome">
         <ImageView
             android:id="@+id/account"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="13dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="13dp"
-            android:src="@drawable/back"
+            android:src="@drawable/i_back"
             android:alpha="0.9">
         </ImageView>
     </RelativeLayout>
@@ -27,8 +27,8 @@
         android:layout_marginTop="10dp"
         android:alpha="0.9"
         android:fontFamily="@font/roboto"
-        android:textColor="@color/brown"
-        android:textSize="18sp">
+        android:textColor="@color/white"
+        android:textSize="18dp">
     </TextView>
 
     <RelativeLayout
@@ -37,8 +37,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="80dp"
-        android:background="@drawable/rectwhite"
-        android:id="@+id/aspatient">
+        android:background="@drawable/rect_white"
+        android:id="@+id/adpatient">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/save_slot1"
@@ -50,7 +50,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/green"
-            android:src="@drawable/save">
+            android:src="@drawable/i_save"
+            android:onClick="save">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         <ImageView
@@ -59,7 +60,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:src="@drawable/background7">
+            android:src="@drawable/background_rect_long">
         </ImageView>
 
         <TextView
@@ -72,7 +73,7 @@
             android:fontFamily="@font/roboto"
             android:text="SLOT 1"
             android:textColor="@color/brown"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:id="@+id/slot">
         </TextView>
 
@@ -86,7 +87,7 @@
             android:fontFamily="@font/roboto"
             android:text="The Medicine"
             android:textColor="@color/green_dark"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </TextView>
 
         <EditText
@@ -99,7 +100,7 @@
             android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </EditText>
 
         <TextView
@@ -112,7 +113,7 @@
             android:fontFamily="@font/roboto"
             android:text="Interval"
             android:textColor="@color/green_dark"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </TextView>
 
         <EditText
@@ -125,7 +126,7 @@
             android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </EditText>
 
         <TextView
@@ -138,7 +139,7 @@
             android:fontFamily="@font/roboto"
             android:text="Hours"
             android:textColor="@color/brown"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:layout_alignParentRight="true">
         </TextView>
 
@@ -152,7 +153,7 @@
             android:fontFamily="@font/roboto"
             android:text="Dosage"
             android:textColor="@color/green_dark"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </TextView>
 
         <EditText
@@ -165,7 +166,7 @@
             android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </EditText>
 
         <TextView
@@ -178,7 +179,7 @@
             android:fontFamily="@font/roboto"
             android:text="Tablet"
             android:textColor="@color/brown"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:layout_alignParentRight="true">
         </TextView>
 
@@ -192,7 +193,7 @@
             android:fontFamily="@font/roboto"
             android:text="Instruction for use"
             android:textColor="@color/green_dark"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </TextView>
 
         <EditText
@@ -205,7 +206,7 @@
             android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </EditText>
 
         <TextView
@@ -218,7 +219,7 @@
             android:fontFamily="@font/roboto"
             android:text="Period"
             android:textColor="@color/green_dark"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </TextView>
 
         <EditText
@@ -231,7 +232,7 @@
             android:paddingLeft="5dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/brown"
-            android:textSize="16sp">
+            android:textSize="16dp">
         </EditText>
 
 
@@ -249,7 +250,7 @@
                 android:layout_height="match_parent"
                 android:inputType="none"
                 android:text="Days"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="@color/brown"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -263,7 +264,7 @@
             android:fontFamily="@font/roboto_thin_italic"
             android:text="*This term can change according to the patient's condition"
             android:textColor="@color/brown"
-            android:textSize="11sp"
+            android:textSize="11dp"
             android:textStyle="">
         </TextView>
     </RelativeLayout>

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.smox.R
@@ -31,8 +32,13 @@ class SetTwo : AppCompatActivity() {
     }
 
     fun backtoHome(view: View) {
-        val intent = Intent(this, Homepage::class.java)
-        startActivity(intent)
-        finish()
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    fun save(view: View) {
+        Toast.makeText(this, "Changes saved", Toast.LENGTH_SHORT).show()
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

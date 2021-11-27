@@ -7,21 +7,12 @@
     android:background="@drawable/background"
     tools:context=".SignUp">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="140dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo2">
-    </ImageView>
-
     <RelativeLayout
         android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/logo">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +21,7 @@
             android:text="Sign Up"
             android:fontFamily="@font/opensans"
             android:textColor="@color/green"
-            android:textSize="32sp"
+            android:textSize="40dp"
             android:textStyle="bold"
             android:shadowColor="@color/brown"
             android:shadowDx="3"
@@ -45,18 +36,19 @@
         android:layout_height="45dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/signup"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="30dp">
         <RelativeLayout
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/roundedicon"
+            android:background="@drawable/rect_icon"
             android:id="@+id/iconname">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/user">
+                android:alpha="0.5"
+                android:src="@drawable/i_user">
             </ImageView>
         </RelativeLayout>
 
@@ -67,7 +59,7 @@
                 android:id="@+id/firstname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/roundedinputext"
+                android:background="@drawable/rect_input"
                 android:hint="First name"
                 android:textColorHint="@color/whiteTrans"
                 android:paddingRight="15dp"
@@ -88,7 +80,7 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:background="@drawable/roundedcorner"
+                android:background="@drawable/rect_trans"
                 android:hint="Last name"
                 android:textColorHint="@color/whiteTrans"
                 android:fontFamily="@font/opensans"
@@ -107,14 +99,15 @@
         <RelativeLayout
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/roundedicon"
+            android:background="@drawable/rect_icon"
             android:id="@+id/iconcalendar">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/calendar">
+                android:alpha="0.5"
+                android:src="@drawable/i_calendar">
             </ImageView>
         </RelativeLayout>
 
@@ -126,7 +119,7 @@
                 android:id="@+id/enterbirthday"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/roundedinputext"
+                android:background="@drawable/rect_input"
                 android:fontFamily="@font/opensans"
                 android:hint="Birthday"
                 android:inputType="date"
@@ -147,14 +140,17 @@
         <RelativeLayout
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/roundedicon"
+            android:background="@drawable/rect_icon"
             android:id="@+id/iconphone">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/phone"></ImageView>
+                android:alpha="0.5"
+                android:src="@drawable/i_call">
+
+            </ImageView>
         </RelativeLayout>
 
         <RelativeLayout
@@ -165,7 +161,7 @@
                 android:id="@+id/enternumber"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/roundedinputext"
+                android:background="@drawable/rect_input"
                 android:fontFamily="@font/opensans"
                 android:hint="Phone Number"
                 android:inputType="phone"
@@ -185,14 +181,15 @@
         <RelativeLayout
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/roundedicon"
+            android:background="@drawable/rect_icon"
             android:id="@+id/iconemail">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/email">
+                android:alpha="0.5"
+                android:src="@drawable/i_email">
             </ImageView>
         </RelativeLayout>
 
@@ -204,7 +201,7 @@
                 android:id="@+id/enteremail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/roundedinputext"
+                android:background="@drawable/rect_input"
                 android:hint="Email"
                 android:textColorHint="@color/whiteTrans"
                 android:paddingRight="15dp"
@@ -224,14 +221,15 @@
         <RelativeLayout
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/roundedicon"
+            android:background="@drawable/rect_icon"
             android:id="@+id/iconpass">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/lock">
+                android:alpha="0.5"
+                android:src="@drawable/i_lock">
             </ImageView>
         </RelativeLayout>
 
@@ -243,8 +241,8 @@
                 android:id="@+id/enterpassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/roundedinputext"
-                android:drawableRight="@drawable/hide"
+                android:background="@drawable/rect_input"
+                android:drawableRight="@drawable/i_hide"
                 android:fontFamily="@font/opensans"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -265,14 +263,15 @@
         <RelativeLayout
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/roundedicon"
+            android:background="@drawable/rect_icon"
             android:id="@+id/iconpassconfirm">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:alpha="0.5"
                 android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/lock">
+                android:src="@drawable/i_lock">
             </ImageView>
         </RelativeLayout>
 
@@ -284,9 +283,9 @@
                 android:id="@+id/enterconfirmpassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/roundedinputext"
+                android:background="@drawable/rect_input"
                 android:inputType="textPassword"
-                android:drawableRight="@drawable/hide"
+                android:drawableRight="@drawable/i_hide"
                 android:longClickable="false"
                 android:hint="Confirm Password"
                 android:textColorHint="@color/whiteTrans"
@@ -305,7 +304,7 @@
         android:layout_below="@id/confirmpassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:background="@drawable/roundedgreen10"
+        android:background="@drawable/rect_green_10"
         android:clickable="true"
         android:onClick="register">
 
@@ -318,7 +317,7 @@
             android:fontFamily="@font/opensans"
             android:text="Sign Up"
             android:textColor="@color/brown"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <ImageView
@@ -328,7 +327,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:src="@drawable/google"
+        android:src="@drawable/im_google"
         android:shadowColor="@color/brown"
         android:shadowDx="3"
         android:shadowDy="3"
@@ -346,7 +345,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:text="Have an account?"
             android:fontFamily="@font/opensans"
             android:textColor="@color/brown"
@@ -361,7 +360,7 @@
             android:onClick="signinPage"
             android:text=" Sign In"
             android:textColor="@color/brown"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>
 

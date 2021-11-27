@@ -6,16 +6,21 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_app"
         android:label="SMOX"
         android:largeHeap="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.SMOX"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".ConfirmRole"
+            android:exported="false" />
         <activity
             android:name=".patient.Homepage"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.Homepage"
             android:exported="false" />
         <activity
             android:name=".SignIn"
@@ -25,9 +30,6 @@
             android:exported="false" />
         <activity
             android:name=".CreateUsername"
-            android:exported="false" />
-        <activity
-            android:name=".ConfirmRole"
             android:exported="false" />
         <activity
             android:name=".patient.Schedule"
@@ -48,6 +50,15 @@
             android:name=".patient.HistoryDetailTwo"
             android:exported="false" />
         <activity
+            android:name=".patient.Menu"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.ConnectPatient"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.ConfirmPatient"
+            android:exported="false" />
+        <activity
             android:name=".caretaker.Schedule"
             android:exported="false" />
         <activity
@@ -60,7 +71,10 @@
             android:name=".caretaker.SetTwo"
             android:exported="false" />
         <activity
-            android:name=".caretaker.Information"
+            android:name=".caretaker.Patient"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.PatientList"
             android:exported="false" />
         <activity
             android:name=".caretaker.History"
@@ -71,11 +85,12 @@
         <activity
             android:name=".caretaker.HistoryDetailTwo"
             android:exported="false" />
-
-        <activity android:name=".caretaker.Homepage">
+        <activity
+            android:name=".caretaker.Menu"
+            android:exported="false" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

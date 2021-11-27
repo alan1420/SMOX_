@@ -4,34 +4,23 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.util.Patterns
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.util.Log
-import androidx.annotation.NonNull
-import com.android.volley.AuthFailureError
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
-import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GetTokenResult
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import com.google.gson.Gson
 import org.json.JSONObject
 
 class SignIn : AppCompatActivity() {
@@ -63,13 +52,13 @@ class SignIn : AppCompatActivity() {
                     val selection = mPassword!!.selectionEnd
                     if (isPasswordVisible) {
                         // set drawable image
-                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.hide, 0)
+                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
                         // hide Password
                         mPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
                         isPasswordVisible = false
                     } else {
                         // set drawable image
-                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.show, 0)
+                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
                         // show Password
                         mPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
                         isPasswordVisible = true
@@ -187,7 +176,7 @@ class SignIn : AppCompatActivity() {
     fun signupPage(view: View) {
         val intent = Intent(this, SignUp::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun loginCheck(token: String) {
@@ -225,6 +214,7 @@ class SignIn : AppCompatActivity() {
         val intent = Intent(this, ConfirmRole::class.java)
         startActivity(intent)
         finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 

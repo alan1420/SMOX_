@@ -6,12 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.example.smox.R
 import kotlinx.android.synthetic.main.history.*
 
@@ -64,21 +60,20 @@ class History : AppCompatActivity()
     }
 
     fun backtoHome(view: View) {
-        val intent = Intent(this, com.example.smox.caretaker.Homepage::class.java)
-        startActivity(intent)
-        finish()
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     fun gotoHistoryDetailOne(view: View) {
         val intent = Intent(this, com.example.smox.caretaker.HistoryDetailOne::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun gotoHistoryDetailTwo(view: View) {
         val intent = Intent(this, com.example.smox.caretaker.HistoryDetailTwo::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 }

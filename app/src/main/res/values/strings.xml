@@ -7,6 +7,8 @@
         <item>Years</item>
     </string-array>
     <string name="period">Period</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
 
 

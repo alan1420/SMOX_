@@ -64,21 +64,20 @@ class History : AppCompatActivity()
     }
 
     fun backtoHome(view: View) {
-        val intent = Intent(this, Homepage::class.java)
-        startActivity(intent)
-        finish()
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     fun gotoHistoryDetailOne(view: View) {
         val intent = Intent(this, HistoryDetailOne::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun gotoHistoryDetailTwo(view: View) {
         val intent = Intent(this, HistoryDetailTwo::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 }

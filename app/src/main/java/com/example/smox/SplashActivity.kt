@@ -11,8 +11,6 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.example.smox.patient.Homepage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
 
 class SplashActivity : AppCompatActivity() {
@@ -61,7 +59,7 @@ class SplashActivity : AppCompatActivity() {
         //Toast.makeText(this, "Silahkan login terlebih dahulu", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, SignIn::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun loginCheck(token: String) {
@@ -102,7 +100,7 @@ class SplashActivity : AppCompatActivity() {
         Toast.makeText(this, "Data belum lengkap", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, ConfirmRole::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun toHomePage(role: Int, name: String) {
@@ -111,14 +109,14 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, Homepage::class.java)
             intent.putExtra("name", name)
             startActivity(intent)
-            finish()
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
         //To Caretaker
         else {
             val intent = Intent(this, com.example.smox.caretaker.Homepage::class.java)
             intent.putExtra("name", name)
             startActivity(intent)
-            finish()
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
     }

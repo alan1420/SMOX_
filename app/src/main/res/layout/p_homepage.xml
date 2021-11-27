@@ -12,42 +12,26 @@
         android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:src="@drawable/account">
+        android:src="@drawable/i_menu"
+        android:onClick="menu">
     </ImageView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp">
-        <RelativeLayout
-            android:layout_width="220dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/welcome">
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:fontFamily="@font/opensans_extrabold"
-                android:text="HELLO, PARK"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="120dp"
-            android:layout_height="110dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp">
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/homepage_patient">
-            </ImageView>
-        </RelativeLayout>
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:id="@+id/welcome">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="HELLO, LEE"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/opensans_extrabold">
+        </TextView>
     </RelativeLayout>
 
 
@@ -56,10 +40,8 @@
         android:layout_height="145dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:background="@drawable/rectgreen"
+        android:background="@drawable/rect_green"
         android:id="@+id/upcoming">
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,7 +52,7 @@
             android:fontFamily="@font/opensans"
             android:text="UPCOMING"
             android:textColor="@color/brown"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textStyle="bold">
         </TextView>
 
@@ -84,7 +66,7 @@
             android:fontFamily="@font/opensans"
             android:text="09"
             android:textColor="@color/brown"
-            android:textSize="64sp"
+            android:textSize="64dp"
             android:textStyle="bold">
         </TextView>
 
@@ -98,7 +80,7 @@
             android:fontFamily="@font/opensans"
             android:text="."
             android:textColor="@color/brown"
-            android:textSize="36sp"
+            android:textSize="36dp"
             android:textStyle="bold">
         </TextView>
 
@@ -112,7 +94,7 @@
             android:fontFamily="@font/opensans"
             android:text="PM"
             android:textColor="@color/brown"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold">
         </TextView>
 
@@ -126,7 +108,7 @@
             android:fontFamily="@font/opensans"
             android:text="30"
             android:textColor="@color/brown"
-            android:textSize="36sp"
+            android:textSize="36dp"
             android:textStyle="bold">
         </TextView>
 
@@ -141,7 +123,7 @@
             android:fontFamily="@font/opensans"
             android:text="MIRTAZAPINE"
             android:textColor="@color/brown"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textStyle="bold">
         </TextView>
         <TextView
@@ -155,7 +137,7 @@
             android:fontFamily="@font/opensans"
             android:text="1 TABLET"
             android:textColor="@color/brown"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textStyle="bold">
         </TextView>
         <TextView
@@ -170,12 +152,12 @@
             android:text="Sesudah makan &amp; Sebelum tidur"
             android:textAlignment="textEnd"
             android:textColor="@color/brown"
-            android:textSize="14sp">
+            android:textSize="14dp">
         </TextView>
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="160dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -187,26 +169,26 @@
             android:id="@+id/dosage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:background="@drawable/rectwhite"
+            android:background="@drawable/rect_white"
             android:onClick="gotoSchedule">
 
             <ImageView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="15dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/schedule">
+                android:src="@drawable/im_schedule">
             </ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
+                android:layout_marginTop="110dp"
                 android:alpha="0.9"
                 android:text="SCHEDULE"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/brown"
-                android:textSize="14sp"
+                android:textSize="16dp"
                 android:textStyle="">
             </TextView>
         </RelativeLayout>
@@ -215,36 +197,37 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/rectwhite"
+            android:background="@drawable/rect_white"
             android:id="@+id/schedule"
             android:onClick="gotoDosage">
 
             <ImageView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="15dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/dosage">
+                android:src="@drawable/im_dosage">
             </ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
+                android:layout_marginTop="110dp"
                 android:alpha="0.9"
                 android:text="DOSAGE"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/brown"
-                android:textSize="14sp"
+                android:textSize="16dp"
                 android:textStyle="">
             </TextView>
         </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="160dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:layout_below="@id/row1"
         android:id="@+id/row2">
@@ -252,28 +235,27 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_below="@id/schedule"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectwhite"
+            android:background="@drawable/rect_white"
             android:id="@+id/history"
             android:onClick="gotoHistory">
 
             <ImageView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="15dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/history">
+                android:src="@drawable/im_history">
             </ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
+                android:layout_marginTop="110dp"
                 android:alpha="0.9"
                 android:text="HISTORY"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/brown"
-                android:textSize="14sp"
+                android:textSize="16dp"
                 android:textStyle="">
             </TextView>
         </RelativeLayout>
@@ -282,40 +264,31 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectwhite"
+            android:background="@drawable/rect_white"
             android:id="@+id/infromation"
-            android:onClick="gotoInformation">
+            android:onClick="gotoInformation"
+            android:visibility="visible">
 
             <ImageView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="15dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/infromation">
+                android:src="@drawable/im_caretaker">
             </ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
+                android:layout_marginTop="110dp"
                 android:alpha="0.9"
-                android:text="INFROMATION"
+                android:text="CARETAKER"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/brown"
-                android:textSize="14sp"
+                android:textSize="16dp"
                 android:textStyle="">
             </TextView>
         </RelativeLayout>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo3">
-    </ImageView>
 </RelativeLayout>

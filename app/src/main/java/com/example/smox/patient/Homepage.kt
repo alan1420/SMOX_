@@ -22,24 +22,30 @@ class Homepage : AppCompatActivity() {
     fun gotoSchedule(view: View) {
         val intent = Intent(this, Schedule::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun gotoDosage(view: View) {
         val intent = Intent(this, Dosage::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     fun gotoHistory(view: View) {
         val intent = Intent(this, History::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun gotoInformation(view: View) {
         val intent = Intent(this, Information::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    fun menu(view: View) {
+        val intent = Intent(this, Menu::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
 

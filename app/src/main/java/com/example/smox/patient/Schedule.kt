@@ -15,8 +15,7 @@ class Schedule : AppCompatActivity(){
     }
 
     fun backtoHome(view: View) {
-        val intent = Intent(this, Homepage::class.java)
-        startActivity(intent)
-        finish()
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

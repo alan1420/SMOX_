@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background3">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="back">
+        <ImageView
+            android:id="@+id/account"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/i_back"
+            android:alpha="0.9">
+        </ImageView>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PATIENTS"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:alpha="0.9"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
+        android:textSize="18dp">
+    </TextView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="65dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click the card to choose patient."
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/brown"
+                android:textSize="18dp">
+            </TextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rect_white"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Name"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Aeri Park"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Birthday"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="04 December 2002"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Email"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="aoi.rohma04@gmail.com"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="90dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Call"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="082143604036"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="260dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rect_white"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Name"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Sunwoo Kim"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Birthday"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="12 April 2000"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Email"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="kimsunu12@gmail.com"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="90dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Call"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="0109801232"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="450dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rect_white"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Name"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Juyeon Lee"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Birthday"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="15 January 1998"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Email"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="ujuyngebug@gmail.com"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="90dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Call"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="0106561892"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="640dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rect_white"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Name"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Chanhee Choi"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Birthday"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="16 April 1998"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Email"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="mysassyboi@gmail.com"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="290dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="90dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text="Call"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:fontFamily="@font/roboto"
+                        android:text=":"
+                        android:textColor="@color/brown"
+                        android:textSize="18dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="0105401452"
+                        android:textColor="@color/green_dark"
+                        android:textSize="18dp">
+                    </TextView>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

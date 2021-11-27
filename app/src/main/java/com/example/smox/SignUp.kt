@@ -15,7 +15,6 @@ import android.widget.EditText
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-import com.google.gson.Gson
 import org.json.JSONObject
 import java.util.*
 
@@ -52,13 +51,13 @@ class SignUp : AppCompatActivity() {
                     val selection = mPassword!!.selectionEnd
                     if (isPasswordVisible) {
                         // set drawable image
-                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.hide, 0)
+                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
                         // hide Password
                         mPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
                         isPasswordVisible = false
                     } else {
                         // set drawable image
-                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.show, 0)
+                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
                         // show Password
                         mPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
                         isPasswordVisible = true
@@ -77,13 +76,13 @@ class SignUp : AppCompatActivity() {
                     val selection = mCPassword!!.selectionEnd
                     if (isCPasswordVisible) {
                         // set drawable image
-                        mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.hide, 0)
+                        mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
                         // hide Password
                         mCPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
                         isCPasswordVisible = false
                     } else {
                         // set drawable image
-                        mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.show, 0)
+                        mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
                         // show Password
                         mCPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
                         isCPasswordVisible = true
@@ -137,7 +136,7 @@ class SignUp : AppCompatActivity() {
     fun signinPage(view: View? = null) {
         val intent = Intent(this, SignIn::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun setBirthdayEditText(birthdayEditText: EditText) {

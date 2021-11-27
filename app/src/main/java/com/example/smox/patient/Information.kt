@@ -9,12 +9,11 @@ import com.example.smox.R
 class Information : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.p_information)
+        setContentView(R.layout.p_caretaker)
     }
 
     fun backtoHome(view: View) {
-        val intent = Intent(this, Homepage::class.java)
-        startActivity(intent)
-        finish()
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
