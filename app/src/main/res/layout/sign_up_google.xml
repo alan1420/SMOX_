@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".SignUp">
+
+    <RelativeLayout
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sign Up"
+            android:fontFamily="@font/opensans"
+            android:textColor="@color/green"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/brown"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3">
+        </TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/signup"
+        android:layout_marginTop="30dp">
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/rect_icon"
+            android:id="@+id/iconname">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:alpha="0.5"
+                android:src="@drawable/i_user">
+            </ImageView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="105dp"
+            android:layout_height="45dp">
+            <EditText
+                android:id="@+id/firstname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rect_input"
+                android:hint="First name"
+                android:textColorHint="@color/whiteTrans"
+                android:paddingRight="15dp"
+                android:fontFamily="@font/opensans"
+                android:textColor="@color/white">
+            </EditText>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp">
+
+            <EditText
+                android:id="@+id/lastname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@drawable/rect_trans"
+                android:hint="Last name"
+                android:textColorHint="@color/whiteTrans"
+                android:fontFamily="@font/opensans"
+                android:textColor="@color/white">
+            </EditText>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/birthday"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/name"
+        android:layout_marginTop="15dp">
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/rect_icon"
+            android:id="@+id/iconcalendar">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:alpha="0.5"
+                android:src="@drawable/i_calendar">
+            </ImageView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="255dp"
+            android:layout_height="45dp">
+
+            <EditText
+                android:id="@+id/enterbirthday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rect_input"
+                android:fontFamily="@font/opensans"
+                android:hint="Birthday"
+                android:inputType="date"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/whiteTrans">
+            </EditText>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/phonenumber"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/birthday"
+        android:layout_marginTop="15dp">
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/rect_icon"
+            android:id="@+id/iconphone">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:alpha="0.5"
+                android:src="@drawable/i_call">
+
+            </ImageView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="255dp"
+            android:layout_height="45dp">
+
+            <EditText
+                android:id="@+id/enternumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rect_input"
+                android:fontFamily="@font/opensans"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/whiteTrans"></EditText>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/signupbutton"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/phonenumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rect_green_10"
+        android:clickable="true"
+        android:onClick="register">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:alpha="0.8"
+            android:fontFamily="@font/opensans"
+            android:gravity="center_vertical"
+            android:text="Sign Up"
+            android:textColor="@color/brown"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+</RelativeLayout>
