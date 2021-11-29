@@ -28,6 +28,7 @@ class LoginController extends Controller
                 $data_out = array_merge($data_out, array("last_name" => $data->last_name));
             } else
                 $data_out = array_merge($data_out, array("is_completed" => "false"));
+			return response()->json($data_out, 200);
         }
     }
 }

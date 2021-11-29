@@ -93,7 +93,7 @@ class CaretakerController extends Controller
                     //$user_filtered = array_merge($user_filtered, $arr_sort);
                     array_push($user_filtered, $arr_sort);                    
                 }
-                return response()->json($user_filtered, 200);              
+                return response()->json(array("data" => $user_filtered), 200);              
                 //return $patient_caretaker;
             } catch (\Throwable $e) {
                 return response('', 500);                
