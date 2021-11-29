@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.view.View
 import com.example.smox.R
 import androidx.appcompat.app.AppCompatActivity
+import com.example.smox.SplashActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.c_menu.*
 
 class Menu : AppCompatActivity() {
+
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,4 +24,11 @@ class Menu : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
+    fun logout(view: View) {
+        auth.signOut()
+        val intent = Intent(this, SplashActivity::class.java)
+        startActivity(intent)
+        finish()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

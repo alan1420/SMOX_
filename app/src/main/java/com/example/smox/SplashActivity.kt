@@ -6,14 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Handler
 import android.util.Log
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
-import com.example.smox.patient.Homepage
+import com.android.volley.VolleyError
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import org.json.JSONObject
 
 class SplashActivity : AppCompatActivity() {
+
+    private val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+        val firebaseUser = firebaseAuth.currentUser
+        updateUI(firebaseUser)
+    }
 
     // [START declare_auth]
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -33,8 +36,9 @@ class SplashActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
+        auth.addAuthStateListener(this.authStateListener)
         val currentUser = auth.currentUser
-        updateUI(currentUser)
+        //updateUI(currentUser)
     }
     // [END on_start_check_user]
 
@@ -42,11 +46,42 @@ class SplashActivity : AppCompatActivity() {
         val handler = Handler()
         handler.postDelayed({
             if (user != null) {
-                val nama = user.displayName.toString()
-                Toast.makeText(this, "Welcome, $nama", Toast.LENGTH_SHORT).show()
+                val name = user.displayName.toString()
                 user.getIdToken(true).addOnSuccessListener {
-                    loginCheck(it.token.toString())
-                    Log.d("Token ID", it.token.toString()) // token #1
+                    sendData("signinCheck", it.token.toString(), JSONObject(), this.applicationContext,
+                        object : VolleyResult {
+                            override fun onSuccess(response: JSONObject) {
+                                if (response != null) {
+                                    if (!response.has("error")) {
+                                        val isRegister = response.getBoolean("is_registered")
+                                        var isCompleted : Boolean? = null
+                                        if (response.has("is_completed"))
+                                            isCompleted = response.getBoolean("is_completed")
+                                        if (isRegister)
+                                            if (isCompleted == true) {
+                                                Toast.makeText(this@SplashActivity, "Data lengkap", Toast.LENGTH_SHORT).show()
+                                                toHomePage(this@SplashActivity, response.getString("role").toInt(), response.getString("last_name"))
+                                            }
+                                            else
+                                                roleSelect()
+                                    } else {
+                                        Toast.makeText(this@SplashActivity, "Please fill the data!", Toast.LENGTH_SHORT).show()
+                                        val intent = Intent(this@SplashActivity, SignUp::class.java)
+                                        intent.putExtra("fullname", name)
+                                        intent.putExtra("uuid", user.uid)
+                                        startActivity(intent)
+                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                                    }
+                                }
+                            }
+
+                            override fun onError(error: VolleyError?) {
+                                if (error != null) {
+                                    Toast.makeText(this@SplashActivity, "Network error, please check your connection!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    )
                 }
                 Log.d(TAG, "signInWithCredential:success")
             } else {
@@ -62,40 +97,6 @@ class SplashActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    fun loginCheck(token: String) {
-        val url = "http://192.168.0.88/smox/public/api/signinCheck"
-        val data = JSONObject().put("token", token)
-        println(data)
-
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, data,
-            { response ->
-                //Toast.makeText(this, response.toString(), Toast.LENGTH_SHORT).show()
-                //println(response.toString())
-                val isRegister = response.getBoolean("is_registered")
-                var isCompleted : Boolean? = null
-                if (response.has("is_completed"))
-                    isCompleted = response.getBoolean("is_completed")
-
-                if (isRegister)
-                    // TODO: Redirect to homepage
-                    if (isCompleted == true) {
-                        Toast.makeText(this, "Data lengkap", Toast.LENGTH_SHORT).show()
-                        toHomePage(response.getString("role").toInt(), response.getString("last_name"))
-                    }
-                    else
-                        roleSelect()
-                else
-                    Toast.makeText(this, "Belum terdaftar", Toast.LENGTH_SHORT).show()
-                //println("Status register: $data")
-            },
-            { error ->
-            // TODO: Handle error
-            }
-        )
-        val queue = VolleySingleton.getInstance(this.applicationContext).requestQueue
-        queue.add(jsonObjectRequest)
-    }
-
     fun roleSelect() {
         Toast.makeText(this, "Data belum lengkap", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, ConfirmRole::class.java)
@@ -103,22 +104,15 @@ class SplashActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    fun toHomePage(role: Int, name: String) {
-        //To Patient
-        if (role == 2) {
-            val intent = Intent(this, Homepage::class.java)
-            intent.putExtra("name", name)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        }
-        //To Caretaker
-        else {
-            val intent = Intent(this, com.example.smox.caretaker.Homepage::class.java)
-            intent.putExtra("name", name)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        }
+    override fun onPause() {
+        super.onPause()
+        println("Ini pause")
+    }
 
+    override fun onStop() {
+        super.onStop()
+        println("Ini stop")
+        auth.removeAuthStateListener(this.authStateListener)
     }
 
     companion object {

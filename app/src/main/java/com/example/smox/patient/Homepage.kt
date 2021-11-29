@@ -4,11 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
-import com.example.smox.CreateUsername
 import com.example.smox.R
-import com.example.smox.SplashActivity
 
 class Homepage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +27,7 @@ class Homepage : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
+
     fun gotoHistory(view: View) {
         val intent = Intent(this, History::class.java)
         startActivity(intent)
@@ -47,6 +45,4 @@ class Homepage : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-
-
 }

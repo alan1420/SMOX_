@@ -1,76 +1,85 @@
-package com.example.smox
+package com.example.smox.patient
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.example.smox.patient.Homepage
+import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.VolleyError
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import org.json.JSONObject
+import com.example.smox.*
 
 class CreateUsername : AppCompatActivity() {
     private var data: Int? = null
 
-    // [START declare_auth]
     var auth = FirebaseAuth.getInstance()
-    // [END declare_auth]
+    var currentUser: FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.p_username)
-        data = intent.getIntExtra("role", 2)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        currentUser = auth.currentUser
     }
 
     fun register_p(view: View) {
-        val currentUser = auth.currentUser
         val mUsername = findViewById<EditText>(R.id.enterusername).text.toString()
-        if (currentUser != null) {
-            currentUser.getIdToken(true).addOnSuccessListener {
-                registerData(it.token.toString(), mUsername)
-                Log.d("Token ID", it.token.toString())
-            }
-        }
-    }
+        currentUser?.getIdToken(true)?.addOnSuccessListener {
+            //registerData(it.token.toString(), mUsername)
+            Log.d("Token ID", it.token.toString())
+            val dataJson = JSONObject().put("role", 2)
+            dataJson.put("username", mUsername)
+            sendData("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
+                object : VolleyResult {
+                    override fun onSuccess(response: JSONObject) {
+                        if (response != null) {
+                            val intent = Intent(this@CreateUsername, Homepage::class.java)
+                            intent.putExtra("name", response.getString("name"))
+                            startActivity(intent)
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                            finish()
+                        }
+                    }
 
-    fun registerData(token: String, username: String) {
-        val url = "http://192.168.0.88/smox/public/api/signup-finalize"
-        val dataJson = JSONObject()
-        dataJson.put("role", data)
-        dataJson.put("username", username)
-        println(dataJson)
-
-        val jsonObjectRequest = object: JsonObjectRequest(Method.POST, url, dataJson,
-                Response.Listener<JSONObject> { response ->
-                    //Toast.makeText(this, "Username & Role done!!", Toast.LENGTH_SHORT).show()
-                    println(response.toString())
-                    val intent = Intent(this, Homepage::class.java)
-                    intent.putExtra("name", response.getString("name"))
-                    startActivity(intent)
-                    finish()
-                },
-                Response.ErrorListener { error ->
-                    //TODO: Handle error
-                    println("Error volley!!!")
-                    println(error.message)
+                    override fun onError(error: VolleyError?) {
+                        //TODO("Not yet implemented")
+                        Toast.makeText(this@CreateUsername, "Please try again", Toast.LENGTH_SHORT).show()
+                    }
                 }
-        ){
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers["Authorization"] = "Bearer $token"
-                return headers
-            }
+            )
         }
-        val queue = VolleySingleton.getInstance(this.applicationContext).requestQueue
-        queue.add(jsonObjectRequest)
-        //VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    fun registerData(token: String, username: String?) {
+        data?.let { modifyData(token, it, username, this.applicationContext, object:
+            VolleyResult {
+            override fun onSuccess(response: JSONObject) {
+                if (response != null) {
+                    ToHomepage(data!!, response.getString("name"))
+                }
+            }
+
+            override fun onError(error: VolleyError?) {
+                TODO("Not yet implemented")
+            }
+            })
+        }
+    }
+    //Redirect to Caretaker or Patient Homepage
+    fun ToHomepage(i: Int, s: String) {
+        lateinit var intentHome: Intent
+        if (i == 2)
+            intentHome = Intent(this, Homepage::class.java)
+
+        intentHome.putExtra("name", s)
+        startActivity(intentHome)
+        finish()
     }
 }

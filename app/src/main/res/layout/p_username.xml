@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background4"
-    tools:context=".CreateUsername">
+    tools:context=".patient.CreateUsername">
 
     <RelativeLayout
         android:layout_width="330dp"

@@ -12,8 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.util.Log
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.VolleyError
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -27,6 +26,13 @@ class SignIn : AppCompatActivity() {
     private var mEmail: EditText? = null
     private var mPassword: EditText? = null
     private var isPasswordVisible = false
+
+    var firebaseUser: FirebaseUser? = null
+
+    private val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+        firebaseUser = firebaseAuth.currentUser
+        updateUI(firebaseUser)
+    }
 
     // [START declare_auth]
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -80,18 +86,13 @@ class SignIn : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         // [END config_signin]
 
-        // [START initialize_auth]
-        // Initialize Firebase Auth
-        //auth = Firebase.auth
-        // [END initialize_auth]
     }
 
     // [START on_start_check_user]
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
+        auth.addAuthStateListener(this.authStateListener)
     }
     // [END on_start_check_user]
 
@@ -123,12 +124,9 @@ class SignIn : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
-                    val user = auth.currentUser
-                    updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    updateUI(null)
                 }
             }
     }
@@ -149,25 +147,53 @@ class SignIn : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
-                    updateUI(null)
                 }
             }
     }
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            val nama = user.displayName.toString()
-            Toast.makeText(this, "Welcome, $nama", Toast.LENGTH_SHORT).show()
+            val name = user.displayName.toString()
             user.getIdToken(true).addOnSuccessListener {
-                loginCheck(it.token.toString())
                 Log.d("Token ID", it.token.toString()) // token #1
+                sendData("signinCheck", it.token.toString(), JSONObject(), this.applicationContext,
+                    object : VolleyResult {
+                        override fun onSuccess(response: JSONObject) {
+                            if (response != null) {
+                                if (!response.has("error")) {
+                                    val isRegister = response.getBoolean("is_registered")
+                                    var isCompleted : Boolean? = null
+                                    if (response.has("is_completed"))
+                                        isCompleted = response.getBoolean("is_completed")
+                                    if (isRegister)
+                                        if (isCompleted == true) {
+                                            Toast.makeText(this@SignIn, "Data lengkap", Toast.LENGTH_SHORT).show()
+                                            toHomePage(this@SignIn, response.getString("role").toInt(), response.getString("last_name"))
+                                        }
+                                        else
+                                            roleSelect()
+                                } else {
+                                    Toast.makeText(this@SignIn, "Please fill the data!", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this@SignIn, SignUp::class.java)
+                                    intent.putExtra("fullname", name)
+                                    intent.putExtra("uuid", user.uid)
+                                    startActivity(intent)
+                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                                }
+                            }
+                        }
+
+                        override fun onError(error: VolleyError?) {
+                            if (error != null)
+                                Toast.makeText(this@SignIn, "Network error, please check your connection!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                )
             }
             Log.d(TAG, "signInWithCredential:success")
         }
@@ -179,36 +205,6 @@ class SignIn : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    fun loginCheck(token: String) {
-        val url = "http://192.168.0.88/smox/public/api/signinCheck"
-        val data = JSONObject().put("token", token)
-        println(data)
-
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, data,
-            { response ->
-                //Toast.makeText(this, response.toString(), Toast.LENGTH_SHORT).show()
-                //println(response.toString())
-                val isRegister = response.getBoolean("is_registered")
-                var isCompleted : Boolean? = null
-                if (response.has("is_completed"))
-                    isCompleted = response.getBoolean("is_completed")
-                if (isRegister)
-                    if (isCompleted == true)
-                        Toast.makeText(this, "Data lengkap", Toast.LENGTH_SHORT).show()
-                    else
-                        roleSelect()
-                else
-                    Toast.makeText(this, "Belum terdaftar", Toast.LENGTH_SHORT).show()
-                //println("Status register: $data")
-            },
-            { error ->
-                // TODO: Handle error
-            }
-        )
-        val queue = VolleySingleton.getInstance(this.applicationContext).requestQueue
-        queue.add(jsonObjectRequest)
-    }
-
     fun roleSelect() {
         Toast.makeText(this, "Data belum lengkap", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, ConfirmRole::class.java)
@@ -217,6 +213,10 @@ class SignIn : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
+    override fun onStop() {
+        super.onStop()
+        auth.removeAuthStateListener(this.authStateListener)
+    }
 
     companion object {
         private const val TAG = "GoogleActivity"

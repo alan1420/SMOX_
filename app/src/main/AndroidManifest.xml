@@ -29,7 +29,7 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".CreateUsername"
+            android:name=".patient.CreateUsername"
             android:exported="false" />
         <activity
             android:name=".patient.Schedule"

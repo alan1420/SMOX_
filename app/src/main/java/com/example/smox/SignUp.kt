@@ -29,87 +29,115 @@ class SignUp : AppCompatActivity() {
     private var isPasswordVisible = false
     private var isCPasswordVisible = false
 
+    var isGoogle = false
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sign_up)
+        if (intent.hasExtra("fullname"))
+            setContentView(R.layout.sign_up_google)
+        else
+            setContentView(R.layout.sign_up)
+    }
 
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onStart() {
+        super.onStart()
         mFirstName = findViewById(R.id.firstname)
         mLastName = findViewById(R.id.lastname)
         mBirthday = findViewById(R.id.enterbirthday)
         mPhoneNumber = findViewById(R.id.enternumber)
-        mEmail = findViewById(R.id.enteremail)
-        mPassword = findViewById(R.id.enterpassword)
-        mCPassword = findViewById(R.id.enterconfirmpassword)
-
         mBirthday?.let { setBirthdayEditText(it) }
+        //Sign Up with Google
+        if (intent.hasExtra("fullname")) {
+            isGoogle = true
+            //setContentView(R.layout.sign_up_google)
+            //chooseView(2)
+            var data = intent.getStringExtra("fullname")
+            var parts  = data?.split(" ")?.toMutableList()
+            val firstName = parts!!.firstOrNull()
+            parts.removeAt(0)
+            val lastName = parts.joinToString(" ")
+            mFirstName?.setText(firstName)
+            mLastName?.setText(lastName)
+            Toast.makeText(this, intent.getStringExtra("uuid"), Toast.LENGTH_SHORT).show()
+        } else {
+            //setContentView(R.layout.sign_up)
+            mEmail = findViewById(R.id.enteremail)
+            mPassword = findViewById(R.id.enterpassword)
+            mCPassword = findViewById(R.id.enterconfirmpassword)
 
-        mPassword!!.setOnTouchListener(OnTouchListener { _, event ->
-            val right = 2
-            if (event.action == MotionEvent.ACTION_UP) {
-                if (event.rawX >= mPassword!!.right - mPassword!!.compoundDrawables[right].bounds.width()) {
-                    val selection = mPassword!!.selectionEnd
-                    if (isPasswordVisible) {
-                        // set drawable image
-                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
-                        // hide Password
-                        mPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
-                        isPasswordVisible = false
-                    } else {
-                        // set drawable image
-                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
-                        // show Password
-                        mPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                        isPasswordVisible = true
+            mPassword!!.setOnTouchListener(OnTouchListener { _, event ->
+                val right = 2
+                if (event.action == MotionEvent.ACTION_UP) {
+                    if (event.rawX >= mPassword!!.right - mPassword!!.compoundDrawables[right].bounds.width()) {
+                        val selection = mPassword!!.selectionEnd
+                        if (isPasswordVisible) {
+                            // set drawable image
+                            mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
+                            // hide Password
+                            mPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
+                            isPasswordVisible = false
+                        } else {
+                            // set drawable image
+                            mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
+                            // show Password
+                            mPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                            isPasswordVisible = true
+                        }
+                        mPassword!!.setSelection(selection)
+                        return@OnTouchListener true
                     }
-                    mPassword!!.setSelection(selection)
-                    return@OnTouchListener true
                 }
-            }
-            false
-        })
+                false
+            })
 
-        mCPassword!!.setOnTouchListener(OnTouchListener { _, event ->
-            val right = 2
-            if (event.action == MotionEvent.ACTION_UP) {
-                if (event.rawX >= mCPassword!!.right - mCPassword!!.compoundDrawables[right].bounds.width()) {
-                    val selection = mCPassword!!.selectionEnd
-                    if (isCPasswordVisible) {
-                        // set drawable image
-                        mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
-                        // hide Password
-                        mCPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
-                        isCPasswordVisible = false
-                    } else {
-                        // set drawable image
-                        mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
-                        // show Password
-                        mCPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                        isCPasswordVisible = true
+            mCPassword!!.setOnTouchListener(OnTouchListener { _, event ->
+                val right = 2
+                if (event.action == MotionEvent.ACTION_UP) {
+                    if (event.rawX >= mCPassword!!.right - mCPassword!!.compoundDrawables[right].bounds.width()) {
+                        val selection = mCPassword!!.selectionEnd
+                        if (isCPasswordVisible) {
+                            // set drawable image
+                            mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
+                            // hide Password
+                            mCPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
+                            isCPasswordVisible = false
+                        } else {
+                            // set drawable image
+                            mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
+                            // show Password
+                            mCPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                            isCPasswordVisible = true
+                        }
+                        mCPassword!!.setSelection(selection)
+                        return@OnTouchListener true
                     }
-                    mCPassword!!.setSelection(selection)
-                    return@OnTouchListener true
                 }
-            }
-            false
-        })
+                false
+            })
+        }
+
     }
 
     fun register(view: View) {
         val url = "http://192.168.0.88/smox/public/api/signup"
-        val password = mPassword!!.text.toString()
+        val password = mPassword?.text.toString()
         //val CPassword = mCPassword!!.text.toString()
 
         val data = JSONObject()
         data.put("first_name", mFirstName!!.text.toString())
         data.put("last_name", mLastName!!.text.toString())
         data.put("birthday", mBirthday!!.text.toString())
-        data.put("email", mEmail!!.text.toString())
         data.put("phoneNumber", mPhoneNumber!!.text.toString())
-        data.put("password", password)
 
+        if (!isGoogle) {
+            data.put("email", mEmail!!.text.toString())
+            data.put("password", password)
+        } else {
+            data.put("uuid", intent.getStringExtra("uuid"))
+        }
         println(data)
-
         val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, data,
             { response ->
                 println("Sukses!")
@@ -119,17 +147,16 @@ class SignUp : AppCompatActivity() {
                 finish()
             },
             { error ->
-                // TODO: Handle error
-                println("Error")
                 println(error)
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, SignIn::class.java)
-                startActivity(intent)
-                finish()
+                //TODO: beri pesan apabila data salah!
+                if (error.networkResponse != null) {
+                    if (error.networkResponse.statusCode == 500)
+                        Toast.makeText(this, "Please re-check your data!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Network error, please check your connection!", Toast.LENGTH_SHORT).show()
+                }
             }
         )
-        //val queue = VolleySingleton.getInstance(this.applicationContext).requestQueue
-        //queue.add(jsonObjectRequest)
         VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
 
@@ -203,6 +230,5 @@ class SignUp : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "EmailPassword"
     }
 }
