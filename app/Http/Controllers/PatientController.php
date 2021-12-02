@@ -62,11 +62,7 @@ class PatientController extends Controller
                 return response('', 500);  
                 //throw $th;
             }
-            return $caretaker;
-        } else {
-            return response()->json(array('empty' => 'true'), 200); 
         }
-        
     }
 
     public function getPatientData(Request $request, $data_incoming = null) {
