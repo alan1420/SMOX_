@@ -17,16 +17,13 @@
             android:name=".ConfirmRole"
             android:exported="false" />
         <activity
-            android:name=".patient.Homepage"
-            android:exported="false" />
-        <activity
-            android:name=".caretaker.Homepage"
-            android:exported="false" />
-        <activity
             android:name=".SignIn"
             android:exported="false" />
         <activity
             android:name=".SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".patient.Homepage"
             android:exported="false" />
         <activity
             android:name=".patient.CreateUsername"
@@ -53,10 +50,13 @@
             android:name=".patient.Menu"
             android:exported="false" />
         <activity
-            android:name=".caretaker.ConnectPatient"
+            android:name=".caretaker.Homepage"
             android:exported="false" />
         <activity
             android:name=".caretaker.ConfirmPatient"
+            android:exported="false" />
+        <activity
+            android:name=".caretaker.ConnectPatient"
             android:exported="false" />
         <activity
             android:name=".caretaker.Schedule"

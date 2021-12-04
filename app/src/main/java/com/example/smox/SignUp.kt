@@ -1,22 +1,24 @@
 package com.example.smox
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnTouchListener
-import android.widget.EditText
-import android.widget.Toast
+import android.view.animation.AnimationUtils
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.github.ybq.android.spinkit.style.Wave
 import org.json.JSONObject
 import java.util.*
+
 
 class SignUp : AppCompatActivity() {
     private var mFirstName: EditText? = null
@@ -26,8 +28,15 @@ class SignUp : AppCompatActivity() {
     private var mEmail: EditText? = null
     private var mPassword: EditText? = null
     private var mCPassword: EditText? = null
+    private lateinit var mShowPassword: ImageView
+    private lateinit var mShowCPassword: ImageView
+    private lateinit var mHidePassword: ImageView
+    private lateinit var mHideCPassword: ImageView
     private var isPasswordVisible = false
     private var isCPasswordVisible = false
+    private lateinit var progressbar: ProgressBar
+    private lateinit var wave: Wave
+    private lateinit var mSignUpText: TextView
 
     var isGoogle = false
 
@@ -48,6 +57,14 @@ class SignUp : AppCompatActivity() {
         mBirthday = findViewById(R.id.enterbirthday)
         mPhoneNumber = findViewById(R.id.enternumber)
         mBirthday?.let { setBirthdayEditText(it) }
+
+        mSignUpText = findViewById(R.id.textSignUp)
+        progressbar = findViewById(R.id.spin_kit)
+        wave = Wave()
+        progressbar.indeterminateDrawable = wave
+
+        progressbar.visibility = View.INVISIBLE;
+
         //Sign Up with Google
         if (intent.hasExtra("fullname")) {
             isGoogle = true
@@ -66,62 +83,27 @@ class SignUp : AppCompatActivity() {
             mEmail = findViewById(R.id.enteremail)
             mPassword = findViewById(R.id.enterpassword)
             mCPassword = findViewById(R.id.enterconfirmpassword)
+            mShowPassword = findViewById(R.id.showpassword)
+            mHidePassword = findViewById(R.id.hidepassword)
+            mShowCPassword = findViewById(R.id.showcpassword)
+            mHideCPassword = findViewById(R.id.hidecpassword)
 
-            mPassword!!.setOnTouchListener(OnTouchListener { _, event ->
-                val right = 2
-                if (event.action == MotionEvent.ACTION_UP) {
-                    if (event.rawX >= mPassword!!.right - mPassword!!.compoundDrawables[right].bounds.width()) {
-                        val selection = mPassword!!.selectionEnd
-                        if (isPasswordVisible) {
-                            // set drawable image
-                            mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
-                            // hide Password
-                            mPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
-                            isPasswordVisible = false
-                        } else {
-                            // set drawable image
-                            mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
-                            // show Password
-                            mPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                            isPasswordVisible = true
-                        }
-                        mPassword!!.setSelection(selection)
-                        return@OnTouchListener true
-                    }
-                }
-                false
-            })
-
-            mCPassword!!.setOnTouchListener(OnTouchListener { _, event ->
-                val right = 2
-                if (event.action == MotionEvent.ACTION_UP) {
-                    if (event.rawX >= mCPassword!!.right - mCPassword!!.compoundDrawables[right].bounds.width()) {
-                        val selection = mCPassword!!.selectionEnd
-                        if (isCPasswordVisible) {
-                            // set drawable image
-                            mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
-                            // hide Password
-                            mCPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
-                            isCPasswordVisible = false
-                        } else {
-                            // set drawable image
-                            mCPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
-                            // show Password
-                            mCPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                            isCPasswordVisible = true
-                        }
-                        mCPassword!!.setSelection(selection)
-                        return@OnTouchListener true
-                    }
-                }
-                false
-            })
+            mShowPassword.visibility = View.VISIBLE;
+            mHidePassword.visibility = View.INVISIBLE;
+            mShowCPassword.visibility = View.VISIBLE;
+            mHideCPassword.visibility = View.INVISIBLE;
         }
 
     }
 
     fun register(view: View) {
-        val url = "http://192.168.0.88/smox/public/api/signup"
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
+
+        progressbar.visibility = View.VISIBLE;
+        mSignUpText.visibility = View.INVISIBLE;
+
+        val url = "http://103.146.34.5/smox/public/api/signup"
         val password = mPassword?.text.toString()
         //val CPassword = mCPassword!!.text.toString()
 
@@ -155,6 +137,8 @@ class SignUp : AppCompatActivity() {
                 } else {
                     Toast.makeText(this, "Network error, please check your connection!", Toast.LENGTH_SHORT).show()
                 }
+                progressbar.visibility = View.INVISIBLE;
+                mSignUpText.visibility = View.VISIBLE;
             }
         )
         VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
@@ -224,9 +208,63 @@ class SignUp : AppCompatActivity() {
             }
 
             override fun afterTextChanged(p0: Editable) {
-
             }
         })
+    }
+
+    fun pickdate(view: View) {
+        val myCalendar = Calendar.getInstance()
+
+        val date =
+            OnDateSetListener { view, year, monthOfYear, dayOfMonth -> // TODO Auto-generated method stub
+                myCalendar[Calendar.YEAR] = year
+                myCalendar[Calendar.MONTH] = monthOfYear
+                myCalendar[Calendar.DAY_OF_MONTH] = dayOfMonth
+                var format = String.format("%02d%02d%02d", dayOfMonth, monthOfYear, year)
+                mBirthday?.setText(format)
+            }
+
+        DatePickerDialog(
+            this@SignUp, date, myCalendar
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+            myCalendar.get(Calendar.DAY_OF_MONTH)
+        ).show()
+
+    }
+
+    fun showPass(view: View) {
+        if (isPasswordVisible) {
+            // set drawable image
+            mShowPassword.visibility = View.VISIBLE;
+            mHidePassword.visibility = View.INVISIBLE;
+            // hide Password
+            mPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
+            isPasswordVisible = false
+        } else {
+            // set drawable image
+            mShowPassword.visibility = View.INVISIBLE;
+            mHidePassword.visibility = View.VISIBLE;
+            // show Password
+            mPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            isPasswordVisible = true
+        }
+    }
+    fun showCPass(view: View) {
+        if (isCPasswordVisible) {
+            // set drawable image
+            mShowCPassword.visibility = View.VISIBLE;
+            mHideCPassword.visibility = View.INVISIBLE;
+            // hide Password
+            mCPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
+            isCPasswordVisible = false
+        } else {
+            // set drawable image
+            mShowCPassword.visibility = View.INVISIBLE;
+            mHideCPassword.visibility = View.VISIBLE;
+            // show Password
+            mCPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            isCPasswordVisible = true
+        }
     }
 
     companion object {

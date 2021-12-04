@@ -20,7 +20,7 @@ interface VolleyResult {
 }
 
 fun modifyData(token: String, role: Int, username: String?, context: Context, result: VolleyResult) {
-    val url = "http://192.168.0.88/smox/public/api/signup-finalize"
+    val url = "http://103.146.34.5/smox/public/api/signup-finalize"
     val dataJson = JSONObject()
     dataJson.put("role", role)
     if (username != null)
@@ -49,7 +49,7 @@ fun modifyData(token: String, role: Int, username: String?, context: Context, re
 }
 
 fun sendData(path: String, token: String, dataJson: JSONObject, context: Context, result: VolleyResult) {
-    val url = "http://192.168.0.88/smox/public/api/$path"
+    val url = "http://103.146.34.5/smox/public/api/$path"
     println(dataJson)
 
     val jsonObjectRequest = object: JsonObjectRequest(Method.POST, url, dataJson,

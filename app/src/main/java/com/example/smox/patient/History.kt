@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -64,17 +65,23 @@ class History : AppCompatActivity()
     }
 
     fun backtoHome(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
+        view.startAnimation(clickEffect)
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     fun gotoHistoryDetailOne(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
         val intent = Intent(this, HistoryDetailOne::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun gotoHistoryDetailTwo(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
         val intent = Intent(this, HistoryDetailTwo::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

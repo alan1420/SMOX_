@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:src="@drawable/i_menu">
         </ImageView>
@@ -162,14 +162,16 @@
         </TextView>
     </RelativeLayout>
 
+
     <LinearLayout
-        android:layout_width="320dp"
-        android:layout_height="160dp"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:layout_below="@id/upcoming"
-        android:id="@+id/row1">
+        android:id="@+id/row1"
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/dosage"
@@ -228,12 +230,10 @@
             </TextView>
         </RelativeLayout>
     </LinearLayout>
-
     <LinearLayout
-        android:layout_width="320dp"
-        android:layout_height="160dp"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:gravity="center"
         android:layout_below="@id/row1"
         android:id="@+id/row2">

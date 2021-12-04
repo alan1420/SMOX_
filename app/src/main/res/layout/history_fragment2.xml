@@ -2,14 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="400dp"
-    android:background="@drawable/rect_white_20">
+    android:onClick="gotoHistoryDetailTwo"
+    android:padding="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:onClick="gotoHistoryDetailTwo">
+        android:background="@drawable/rect_white_20">
 
         <TextView
             android:layout_width="wrap_content"

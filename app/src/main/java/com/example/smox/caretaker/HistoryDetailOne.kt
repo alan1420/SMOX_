@@ -3,6 +3,7 @@ package com.example.smox.caretaker
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -21,5 +22,7 @@ class HistoryDetailOne : AppCompatActivity() {
     fun back(view: View) {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
+        view.startAnimation(clickEffect)
     }
 }

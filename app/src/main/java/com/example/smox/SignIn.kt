@@ -7,12 +7,16 @@ import android.text.method.PasswordTransformationMethod
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.util.Log
+import android.view.View.VISIBLE
+import android.view.animation.AnimationUtils
+import android.widget.*
 import com.android.volley.VolleyError
+import com.github.ybq.android.spinkit.sprite.Sprite
+import com.github.ybq.android.spinkit.style.DoubleBounce
+import com.github.ybq.android.spinkit.style.Wave
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -22,11 +26,16 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import org.json.JSONObject
 
+
 class SignIn : AppCompatActivity() {
     private var mEmail: EditText? = null
     private var mPassword: EditText? = null
+    private lateinit var mShowPassword: ImageView
+    private lateinit var mHidePassword: ImageView
     private var isPasswordVisible = false
-
+    private lateinit var progressbar: ProgressBar
+    private lateinit var wave: Wave
+    private lateinit var mSignInText: TextView
     var firebaseUser: FirebaseUser? = null
 
     private val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
@@ -45,36 +54,25 @@ class SignIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_in)
 
+        mSignInText = findViewById(R.id.textSignIn)
+        progressbar = findViewById(R.id.spin_kit)
+        wave = Wave()
+        progressbar.indeterminateDrawable = wave
+        progressbar.visibility = View.INVISIBLE;
+
         if(intent.hasExtra("message")) {
             Toast.makeText(this, intent.getStringExtra("message"), Toast.LENGTH_SHORT).show()
         }
 
         mEmail = findViewById(R.id.signinemail)
         mPassword = findViewById(R.id.signinpass)
-        mPassword!!.setOnTouchListener(OnTouchListener { _, event ->
-            val right = 2
-            if (event.action == MotionEvent.ACTION_UP) {
-                if (event.rawX >= mPassword!!.right - mPassword!!.compoundDrawables[right].bounds.width()) {
-                    val selection = mPassword!!.selectionEnd
-                    if (isPasswordVisible) {
-                        // set drawable image
-                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_hide, 0)
-                        // hide Password
-                        mPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
-                        isPasswordVisible = false
-                    } else {
-                        // set drawable image
-                        mPassword!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.i_show, 0)
-                        // show Password
-                        mPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                        isPasswordVisible = true
-                    }
-                    mPassword!!.setSelection(selection)
-                    return@OnTouchListener true
-                }
-            }
-            false
-        })
+        mEmail = findViewById(R.id.enteremail)
+        mShowPassword = findViewById(R.id.showpassword)
+        mHidePassword = findViewById(R.id.hidepassword)
+
+
+        mShowPassword.visibility = View.VISIBLE;
+        mHidePassword.visibility = View.INVISIBLE;
 
         // [START config_signin]
         // Configure Google Sign In
@@ -134,12 +132,20 @@ class SignIn : AppCompatActivity() {
 
     // [START signin]
     fun signInGoogle(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
+        view.startAnimation(clickEffect)
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
     // [END signin]
 
     fun signInEmail(view: View){
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
+
+        progressbar.visibility = View.VISIBLE;
+        mSignInText.visibility = View.INVISIBLE;
+
         val email = findViewById<EditText>(R.id.signinemail).text.toString()
         val password = findViewById<EditText>(R.id.signinpass).text.toString()
         auth.signInWithEmailAndPassword(email, password)
@@ -152,6 +158,8 @@ class SignIn : AppCompatActivity() {
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
+                    progressbar.visibility = View.INVISIBLE;
+                    mSignInText.visibility = View.VISIBLE;
                 }
             }
     }
@@ -172,7 +180,7 @@ class SignIn : AppCompatActivity() {
                                         isCompleted = response.getBoolean("is_completed")
                                     if (isRegister)
                                         if (isCompleted == true) {
-                                            Toast.makeText(this@SignIn, "Data lengkap", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(this@SignIn, "Sign In berhasil", Toast.LENGTH_SHORT).show()
                                             toHomePage(this@SignIn, response.getString("role").toInt(), response.getString("last_name"))
                                         }
                                         else
@@ -199,6 +207,24 @@ class SignIn : AppCompatActivity() {
         }
     }
 
+    fun showPass(view: View) {
+        if (isPasswordVisible) {
+            // set drawable image
+            mShowPassword.visibility = View.VISIBLE;
+            mHidePassword.visibility = View.INVISIBLE;
+            // hide Password
+            mPassword!!.transformationMethod = PasswordTransformationMethod.getInstance()
+            isPasswordVisible = false
+        } else {
+            // set drawable image
+            mShowPassword.visibility = View.INVISIBLE;
+            mHidePassword.visibility = View.VISIBLE;
+            // show Password
+            mPassword!!.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            isPasswordVisible = true
+        }
+    }
+
     fun signupPage(view: View) {
         val intent = Intent(this, SignUp::class.java)
         startActivity(intent)
@@ -206,7 +232,7 @@ class SignIn : AppCompatActivity() {
     }
 
     fun roleSelect() {
-        Toast.makeText(this, "Data belum lengkap", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Silahkan Pilih Peran", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, ConfirmRole::class.java)
         startActivity(intent)
         finish()
@@ -223,3 +249,4 @@ class SignIn : AppCompatActivity() {
         private const val RC_SIGN_IN = 9001
     }
 }
+

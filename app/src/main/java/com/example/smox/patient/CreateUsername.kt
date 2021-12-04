@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,8 @@ class CreateUsername : AppCompatActivity() {
     }
 
     fun register_p(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
         val mUsername = findViewById<EditText>(R.id.enterusername).text.toString()
         currentUser?.getIdToken(true)?.addOnSuccessListener {
             //registerData(it.token.toString(), mUsername)

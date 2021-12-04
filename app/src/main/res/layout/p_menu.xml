@@ -69,11 +69,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header"
-        android:layout_alignParentBottom="true"
-        android:padding="10dp">
+        android:layout_alignParentBottom="true">
         <LinearLayout
             android:onClick="logout"
-            android:layout_width="match_parent"
+            android:layout_width="380dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
             android:layout_height="50dp"
             android:padding="10dp"
             android:background="@drawable/rect_stroke_trans_green">
@@ -110,24 +111,19 @@
 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
         android:onClick="backtoHome">
         <ImageView
             android:id="@+id/account"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/i_back_right"
             android:alpha="0.9">
         </ImageView>
     </RelativeLayout>
-
-
-
-
-
 
 </RelativeLayout>

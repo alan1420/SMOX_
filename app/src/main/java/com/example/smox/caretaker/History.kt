@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import com.example.smox.R
@@ -62,18 +63,24 @@ class History : AppCompatActivity()
     fun backtoHome(view: View) {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
+        view.startAnimation(clickEffect)
     }
 
     fun gotoHistoryDetailOne(view: View) {
         val intent = Intent(this, com.example.smox.caretaker.HistoryDetailOne::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
     }
 
     fun gotoHistoryDetailTwo(view: View) {
         val intent = Intent(this, com.example.smox.caretaker.HistoryDetailTwo::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
     }
 
 }

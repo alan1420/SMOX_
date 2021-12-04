@@ -8,317 +8,391 @@
     tools:context=".SignUp">
 
     <RelativeLayout
-        android:id="@+id/signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
-
-        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="120dp"
+        android:gravity="center">
+        <RelativeLayout
+            android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Sign Up"
-            android:fontFamily="@font/opensans"
-            android:textColor="@color/green"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/brown"
-            android:shadowDx="3"
-            android:shadowDy="3"
-            android:shadowRadius="3">
-        </TextView>
-    </RelativeLayout>
+            android:layout_centerHorizontal="true">
 
-    <LinearLayout
-        android:id="@+id/name"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/signup"
-        android:layout_marginTop="30dp">
-        <RelativeLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="@drawable/rect_icon"
-            android:id="@+id/iconname">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_centerInParent="true"
-                android:alpha="0.5"
-                android:src="@drawable/i_user">
-            </ImageView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="105dp"
-            android:layout_height="45dp">
-            <EditText
-                android:id="@+id/firstname"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rect_input"
-                android:hint="First name"
-                android:textColorHint="@color/whiteTrans"
-                android:paddingRight="15dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Sign Up"
                 android:fontFamily="@font/opensans"
-                android:textColor="@color/white">
-            </EditText>
+                android:textColor="@color/green"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:shadowColor="@color/brown"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="3">
+            </TextView>
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="140dp"
+        <LinearLayout
+            android:id="@+id/name"
+            android:layout_width="300dp"
             android:layout_height="45dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp">
-
-            <EditText
-                android:id="@+id/lastname"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:background="@drawable/rect_trans"
-                android:hint="Last name"
-                android:textColorHint="@color/whiteTrans"
-                android:fontFamily="@font/opensans"
-                android:textColor="@color/white">
-            </EditText>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/birthday"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/name"
-        android:layout_marginTop="15dp">
-        <RelativeLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="@drawable/rect_icon"
-            android:id="@+id/iconcalendar">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_centerInParent="true"
-                android:alpha="0.5"
-                android:src="@drawable/i_calendar">
-            </ImageView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="255dp"
-            android:layout_height="45dp">
-
-            <EditText
-                android:id="@+id/enterbirthday"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rect_input"
-                android:fontFamily="@font/opensans"
-                android:hint="Birthday"
-                android:inputType="date"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/whiteTrans">
-            </EditText>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/phonenumber"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/birthday"
-        android:layout_marginTop="15dp">
-        <RelativeLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="@drawable/rect_icon"
-            android:id="@+id/iconphone">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_centerInParent="true"
-                android:alpha="0.5"
-                android:src="@drawable/i_call">
-
-            </ImageView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="255dp"
-            android:layout_height="45dp">
-
-            <EditText
-                android:id="@+id/enternumber"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rect_input"
-                android:fontFamily="@font/opensans"
-                android:hint="Phone Number"
-                android:inputType="phone"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/whiteTrans"></EditText>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/email"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/phonenumber"
-        android:layout_marginTop="15dp">
-        <RelativeLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="@drawable/rect_icon"
-            android:id="@+id/iconemail">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_centerInParent="true"
-                android:alpha="0.5"
-                android:src="@drawable/i_email">
-            </ImageView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="255dp"
-            android:layout_height="45dp">
-
-            <EditText
-                android:id="@+id/enteremail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rect_input"
-                android:hint="Email"
-                android:textColorHint="@color/whiteTrans"
-                android:paddingRight="15dp"
-                android:fontFamily="@font/opensans"
-                android:textColor="@color/white">
-            </EditText>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/password"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/email"
-        android:layout_marginTop="15dp">
-        <RelativeLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="@drawable/rect_icon"
-            android:id="@+id/iconpass">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_centerInParent="true"
-                android:alpha="0.5"
-                android:src="@drawable/i_lock">
-            </ImageView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="255dp"
-            android:layout_height="45dp">
-
-            <EditText
-                android:id="@+id/enterpassword"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rect_input"
-                android:drawableRight="@drawable/i_hide"
-                android:fontFamily="@font/opensans"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:longClickable="false"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/whiteTrans"></EditText>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/confirmpassword"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/password"
-        android:layout_marginTop="15dp">
-        <RelativeLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="@drawable/rect_icon"
-            android:id="@+id/iconpassconfirm">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:alpha="0.5"
-                android:layout_marginTop="10dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/i_lock">
-            </ImageView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="255dp"
-            android:layout_height="45dp">
-
-            <EditText
-                android:id="@+id/enterconfirmpassword"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rect_input"
-                android:inputType="textPassword"
-                android:drawableRight="@drawable/i_hide"
-                android:longClickable="false"
-                android:hint="Confirm Password"
-                android:textColorHint="@color/whiteTrans"
-                android:paddingRight="15dp"
-                android:fontFamily="@font/opensans"
-                android:textColor="@color/white">
-            </EditText>
-        </RelativeLayout>
-    </LinearLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/signupbutton"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_below="@id/confirmpassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/rect_green_10"
-        android:clickable="true"
-        android:onClick="register">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:gravity="center_vertical"
-            android:alpha="0.8"
-            android:fontFamily="@font/opensans"
-            android:text="Sign Up"
-            android:textColor="@color/brown"
-            android:textSize="16dp" />
+            android:layout_below="@id/signup"
+            android:layout_marginTop="30dp">
+            <RelativeLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rect_icon"
+                android:id="@+id/iconname">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:alpha="0.5"
+                    android:src="@drawable/i_user">
+                </ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="105dp"
+                android:layout_height="45dp">
+                <EditText
+                    android:id="@+id/firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rect_input"
+                    android:hint="First name"
+                    android:textColorHint="@color/whiteTrans"
+                    android:longClickable="false"
+                    android:paddingRight="15dp"
+                    android:fontFamily="@font/opensans"
+                    android:textColor="@color/white">
+                </EditText>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp">
+
+                <EditText
+                    android:id="@+id/lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:longClickable="false"
+                    android:paddingRight="20dp"
+                    android:background="@drawable/rect_trans"
+                    android:hint="Last name"
+                    android:textColorHint="@color/whiteTrans"
+                    android:fontFamily="@font/opensans"
+                    android:textColor="@color/white">
+                </EditText>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/birthday"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/name"
+            android:layout_marginTop="15dp">
+            <RelativeLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rect_icon"
+                android:id="@+id/iconcalendar">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:alpha="0.5"
+                    android:src="@drawable/i_calendar">
+                </ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="255dp"
+                android:layout_height="45dp">
+
+                <EditText
+                    android:id="@+id/enterbirthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:longClickable="false"
+                    android:background="@drawable/rect_input"
+                    android:fontFamily="@font/opensans"
+                    android:hint="Birthday"
+                    android:inputType="date"
+                    android:paddingRight="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/whiteTrans">
+                </EditText>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:alpha="0.8"
+                    android:onClick="pickdate"
+                    android:src="@drawable/i_calendar_pick">
+                </ImageView>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/phonenumber"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/birthday"
+            android:layout_marginTop="15dp">
+            <RelativeLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rect_icon"
+                android:id="@+id/iconphone">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:alpha="0.5"
+                    android:src="@drawable/i_call">
+
+                </ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="255dp"
+                android:layout_height="45dp">
+
+                <EditText
+                    android:id="@+id/enternumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rect_input"
+                    android:fontFamily="@font/opensans"
+                    android:hint="Phone Number"
+                    android:inputType="phone"
+                    android:paddingRight="15dp"
+                    android:longClickable="false"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/whiteTrans"></EditText>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/email"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/phonenumber"
+            android:layout_marginTop="15dp">
+            <RelativeLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rect_icon"
+                android:id="@+id/iconemail">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:alpha="0.5"
+                    android:src="@drawable/i_email">
+                </ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="255dp"
+                android:layout_height="45dp">
+
+                <EditText
+                    android:id="@+id/enteremail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rect_input"
+                    android:hint="Email"
+                    android:textColorHint="@color/whiteTrans"
+                    android:paddingRight="15dp"
+                    android:fontFamily="@font/opensans"
+                    android:longClickable="false"
+                    android:textColor="@color/white">
+                </EditText>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/email"
+            android:layout_marginTop="15dp">
+            <RelativeLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rect_icon"
+                android:id="@+id/iconpass">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:alpha="0.5"
+                    android:src="@drawable/i_lock">
+                </ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="255dp"
+                android:layout_height="45dp">
+
+                <EditText
+                    android:id="@+id/enterpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rect_input"
+                    android:fontFamily="@font/opensans"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingRight="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/whiteTrans"
+                    android:longClickable="false"></EditText>
+                <ImageView
+                    android:id="@+id/showpassword"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:onClick="showPass"
+                    android:src="@drawable/i_hide">
+                </ImageView>
+                <ImageView
+                    android:id="@+id/hidepassword"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:onClick="showPass"
+                    android:src="@drawable/i_show">
+                </ImageView>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/confirmpassword"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/password"
+            android:layout_marginTop="15dp">
+            <RelativeLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rect_icon"
+                android:id="@+id/iconpassconfirm">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:alpha="0.5"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/i_lock">
+                </ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="255dp"
+                android:layout_height="45dp">
+
+                <EditText
+                    android:id="@+id/enterconfirmpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rect_input"
+                    android:inputType="textPassword"
+                    android:longClickable="false"
+                    android:hint="Confirm Password"
+                    android:textColorHint="@color/whiteTrans"
+                    android:paddingRight="15dp"
+                    android:fontFamily="@font/opensans"
+                    android:textColor="@color/white">
+                </EditText>
+
+                <ImageView
+                    android:id="@+id/showcpassword"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:onClick="showCPass"
+                    android:src="@drawable/i_hide">
+                </ImageView>
+                <ImageView
+                    android:id="@+id/hidecpassword"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:onClick="showCPass"
+                    android:src="@drawable/i_show">
+                </ImageView>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/signupbutton"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/confirmpassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/rect_green_10"
+            android:clickable="true"
+            android:onClick="register">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_margin="25dp"
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.Large.Wave"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                app:SpinKit_Color="@color/TransparentGrey">
+
+            </com.github.ybq.android.spinkit.SpinKitView>
+
+            <TextView
+                android:id="@+id/textSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:alpha="0.8"
+                android:fontFamily="@font/opensans"
+                android:text="Sign Up"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+        </RelativeLayout>
     </RelativeLayout>
+
 
     <ImageView
         android:id="@+id/google"
@@ -363,5 +437,7 @@
             android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>
+
+
 
 </RelativeLayout>

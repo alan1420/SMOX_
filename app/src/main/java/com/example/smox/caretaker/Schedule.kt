@@ -3,6 +3,7 @@ package com.example.smox.caretaker
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smox.R
 
@@ -16,12 +17,15 @@ class Schedule : AppCompatActivity(){
     fun backtoHome(view: View) {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
+        view.startAnimation(clickEffect)
     }
 
     fun gotoSetOne(view: View) {
         val intent = Intent(this, SetOne::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
     }
 
     fun gotoSetTwo(view: View) {

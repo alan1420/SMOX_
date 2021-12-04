@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import com.example.smox.R
 import com.example.smox.SplashActivity
@@ -42,29 +43,39 @@ class Homepage : AppCompatActivity() {
         val intent = Intent(this, com.example.smox.caretaker.Menu::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
+        view.startAnimation(clickEffect)
     }
 
     fun gotoSchedule(view: View) {
         val intent = Intent(this, com.example.smox.caretaker.Schedule::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
     }
 
     fun gotoDosage(view: View) {
         val intent = Intent(this, com.example.smox.caretaker.Dosage::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
     }
     fun gotoHistory(view: View) {
         val intent = Intent(this, com.example.smox.caretaker.History::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
     }
 
     fun gotoInformation(view: View) {
         val intent = Intent(this, com.example.smox.caretaker.Patient::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
     }
 
     override fun onStop() {

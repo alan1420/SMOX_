@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.android.volley.VolleyError
 import com.example.smox.caretaker.Homepage
@@ -21,12 +22,16 @@ class ConfirmRole : AppCompatActivity() {
     }
 
     fun pickPatient(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
         val intent = Intent(this, CreateUsername::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     fun pickCaretaker(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
         auth.currentUser?.getIdToken(true)?.addOnSuccessListener {
             val dataJson = JSONObject().put("role", 1)
             sendData("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
