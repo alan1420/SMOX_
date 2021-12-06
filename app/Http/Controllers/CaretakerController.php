@@ -144,12 +144,8 @@ class CaretakerController extends Controller
                 $all_data->put('patient_data', 'empty');
                 return response()->json($all_data, 200);
             }           
-        } else {
-			if ($caretaker->caretaker()->first() == null) {
-				//$all_data->put('patient_data', 'empty');
-				return response()->json($all_data, 200);		
-			}
-		}        
+        }
+                
         $out = $patientController->getPatientData($request, $all_data);
 
         return response()->json($out, 200);
