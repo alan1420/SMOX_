@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background3">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background3"
+    tools:context=".patient.Schedule">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -67,6 +69,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/name1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -74,11 +77,10 @@
                 android:layout_marginTop="65dp"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="MIRTAZAPINE"
+                android:text="-"
                 android:textColor="@color/brown"
                 android:textSize="14dp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,6 +96,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/period1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -101,11 +104,10 @@
                 android:layout_marginTop="130dp"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="2 MONTHS"
+                android:text="-"
                 android:textColor="@color/brown"
                 android:textSize="14dp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:layout_width="110dp"
@@ -135,19 +137,19 @@
             </TextView>
 
             <TextView
+                android:id="@+id/interval1"
                 android:layout_width="90dp"
                 android:layout_height="110dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="160dp"
                 android:layout_marginLeft="160dp"
                 android:layout_marginTop="70dp"
-                android:layout_gravity="center"
-                android:textAlignment="center"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="24"
+                android:text="-"
+                android:textAlignment="center"
                 android:textColor="@color/brown"
-                android:textSize="72dp">
-            </TextView>
+                android:textSize="72dp"></TextView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -197,6 +199,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/name2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -207,8 +210,7 @@
                 android:text="-"
                 android:textColor="@color/brown"
                 android:textSize="14dp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -224,6 +226,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/period2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -234,8 +237,7 @@
                 android:text="-"
                 android:textColor="@color/brown"
                 android:textSize="14dp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:layout_width="110dp"
@@ -265,19 +267,19 @@
             </TextView>
 
             <TextView
+                android:id="@+id/interval2"
                 android:layout_width="90dp"
                 android:layout_height="110dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="160dp"
                 android:layout_marginLeft="160dp"
                 android:layout_marginTop="70dp"
-                android:layout_gravity="center"
-                android:textAlignment="center"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
                 android:text="-"
+                android:textAlignment="center"
                 android:textColor="@color/brown"
-                android:textSize="72dp">
-            </TextView>
+                android:textSize="72dp"></TextView>
 
             <TextView
                 android:layout_width="wrap_content"

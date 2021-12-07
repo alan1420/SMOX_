@@ -7,19 +7,49 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import com.example.smox.R
+import com.example.smox.readFile
+import com.google.gson.Gson
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.history.*
+
+
 
 class History : AppCompatActivity()
 {
-
     val myViews : Array<Int> = arrayOf(R.layout.history_fragment1, R.layout.history_fragment2)
+
+    var userData: JsonArray? = null
+    var slot1Data: JsonObject? = null
+    var slot2Data: JsonObject? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.history)
+
+        val dataPatient = readFile(this, "storage.json")
+        if (dataPatient != null) {
+            val jsonData = Gson().fromJson(dataPatient, JsonObject::class.java)
+            if (jsonData.has("medicine_list")) {
+                userData = jsonData.get("medicine_list").asJsonArray
+                println(userData)
+                if (userData != null) {
+                    for (i in 0 until userData!!.size()) {
+                        val item = userData!!.get(i).asJsonObject
+                        val slot = item.get("slot").asInt
+                        if (slot == 1)
+                            slot1Data = item
+                        else if (slot == 2)
+                            slot2Data = item
+                    }
+                }
+            }
+        }
+
         val adapter = MyAdapter(myViews, this@History)
         pager.adapter = adapter
 
@@ -27,7 +57,7 @@ class History : AppCompatActivity()
         dots.attachViewPager(pager)
     }
 
-    class MyAdapter (private val theViews: Array<Int>, private val theContext: Context) : PagerAdapter()
+    inner class MyAdapter (private val theViews: Array<Int>, private val theContext: Context) : PagerAdapter()
     {
 
         override fun isViewFromObject(view: View, `object`: Any): Boolean
@@ -47,6 +77,18 @@ class History : AppCompatActivity()
             val inflater = LayoutInflater.from(theContext)
 
             val layout = inflater.inflate(thisView, container, false) as ViewGroup
+
+            if (position == 0 && slot1Data != null) {
+                val period = slot1Data!!.get("period").asString + " " + slot1Data!!.get("period_type").asString.toUpperCase()
+                layout.findViewWithTag<TextView>("name1").text = slot1Data!!.get("medicine_name").asString.toUpperCase()
+                layout.findViewWithTag<TextView>("period1").text = period
+                layout.findViewWithTag<TextView>("days1").text = slot1Data!!.get("interval").asString
+            } else if (position == 1 && slot2Data != null) {
+                val period = slot2Data!!.get("period").asString + " " + slot2Data!!.get("period_type").asString.toUpperCase()
+                layout.findViewWithTag<TextView>("name2").text = slot2Data!!.get("medicine_name").asString.toUpperCase()
+                layout.findViewWithTag<TextView>("period2").text = period
+                layout.findViewWithTag<TextView>("days2").text = slot2Data!!.get("interval").asString
+            }
 
             container.addView(layout)
             return layout
@@ -68,7 +110,7 @@ class History : AppCompatActivity()
     }
 
     fun gotoHistoryDetailOne(view: View) {
-        val intent = Intent(this, com.example.smox.caretaker.HistoryDetailOne::class.java)
+        val intent = Intent(this, HistoryDetailOne::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
@@ -76,12 +118,11 @@ class History : AppCompatActivity()
     }
 
     fun gotoHistoryDetailTwo(view: View) {
-        val intent = Intent(this, com.example.smox.caretaker.HistoryDetailTwo::class.java)
+        val intent = Intent(this, HistoryDetailTwo::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
     }
-
 }
 

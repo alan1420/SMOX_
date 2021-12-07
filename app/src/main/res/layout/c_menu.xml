@@ -10,58 +10,50 @@
         android:layout_height="240dp"
         android:background="@color/green_dark"
         android:padding="20dp"
-        android:id="@+id/header"
-        >
+        android:id="@+id/header">
         <TextView
+            android:id="@+id/fullname"
             android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Juyeon Lee"
+            android:text="Your Fullname"
             android:textSize="48dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/green"
-            android:textStyle="bold">
-        </TextView>
+            android:textStyle="bold" />
+
         <TextView
-            android:layout_marginTop="95dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="username : leejuy"
-            android:textSize="18dp"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/green"
-            android:textStyle="italic">
-        </TextView>
-        <TextView
+            android:id="@+id/birthday"
             android:layout_marginTop="130dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="15 Januari 1998"
+            android:text="Your Birthday"
             android:textSize="18dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/white"
-            android:textStyle="italic">
-        </TextView>
+            android:textStyle="italic" />
+
         <TextView
+            android:id="@+id/email"
             android:layout_marginTop="150dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ujuyngebug15@gmail.com"
+            android:text="Your Email"
             android:textSize="18dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/white"
-            android:textStyle="italic">
-        </TextView>
+            android:textStyle="italic" />
+
         <TextView
+            android:id="@+id/phoneNumber"
             android:layout_marginTop="175dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="110237923"
+            android:text="Your Phone"
             android:textSize="18dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/white"
-            android:textStyle="italic">
-        </TextView>
+            android:textStyle="italic" />
 
     </RelativeLayout>
 
@@ -69,12 +61,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:padding="10dp">
         <LinearLayout
             android:onClick="logout"
-            android:layout_width="380dp"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:padding="10dp"
             android:background="@drawable/rect_stroke_trans_green">
@@ -111,18 +102,19 @@
 
 
     <RelativeLayout
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="backtoHome">
         <ImageView
             android:id="@+id/account"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
             android:src="@drawable/i_back_right"
             android:alpha="0.9">
         </ImageView>
     </RelativeLayout>
+
 </RelativeLayout>

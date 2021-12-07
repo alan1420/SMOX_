@@ -7,6 +7,8 @@ import android.text.method.PasswordTransformationMethod
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.util.Log
@@ -169,36 +171,38 @@ class SignIn : AppCompatActivity() {
             val name = user.displayName.toString()
             user.getIdToken(true).addOnSuccessListener {
                 Log.d("Token ID", it.token.toString()) // token #1
-                sendData("signinCheck", it.token.toString(), JSONObject(), this.applicationContext,
+                sendDataGET("signinCheck", it.token.toString(), this.applicationContext,
                     object : VolleyResult {
                         override fun onSuccess(response: JSONObject) {
-                            if (response != null) {
-                                if (!response.has("error")) {
-                                    val isRegister = response.getBoolean("is_registered")
-                                    var isCompleted : Boolean? = null
-                                    if (response.has("is_completed"))
-                                        isCompleted = response.getBoolean("is_completed")
-                                    if (isRegister)
-                                        if (isCompleted == true) {
-                                            Toast.makeText(this@SignIn, "Sign In berhasil", Toast.LENGTH_SHORT).show()
-                                            toHomePage(this@SignIn, response.getString("role").toInt(), response.getString("last_name"))
-                                        }
-                                        else
-                                            roleSelect()
-                                } else {
-                                    Toast.makeText(this@SignIn, "Please fill the data!", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this@SignIn, SignUp::class.java)
-                                    intent.putExtra("fullname", name)
-                                    intent.putExtra("uuid", user.uid)
-                                    startActivity(intent)
-                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                                }
+                            if (!response.has("error")) {
+                                val isRegister = response.getBoolean("is_registered")
+                                var isCompleted : Boolean? = null
+                                if (response.has("is_completed"))
+                                    isCompleted = response.getBoolean("is_completed")
+                                if (isRegister)
+                                    if (isCompleted == true) {
+                                        Toast.makeText(this@SignIn, "Data lengkap", Toast.LENGTH_SHORT).show()
+                                        toHomePage(this@SignIn, response.getString("role").toInt(), response.getString("last_name"))
+                                    }
+                                    else
+                                        roleSelect()
+                            } else {
+                                Toast.makeText(this@SignIn, "Please fill the data!", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this@SignIn, SignUp::class.java)
+                                intent.putExtra("fullname", name)
+                                intent.putExtra("uuid", user.uid)
+                                startActivity(intent)
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                             }
                         }
 
                         override fun onError(error: VolleyError?) {
-                            if (error != null)
-                                Toast.makeText(this@SignIn, "Network error, please check your connection!", Toast.LENGTH_SHORT).show()
+                            if (error != null) {
+                                Log.d("Volley", getVolleyError(error))
+                                Toast.makeText(this@SignIn,
+                                    getVolleyError(error),
+                                    Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 )

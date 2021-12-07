@@ -3,7 +3,10 @@
     android:id="@+id/patient_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp">
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="10dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,9 +50,9 @@
 
         <LinearLayout
             android:id="@+id/row2"
-            android:layout_below="@id/row1"
             android:layout_width="match_parent"
             android:layout_height="25dp"
+            android:layout_below="@id/row1"
             android:layout_centerHorizontal="true">
 
             <TextView
@@ -82,9 +85,9 @@
 
         <LinearLayout
             android:id="@+id/row3"
-            android:layout_below="@id/row2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
+            android:layout_below="@id/row2"
             android:layout_centerHorizontal="true">
 
             <TextView
@@ -117,9 +120,9 @@
 
         <LinearLayout
             android:id="@+id/row4"
-            android:layout_below="@id/row3"
             android:layout_width="match_parent"
             android:layout_height="25dp"
+            android:layout_below="@id/row3"
             android:layout_centerHorizontal="true">
 
             <TextView

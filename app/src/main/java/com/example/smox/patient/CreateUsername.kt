@@ -35,11 +35,10 @@ class CreateUsername : AppCompatActivity() {
         view.startAnimation(clickEffect)
         val mUsername = findViewById<EditText>(R.id.enterusername).text.toString()
         currentUser?.getIdToken(true)?.addOnSuccessListener {
-            //registerData(it.token.toString(), mUsername)
             Log.d("Token ID", it.token.toString())
             val dataJson = JSONObject().put("role", 2)
             dataJson.put("username", mUsername)
-            sendData("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
+            sendDataPOST("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
                 object : VolleyResult {
                     override fun onSuccess(response: JSONObject) {
                         if (response != null) {
@@ -53,36 +52,14 @@ class CreateUsername : AppCompatActivity() {
 
                     override fun onError(error: VolleyError?) {
                         //TODO("Not yet implemented")
-                        Toast.makeText(this@CreateUsername, "Please try again", Toast.LENGTH_SHORT).show()
+                        if (error != null) {
+                            Toast.makeText(this@CreateUsername,
+                                getVolleyError(error),
+                                Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             )
         }
-    }
-
-    fun registerData(token: String, username: String?) {
-        data?.let { modifyData(token, it, username, this.applicationContext, object:
-            VolleyResult {
-            override fun onSuccess(response: JSONObject) {
-                if (response != null) {
-                    ToHomepage(data!!, response.getString("name"))
-                }
-            }
-
-            override fun onError(error: VolleyError?) {
-                TODO("Not yet implemented")
-            }
-            })
-        }
-    }
-    //Redirect to Caretaker or Patient Homepage
-    fun ToHomepage(i: Int, s: String) {
-        lateinit var intentHome: Intent
-        if (i == 2)
-            intentHome = Intent(this, Homepage::class.java)
-
-        intentHome.putExtra("name", s)
-        startActivity(intentHome)
-        finish()
     }
 }

@@ -22,7 +22,7 @@ class HistoryDetailOne : AppCompatActivity() {
     fun back(view: View) {
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
         view.startAnimation(clickEffect)
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 }

@@ -81,10 +81,10 @@
 
 
                 <TextView
+                    android:id="@+id/caretakerName"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Juyeon Lee"
                     android:textColor="@color/green_dark"
                     android:textSize="18dp">
                 </TextView>
@@ -117,10 +117,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/caretakerBirthday"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="15 January 1998"
                     android:textColor="@color/green_dark"
                     android:textSize="18dp">
                 </TextView>
@@ -153,10 +153,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/caretakerEmail"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="ujuyngebug@gmail.com"
                     android:textColor="@color/green_dark"
                     android:textSize="18dp">
                 </TextView>
@@ -189,10 +189,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/caretakerPhone"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="0106561892"
                     android:textColor="@color/green_dark"
                     android:textSize="18dp">
                 </TextView>

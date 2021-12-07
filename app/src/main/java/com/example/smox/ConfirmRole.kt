@@ -34,7 +34,7 @@ class ConfirmRole : AppCompatActivity() {
         view.startAnimation(clickEffect)
         auth.currentUser?.getIdToken(true)?.addOnSuccessListener {
             val dataJson = JSONObject().put("role", 1)
-            sendData("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
+            sendDataPOST("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
                 object : VolleyResult {
                     override fun onSuccess(response: JSONObject) {
                         if (response != null) {
@@ -48,9 +48,11 @@ class ConfirmRole : AppCompatActivity() {
 
                     override fun onError(error: VolleyError?) {
                         //TODO("Not yet implemented")
-                        Toast.makeText(this@ConfirmRole, "Please try again", Toast.LENGTH_SHORT).show()
+                        if (error != null)
+                            Toast.makeText(this@ConfirmRole, getVolleyError(error), Toast.LENGTH_SHORT).show()
                     }
-                })
+                }
+            )
         }
     }
 }

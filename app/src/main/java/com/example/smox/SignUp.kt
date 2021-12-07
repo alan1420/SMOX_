@@ -9,11 +9,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
+import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.github.ybq.android.spinkit.style.Wave
 import org.json.JSONObject
@@ -103,7 +105,6 @@ class SignUp : AppCompatActivity() {
         progressbar.visibility = View.VISIBLE;
         mSignUpText.visibility = View.INVISIBLE;
 
-        val url = "http://103.146.34.5/smox/public/api/signup"
         val password = mPassword?.text.toString()
         //val CPassword = mCPassword!!.text.toString()
 
@@ -120,28 +121,34 @@ class SignUp : AppCompatActivity() {
             data.put("uuid", intent.getStringExtra("uuid"))
         }
         println(data)
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, data,
-            { response ->
-                println("Sukses!")
-                val intent = Intent(this, SignIn::class.java)
-                Toast.makeText(this, "Successfully signed up! Now please sign in", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
-                finish()
-            },
-            { error ->
-                println(error)
-                //TODO: beri pesan apabila data salah!
-                if (error.networkResponse != null) {
-                    if (error.networkResponse.statusCode == 500)
-                        Toast.makeText(this, "Please re-check your data!", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Network error, please check your connection!", Toast.LENGTH_SHORT).show()
+
+        sendDataPOST("signup", "null", data, this.applicationContext,
+            object : VolleyResult {
+                override fun onSuccess(response: JSONObject) {
+                    val intent = Intent(this@SignUp, SignIn::class.java)
+                    Toast.makeText(this@SignUp, "Successfully signed up! Now please sign in", Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
+                    finish()
                 }
-                progressbar.visibility = View.INVISIBLE;
-                mSignUpText.visibility = View.VISIBLE;
+
+                override fun onError(error: VolleyError?) {
+                    if (error != null) {
+                        var messageError = ""
+                        if (error.networkResponse != null)
+                            messageError = if (error.networkResponse.statusCode == 500)
+                                "Please re-check your data!"
+                            else
+                                getVolleyError(error)
+                        Log.d("Volley", messageError)
+                        Toast.makeText(this@SignUp,
+                            messageError,
+                            Toast.LENGTH_SHORT).show()
+                    }
+                    progressbar.visibility = View.INVISIBLE;
+                    mSignUpText.visibility = View.VISIBLE;
+                }
             }
         )
-        VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
 
     fun signinPage(view: View? = null) {

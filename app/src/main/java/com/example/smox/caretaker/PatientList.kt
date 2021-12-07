@@ -30,9 +30,10 @@ class PatientList : AppCompatActivity() {
         val vi = applicationContext.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
         // fill in any details dynamically here
-        var prev_id = 0
 
         val user = auth.currentUser
+
+        var data = ""
 
         if (user != null) {
             user.getIdToken(true).addOnSuccessListener {
@@ -42,9 +43,17 @@ class PatientList : AppCompatActivity() {
                         override fun onSuccess(response: JSONObject) {
                             if (response != null) {
                                 if (!response.has("empty")) {
+                                    if (intent.hasExtra("current_patient")) {
+                                        data = intent.getStringExtra("current_patient").toString()
+                                    }
                                     val array = response.getJSONArray("data")
+                                    var index1 = 0
                                     for (i in 0 until array.length()) {
                                         val item = array.getJSONObject(i)
+
+                                        //Skipping current patient
+                                        if (data == item.getString("fullname").toString())
+                                            continue
 
                                         // fill in any details dynamically here
                                         val v: View = vi.inflate(R.layout.c_patients_card, null)
@@ -53,28 +62,25 @@ class PatientList : AppCompatActivity() {
                                         v.findViewById<TextView>(R.id.email).text = item.getString("email")
                                         v.findViewById<TextView>(R.id.phoneNumber).text = item.getString("phoneNumber")
 
-                                        val rev = v.findViewById<LinearLayout>(R.id.patient_card)
                                         val p = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                                             ViewGroup.LayoutParams.WRAP_CONTENT)
                                         v.id = View.generateViewId()
 
                                         val insertPoint = findViewById<LinearLayout>(R.id.patients)
-                                        //var f: MarginLayoutParams = v.layoutParams as MarginLayoutParams
-                                        //f.setMargins(20,10,20,0)
                                         insertPoint.addView(v,
-                                            i, p)
-                                        //prev_id = rev.id
+                                            index1++, p)
                                     }
-
-                                    println(response)
                                 }
                             }
                         }
 
                         override fun onError(error: VolleyError?) {
-                            if (error != null)
-                                println(error)
-                                Toast.makeText(this@PatientList, "Network error, please check your connection!", Toast.LENGTH_SHORT).show()
+                            if (error != null) {
+                                Log.d("Volley", getVolleyError(error))
+                                Toast.makeText(this@PatientList,
+                                    getVolleyError(error),
+                                    Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 )

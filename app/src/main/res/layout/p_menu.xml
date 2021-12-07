@@ -14,9 +14,10 @@
         >
         <TextView
             android:layout_marginTop="40dp"
+            android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Aeri Park"
+            android:text="Your Fullname"
             android:textSize="48dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/green"
@@ -24,9 +25,10 @@
         </TextView>
         <TextView
             android:layout_marginTop="95dp"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="username : ae.ripark"
+            android:text="username :"
             android:textSize="18dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/green"
@@ -34,9 +36,10 @@
         </TextView>
         <TextView
             android:layout_marginTop="130dp"
+            android:id="@+id/birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="04 December 2002"
+            android:text="Your Birthday"
             android:textSize="18dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/white"
@@ -44,9 +47,10 @@
         </TextView>
         <TextView
             android:layout_marginTop="150dp"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="aoi.rohma04@gmail.com"
+            android:text="Your Email"
             android:textSize="18dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/white"
@@ -54,9 +58,10 @@
         </TextView>
         <TextView
             android:layout_marginTop="175dp"
+            android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="082143604036"
+            android:text="Your Phone Number"
             android:textSize="18dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/white"
