@@ -58,7 +58,7 @@ class CaretakerController extends Controller
     public function addPatientMedicine(Request $request) {
         $data_req = $request->all();
         try {
-            PatientMedicine::create($data_req);
+            PatientMedicine::upsert([$data_req], ['slot']);
             $status = [
                 "message" => "Success!"
             ];

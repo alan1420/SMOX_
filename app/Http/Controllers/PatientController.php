@@ -123,23 +123,25 @@ class PatientController extends Controller
             $all_data->put("medicine_list", $patient->patientMedicine()->get());
 
             $history_slot1 = $patient->patientMedicine()->where('slot', '1')
-                            ->first()->patientHistory()
-                            ->select(DB::raw('DATE(created_at) as date'))
-                            ->get();
+                            ->first();
             $history_slot2 = $patient->patientMedicine()->where('slot', '2')
-                            ->first()->patientHistory()
-                            ->select(DB::raw('DATE(created_at) as date'))
-                            ->get();
+                            ->first();
             $out_data = [];
-            if ($history_slot1->isNotEmpty()) {
-                $out_data = array_merge($out_data, array("1" => 
-                            array_column($history_slot1->toArray(), 'date')));
-            }
-            if ($history_slot2->isNotEmpty()) {
-                $out_data = array_merge($out_data, array("2" => 
-                            array_column($history_slot2->toArray(), 'date')));
-            }
-            $all_data->put("medicine_history", $out_data);
+			if ($history_slot1 || $history_slot2) {
+				if ($history_slot1) {
+					$out_data = array_merge($out_data, array("history1" => 
+								array_column($history_slot1->patientHistory()
+								->select(DB::raw('DATE(created_at) as date'))
+								->get()->toArray(), 'date')));
+				}
+				if ($history_slot2) {
+					$out_data = array_merge($out_data, array("history2" => 
+								array_column($history_slot2->patientHistory()
+								->select(DB::raw('DATE(created_at) as date'))
+								->get()->toArray(), 'date')));
+				}
+				$all_data->put("medicine_history", $out_data);
+			}       
         }
 
         if ($patient_id == null) {
