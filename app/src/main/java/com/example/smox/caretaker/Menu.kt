@@ -46,12 +46,14 @@ class Menu : AppCompatActivity() {
 
     fun logout(view: View) {
         auth.signOut()
-        createFile(this, "storage.json", "{}")
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
         val intent = Intent(this, SplashActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        view.startAnimation(clickEffect)
     }
 }

@@ -29,7 +29,6 @@ val ServerIP = "103.146.34.5"
 
 fun sendDataPOST(path: String, token: String, dataJson: JSONObject, context: Context, result: VolleyResult) {
     val url = "http://$ServerIP/smox/public/api/$path"
-    println(dataJson)
 
     val jsonObjectRequest = object: JsonObjectRequest(Method.POST, url, dataJson,
         Response.Listener<JSONObject> { response ->
@@ -49,6 +48,7 @@ fun sendDataPOST(path: String, token: String, dataJson: JSONObject, context: Con
     //jsonObjectRequest.retryPolicy = DefaultRetryPolicy(5000,
     //    5, 1F)
     val queue = VolleySingleton.getInstance(context).requestQueue
+    jsonObjectRequest.setShouldCache(false)
     queue.add(jsonObjectRequest)
 }
 

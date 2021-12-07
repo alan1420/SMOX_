@@ -37,6 +37,16 @@ class Homepage : AppCompatActivity() {
         //println(data)
         findViewById<TextView>(R.id.sa).text = "HELLO, $data"
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        auth.addAuthStateListener(this.authStateListener)
+    }
+
+    override fun onResume() {
+        super.onResume()
         val firebaseUser = auth.currentUser
 
         firebaseUser?.getIdToken(true)?.addOnSuccessListener {
@@ -65,16 +75,10 @@ class Homepage : AppCompatActivity() {
                         val isFileCreated: Boolean = createFile(this@Homepage,
                             "storage.json", response.toString())
                         //proceed with storing the first todo or show ui
-                        if (isFileCreated) {
-                            Log.d("Notif", "Data telah tersimpan!")
-                            //proceed with storing the first todo or show
-                            Toast.makeText(this@Homepage,
-                                "Data telah tersimpan!",
-                                Toast.LENGTH_SHORT).show()
-                        } else {
+                        if (!isFileCreated) {
                             //show error or try again.
                             Toast.makeText(this@Homepage,
-                                "Error menyimpan data",
+                                "Error menyimpan data ke penyimpanan internal",
                                 Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -90,11 +94,6 @@ class Homepage : AppCompatActivity() {
                 }
             )
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        auth.addAuthStateListener(this.authStateListener)
     }
 
     fun menu(view: View) {

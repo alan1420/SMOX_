@@ -29,6 +29,8 @@ class SetOne : AppCompatActivity() {
     lateinit var period: EditText
     lateinit var periodType: AutoCompleteTextView
 
+    var pData: String? = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
@@ -53,8 +55,8 @@ class SetOne : AppCompatActivity() {
             periodType.setText(data2.get("period_type").toString())
         }
 
-        val pData = readFile(this, "storage.json")
-        if (pData != null) {
+        pData = readFile(this, "storage.json")
+        if (pData != null || pData != "{}") {
             val jsonData = Gson().fromJson(pData, JsonObject::class.java)
             if (jsonData.has("patient_data")) {
                 val userData = jsonData.get("patient_data").asJsonObject

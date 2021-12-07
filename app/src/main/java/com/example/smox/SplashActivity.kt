@@ -9,6 +9,8 @@ import android.util.Log
 import com.android.volley.VolleyError
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
 
 class SplashActivity : AppCompatActivity() {
@@ -19,17 +21,14 @@ class SplashActivity : AppCompatActivity() {
     }
 
     // [START declare_auth]
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var auth: FirebaseAuth
     // [END declare_auth]
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.launchpage)
 
-        // [START initialize_auth]
-        // Initialize Firebase Auth
-        //auth = Firebase.auth
-        // [END initialize_auth]
+        auth = Firebase.auth
     }
 
     // [START on_start_check_user]
@@ -37,8 +36,6 @@ class SplashActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         auth.addAuthStateListener(this.authStateListener)
-        val currentUser = auth.currentUser
-        //updateUI(currentUser)
     }
     // [END on_start_check_user]
 
@@ -58,7 +55,7 @@ class SplashActivity : AppCompatActivity() {
                                         isCompleted = response.getBoolean("is_completed")
                                     if (isRegister)
                                         if (isCompleted == true) {
-                                            Toast.makeText(this@SplashActivity, "Data lengkap", Toast.LENGTH_SHORT).show()
+                                            //Toast.makeText(this@SplashActivity, "Data lengkap", Toast.LENGTH_SHORT).show()
                                             toHomePage(this@SplashActivity, response.getString("role").toInt(), response.getString("last_name"))
                                         }
                                         else

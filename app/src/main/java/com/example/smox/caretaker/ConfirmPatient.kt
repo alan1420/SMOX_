@@ -27,5 +27,6 @@ class ConfirmPatient : AppCompatActivity() {
         Toast.makeText(this, "Patient Added", Toast.LENGTH_SHORT).show()
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
+        finish()
     }
 }

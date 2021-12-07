@@ -181,8 +181,9 @@ class SignIn : AppCompatActivity() {
                                     isCompleted = response.getBoolean("is_completed")
                                 if (isRegister)
                                     if (isCompleted == true) {
-                                        Toast.makeText(this@SignIn, "Data lengkap", Toast.LENGTH_SHORT).show()
+                                        //Toast.makeText(this@SignIn, "Data lengkap", Toast.LENGTH_SHORT).show()
                                         toHomePage(this@SignIn, response.getString("role").toInt(), response.getString("last_name"))
+                                        finish()
                                     }
                                     else
                                         roleSelect()
