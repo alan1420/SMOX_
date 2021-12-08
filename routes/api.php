@@ -28,7 +28,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('signinCheck', [LoginController::class, 'signinCheck']);
     Route::post('signup-finalize', [UserController::class, 'storeFinal']);
     
-    Route::post('assign-patient', [CaretakerController::class, 'assignPatient']);
+    Route::get('checkUsername/{username}', [CaretakerController::class, 'checkUser']);
+    Route::get('add-patient/{id}', [CaretakerController::class, 'assignPatient']);
     Route::get('show-patient', [CaretakerController::class, 'showPatient']);
     Route::post('add-medicine', [CaretakerController::class, 'addPatientMedicine']);
     Route::get('get-caretaker-data', [CaretakerController::class, 'getCaretakerData']);

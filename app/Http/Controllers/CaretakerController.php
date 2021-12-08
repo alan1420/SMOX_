@@ -19,40 +19,39 @@ class CaretakerController extends Controller
         $this->auth = app('firebase.auth');
     }
 
-    public function assignPatient(Request $request) {
-        $data_req = $request->all();
-        $data_patient = User::where('username', $data_req['username'])->first();
-        if (!is_null($data_patient)) {
+    public function checkUser($username) {
+        $patient = User::where('username', $username)->first();
+        if ($patient->patient()->first()) 
+            return response()->json(["message" => "Patient already has a caretaker!"], 200);                        
+        else {
             try {
-                $data_caretaker = $request->user();
+                $data = collect();
+                $user = $this->auth->getUser($patient->uuid);
+                $data->put("patient_id", $patient->id);
+                $data->put("fullname", $user->displayName);
+                $data->put("birthday", $patient->birthday->format('F d, Y'));
+                $data->put("email", $user->email);
+                $data->put("phoneNumber", $user->phoneNumber);
+                return response()->json($data, 200);              
+                //return $patient_caretaker;
+            } catch (\Throwable $e) {
+                return response('', 500);                
+            }
+        }
+    }
+
+    public function assignPatient($id) {        
+            try {
+                $data_caretaker = request()->user();
                 PatientAssignment::create([
                     "caretaker_id" => $data_caretaker->id,
-                    "patient_id" => $data_patient->id
+                    "patient_id" => $id
                 ]);
-                $status = [
-                    "message" => "Success!"
-                ];
-                return response()->json($status, 200);
-            } catch(\Illuminate\Database\QueryException $e){
-                $errorCode = $e->errorInfo[1];
-                if($errorCode == '1062'){
-                    $status = [
-                        "message" => "Patient already has a caretaker!"
-                    ];
-                    return response()->json($status, 404); 
-                } else {
-                    return response('', 500);
-                }
+                return response()->json(["success" => "yes"], 200);
             } catch (\Throwable $e) {
                 //echo 'The token could not be parsed: '.$e->getMessage();
                 return response('', 500);
-            }
-        } else {
-            $status = [
-                "message" => "Patient not found!"
-            ];
-            return response()->json($status, 404);            
-        }        
+            }                    
     }
 
     public function addPatientMedicine(Request $request) {
@@ -120,6 +119,7 @@ class CaretakerController extends Controller
             $user_data = collect();
 
             $data_firebase = $this->auth->getUser($caretaker_uuid);
+            $user_data->put('name', $caretaker->last_name);
             $user_data->put('fullname', $data_firebase->displayName);
             $user_data->put('username', $caretaker->username);
             $user_data->put('birthday', $caretaker->birthday->format('F d, Y'));
