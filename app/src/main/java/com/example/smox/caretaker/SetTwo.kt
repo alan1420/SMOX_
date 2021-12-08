@@ -83,6 +83,12 @@ class SetTwo : AppCompatActivity() {
         view.startAnimation(clickEffect)
     }
 
+    fun getTime(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
+    }
+
+
     fun save(view: View) {
         val medicine = findViewById<EditText>(R.id.medicine_name).text.toString()
         val interval = findViewById<EditText>(R.id.interval).text.toString()
@@ -131,4 +137,10 @@ class SetTwo : AppCompatActivity() {
             Toast.makeText(this, "Please check your data!", Toast.LENGTH_SHORT).show()
         }
     }
+
+    fun markAsDone(view: View) {
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+        view.startAnimation(clickEffect)
+    }
+
 }
