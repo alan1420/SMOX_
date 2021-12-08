@@ -1,6 +1,7 @@
 package com.example.smox.caretaker
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,9 +13,11 @@ import android.view.ViewGroup
 
 import android.view.LayoutInflater
 import android.view.animation.AnimationUtils
+import android.widget.RelativeLayout
 import android.widget.Toast
 import com.android.volley.VolleyError
 import com.example.smox.*
+//import com.example.smox.patient.Homepage
 import com.google.firebase.auth.FirebaseAuth
 import org.json.JSONObject
 
@@ -56,7 +59,12 @@ class PatientList : AppCompatActivity() {
                                             continue
 
                                         // fill in any details dynamically here
+
                                         val v: View = vi.inflate(R.layout.c_patients_card, null)
+                                        val rlClick = v.findViewById<View>(R.id.rl_click) as RelativeLayout
+                                        rlClick.setOnClickListener(View.OnClickListener { view ->
+                                            clickCard(view, item.getInt("patient_id"))
+                                        })
                                         v.findViewById<TextView>(R.id.fullname).text = item.getString("fullname")
                                         v.findViewById<TextView>(R.id.birthday).text = item.getString("birthday")
                                         v.findViewById<TextView>(R.id.email).text = item.getString("email")
@@ -88,11 +96,14 @@ class PatientList : AppCompatActivity() {
         }
     }
 
-    fun back(view: View) {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    fun clickCard(view: View, id: Int) {
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
         view.startAnimation(clickEffect)
+        println(id)
+        val intent = Intent(this, Homepage::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.putExtra("patientId", id)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
-
 }

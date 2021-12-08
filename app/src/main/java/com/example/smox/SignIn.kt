@@ -142,28 +142,31 @@ class SignIn : AppCompatActivity() {
     // [END signin]
 
     fun signInEmail(view: View){
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        view.startAnimation(clickEffect)
-
-        progressbar.visibility = View.VISIBLE;
-        mSignInText.visibility = View.INVISIBLE;
-
         val email = findViewById<EditText>(R.id.signinemail).text.toString()
         val password = findViewById<EditText>(R.id.signinpass).text.toString()
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    progressbar.visibility = View.INVISIBLE;
-                    mSignInText.visibility = View.VISIBLE;
+
+        if (textIsNotEmpty(email) && textIsNotEmpty(password)) {
+            val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+            view.startAnimation(clickEffect)
+
+            progressbar.visibility = View.VISIBLE;
+            mSignInText.visibility = View.INVISIBLE;
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success")
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+                        Toast.makeText(baseContext, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show()
+                        progressbar.visibility = View.INVISIBLE
+                        mSignInText.visibility = View.VISIBLE
+                    }
                 }
-            }
+        } else
+            Toast.makeText(this, "Please re-check your data!", Toast.LENGTH_SHORT).show()
     }
 
     private fun updateUI(user: FirebaseUser?) {

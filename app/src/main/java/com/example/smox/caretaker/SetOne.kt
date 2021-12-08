@@ -96,8 +96,8 @@ class SetOne : AppCompatActivity() {
         val formatter = DateTimeFormatter.ofPattern("HH:mm:ss")
         val formatted = current.format(formatter)
 
-        if (textIsEmpty(medicine) && textIsEmpty(interval) && textIsEmpty(dosage) && textIsEmpty(instruction)
-            && textIsEmpty(period)
+        if (textIsNotEmpty(medicine) && textIsNotEmpty(interval) && textIsNotEmpty(dosage) && textIsNotEmpty(instruction)
+            && textIsNotEmpty(period)
         ) {
             auth.currentUser?.getIdToken(true)?.addOnSuccessListener {
                 val data = JSONObject()

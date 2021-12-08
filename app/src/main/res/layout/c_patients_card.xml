@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/patient_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    tools:context=".caretaker.PatientList">
 
     <RelativeLayout
+        android:id="@+id/rl_click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rect_white"
@@ -43,7 +46,7 @@
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="Aeri Park"
+                android:tag="fullname"
                 android:textColor="@color/green_dark"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -78,7 +81,7 @@
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="04 December 2002"
+                android:tag="birthday"
                 android:textColor="@color/green_dark"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -113,7 +116,7 @@
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="aoi.rohma04@gmail.com"
+                android:tag="email"
                 android:textColor="@color/green_dark"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -148,7 +151,7 @@
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="082143604036"
+                android:tag="phoneNumber"
                 android:textColor="@color/green_dark"
                 android:textSize="18dp" />
         </LinearLayout>

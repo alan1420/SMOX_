@@ -14,9 +14,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Request
 import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
 import com.github.ybq.android.spinkit.style.Wave
 import org.json.JSONObject
 import java.util.*
@@ -95,60 +93,72 @@ class SignUp : AppCompatActivity() {
             mShowCPassword.visibility = View.VISIBLE;
             mHideCPassword.visibility = View.INVISIBLE;
         }
-
     }
 
     fun register(view: View) {
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        view.startAnimation(clickEffect)
-
-        progressbar.visibility = View.VISIBLE;
-        mSignUpText.visibility = View.INVISIBLE;
-
+        val firstName = mFirstName?.text.toString()
+        val lastName = mLastName?.text.toString()
+        val birthday = mBirthday?.text.toString()
+        val phoneNumber = mPhoneNumber?.text.toString()
         val password = mPassword?.text.toString()
         //val CPassword = mCPassword!!.text.toString()
 
         val data = JSONObject()
-        data.put("first_name", mFirstName!!.text.toString())
-        data.put("last_name", mLastName!!.text.toString())
-        data.put("birthday", mBirthday!!.text.toString())
-        data.put("phoneNumber", mPhoneNumber!!.text.toString())
+        data.put("first_name", firstName)
+        data.put("last_name", lastName)
+        data.put("birthday", birthday)
+        data.put("phoneNumber", phoneNumber)
 
-        if (!isGoogle) {
-            data.put("email", mEmail!!.text.toString())
-            data.put("password", password)
-        } else {
-            data.put("uuid", intent.getStringExtra("uuid"))
-        }
-        println(data)
-
-        sendDataPOST("signup", "null", data, this.applicationContext,
-            object : VolleyResult {
-                override fun onSuccess(response: JSONObject) {
-                    val intent = Intent(this@SignUp, SignIn::class.java)
-                    Toast.makeText(this@SignUp, "Successfully signed up! Now please sign in", Toast.LENGTH_SHORT).show()
-                    startActivity(intent)
-                    finish()
+        //println(data)
+        if(textIsNotEmpty(firstName) && textIsNotEmpty(lastName) && textIsNotEmpty(birthday)
+            && textIsNotEmpty(phoneNumber)) {
+            if (!isGoogle) {
+                if (textIsNotEmpty(mEmail?.text.toString()) && textIsNotEmpty(password)) {
+                    data.put("email", mEmail!!.text.toString())
+                    data.put("password", password)
+                } else {
+                    Toast.makeText(this@SignUp, "Please re-check your data!", Toast.LENGTH_SHORT).show()
+                    return
                 }
-
-                override fun onError(error: VolleyError?) {
-                    if (error != null) {
-                        var messageError = ""
-                        if (error.networkResponse != null)
-                            messageError = if (error.networkResponse.statusCode == 500)
-                                "Please re-check your data!"
-                            else
-                                getVolleyError(error)
-                        Log.d("Volley", messageError)
-                        Toast.makeText(this@SignUp,
-                            messageError,
-                            Toast.LENGTH_SHORT).show()
-                    }
-                    progressbar.visibility = View.INVISIBLE;
-                    mSignUpText.visibility = View.VISIBLE;
-                }
+            } else {
+                data.put("uuid", intent.getStringExtra("uuid"))
             }
-        )
+
+            val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
+            view.startAnimation(clickEffect)
+
+            progressbar.visibility = View.VISIBLE;
+            mSignUpText.visibility = View.INVISIBLE;
+
+            sendDataPOST("signup", "null", data, this.applicationContext,
+                object : VolleyResult {
+                    override fun onSuccess(response: JSONObject) {
+                        val intent = Intent(this@SignUp, SignIn::class.java)
+                        Toast.makeText(this@SignUp, "Successfully signed up! Now please sign in", Toast.LENGTH_SHORT).show()
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    override fun onError(error: VolleyError?) {
+                        if (error != null) {
+                            var messageError = ""
+                            if (error.networkResponse != null)
+                                messageError = if (error.networkResponse.statusCode == 500)
+                                    "Please re-check your data!"
+                                else
+                                    getVolleyError(error)
+                            Log.d("Volley", messageError)
+                            Toast.makeText(this@SignUp,
+                                messageError,
+                                Toast.LENGTH_SHORT).show()
+                        }
+                        progressbar.visibility = View.INVISIBLE;
+                        mSignUpText.visibility = View.VISIBLE;
+                    }
+                }
+            )
+        } else
+            Toast.makeText(this@SignUp, "Please re-check your data!", Toast.LENGTH_SHORT).show()
     }
 
     fun signinPage(view: View? = null) {

@@ -15,7 +15,6 @@ import org.json.JSONObject
 import com.example.smox.*
 
 class CreateUsername : AppCompatActivity() {
-    private var data: Int? = null
 
     var auth = FirebaseAuth.getInstance()
     var currentUser: FirebaseUser? = null
@@ -34,32 +33,34 @@ class CreateUsername : AppCompatActivity() {
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
         val mUsername = findViewById<EditText>(R.id.enterusername).text.toString()
-        currentUser?.getIdToken(true)?.addOnSuccessListener {
-            Log.d("Token ID", it.token.toString())
-            val dataJson = JSONObject().put("role", 2)
-            dataJson.put("username", mUsername)
-            sendDataPOST("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
-                object : VolleyResult {
-                    override fun onSuccess(response: JSONObject) {
-                        if (response != null) {
-                            val intent = Intent(this@CreateUsername, Homepage::class.java)
-                            intent.putExtra("name", response.getString("name"))
-                            startActivity(intent)
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                            finish()
+        if (textIsNotEmpty(mUsername)) {
+            currentUser?.getIdToken(true)?.addOnSuccessListener {
+                Log.d("Token ID", it.token.toString())
+                val dataJson = JSONObject().put("role", 2)
+                dataJson.put("username", mUsername)
+                sendDataPOST("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
+                    object : VolleyResult {
+                        override fun onSuccess(response: JSONObject) {
+                            if (response != null) {
+                                val intent = Intent(this@CreateUsername, Homepage::class.java)
+                                intent.putExtra("name", response.getString("name"))
+                                startActivity(intent)
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                                finish()
+                            }
                         }
-                    }
 
-                    override fun onError(error: VolleyError?) {
-                        //TODO("Not yet implemented")
-                        if (error != null) {
-                            Toast.makeText(this@CreateUsername,
-                                getVolleyError(error),
-                                Toast.LENGTH_SHORT).show()
+                        override fun onError(error: VolleyError?) {
+                            if (error != null) {
+                                Toast.makeText(this@CreateUsername,
+                                    getVolleyError(error),
+                                    Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
-                }
-            )
-        }
+                )
+            }
+        } else
+            Toast.makeText(this, "Username cannot be empty!", Toast.LENGTH_SHORT).show()
     }
 }

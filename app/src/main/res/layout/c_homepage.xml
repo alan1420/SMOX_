@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="HELLO, LEE"
+            android:text="HELLO, "
             android:textSize="24dp"
             android:textColor="@color/white"
             android:fontFamily="@font/opensans_extrabold">

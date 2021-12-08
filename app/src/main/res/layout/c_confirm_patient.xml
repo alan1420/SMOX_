@@ -66,13 +66,12 @@
 
 
             <TextView
+                android:id="@+id/fullname"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="Park Ae-ri"
                 android:textColor="@color/green_dark"
-                android:textSize="18dp">
-            </TextView>
+                android:textSize="18dp"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -102,13 +101,12 @@
             </TextView>
 
             <TextView
+                android:id="@+id/birthday"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="04 December 2002"
                 android:textColor="@color/green_dark"
-                android:textSize="18dp">
-            </TextView>
+                android:textSize="18dp"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -138,13 +136,12 @@
             </TextView>
 
             <TextView
+                android:id="@+id/email"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="aoi.rohma04@gmail.com"
                 android:textColor="@color/green_dark"
-                android:textSize="18dp">
-            </TextView>
+                android:textSize="18dp"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -174,13 +171,12 @@
             </TextView>
 
             <TextView
+                android:id="@+id/phoneNumber"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="082143604036"
                 android:textColor="@color/green_dark"
-                android:textSize="18dp">
-            </TextView>
+                android:textSize="18dp"></TextView>
         </LinearLayout>
 
         <RelativeLayout

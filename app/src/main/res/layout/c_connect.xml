@@ -62,16 +62,16 @@
                 android:layout_height="50dp">
 
                 <EditText
+                    android:id="@+id/patient_username"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rect_stroke_bottom"
-                    android:hint="Enter patient's username"
-                    android:textSize="18dp"
-                    android:paddingLeft="5dp"
-                    android:textColorHint="@color/green_dark"
                     android:fontFamily="@font/opensans"
-                    android:textColor="@color/brown">
-                </EditText>
+                    android:hint="Enter patient's username"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/brown"
+                    android:textColorHint="@color/green_dark"
+                    android:textSize="18dp"></EditText>
             </RelativeLayout>
         </LinearLayout>
 

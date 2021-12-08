@@ -33,11 +33,11 @@ class Homepage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.c_homepage)
-        val data = intent.getStringExtra("name")
-        //println(data)
-        findViewById<TextView>(R.id.sa).text = "HELLO, $data"
-
-
+        if (intent.hasExtra("name")) {
+            val data = intent.getStringExtra("name")
+            //println(data)
+            findViewById<TextView>(R.id.sa).text = "HELLO, $data"
+        }
     }
 
     override fun onStart() {
@@ -55,23 +55,24 @@ class Homepage : AppCompatActivity() {
             if (isFilePresent) {
                 var jsonLocalData = readFile(this, "storage.json")
                 var jsonData = Gson().fromJson(jsonLocalData, JsonObject::class.java)
-                if (jsonData.has("patient_data")) {
+
+                if (intent.hasExtra("patientId")){
+                    urlPath = urlPath + "?patient_id=" + intent.getIntExtra("patientId", 0)
+                    println(intent.getIntExtra("patient_id", 0))
+                } else if (jsonData.has("patient_data")) {
                     if (jsonData.get("patient_data").isJsonObject) {
                         val pData = jsonData.get("patient_data").asJsonObject
                         urlPath = urlPath + "?patient_id=" + pData.get("id").asString
                     }
-
-                } else {
-                    println("Belum ada data pasien")
-                    Toast.makeText(this@Homepage,
-                        "Belum ada data pasien!",
-                        Toast.LENGTH_SHORT).show()
                 }
             }
 
             sendDataGET(urlPath, it.token.toString(),this,
                 object : VolleyResult {
                     override fun onSuccess(response: JSONObject) {
+                        println(urlPath)
+                        val data = response.getJSONObject("user_data").getString("name")
+                        findViewById<TextView>(R.id.sa).text = "HELLO, $data"
                         val isFileCreated: Boolean = createFile(this@Homepage,
                             "storage.json", response.toString())
                         //proceed with storing the first todo or show ui
@@ -97,7 +98,7 @@ class Homepage : AppCompatActivity() {
     }
 
     fun menu(view: View) {
-        val intent = Intent(this, com.example.smox.caretaker.Menu::class.java)
+        val intent = Intent(this, Menu::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
@@ -105,7 +106,7 @@ class Homepage : AppCompatActivity() {
     }
 
     fun gotoSchedule(view: View) {
-        val intent = Intent(this, com.example.smox.caretaker.Schedule::class.java)
+        val intent = Intent(this, Schedule::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
@@ -113,14 +114,15 @@ class Homepage : AppCompatActivity() {
     }
 
     fun gotoDosage(view: View) {
-        val intent = Intent(this, com.example.smox.caretaker.Dosage::class.java)
+        val intent = Intent(this, Dosage::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
     }
+
     fun gotoHistory(view: View) {
-        val intent = Intent(this, com.example.smox.caretaker.History::class.java)
+        val intent = Intent(this, History::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
@@ -128,7 +130,7 @@ class Homepage : AppCompatActivity() {
     }
 
     fun gotoInformation(view: View) {
-        val intent = Intent(this, com.example.smox.caretaker.Patient::class.java)
+        val intent = Intent(this, Patient::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)

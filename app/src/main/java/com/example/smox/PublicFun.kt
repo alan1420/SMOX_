@@ -24,8 +24,8 @@ interface VolleyResult {
     fun onError(error: VolleyError?)
 }
 
-val ServerIP = "103.146.34.5"
-//val ServerIP = "192.168.0.88"
+//val ServerIP = "103.146.34.5"
+val ServerIP = "192.168.0.88"
 
 fun sendDataPOST(path: String, token: String, dataJson: JSONObject, context: Context, result: VolleyResult) {
     val url = "http://$ServerIP/smox/public/api/$path"
@@ -159,6 +159,6 @@ fun isFilePresent(context: Context, fileName: String): Boolean {
     return file.exists()
 }
 
-fun textIsEmpty(text: String) :Boolean {
+fun textIsNotEmpty(text: String) :Boolean {
     return text.trim().isNotEmpty()
 }
