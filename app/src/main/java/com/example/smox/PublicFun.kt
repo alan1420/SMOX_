@@ -1,12 +1,13 @@
 package com.example.smox
 
-
 import android.content.Context
 import android.content.Intent
 import com.android.volley.*
 import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONObject
 import com.example.smox.patient.Homepage
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GetTokenResult
 import org.apache.http.conn.ConnectTimeoutException
 import org.json.JSONException
 import org.xmlpull.v1.XmlPullParserException
@@ -16,12 +17,17 @@ import java.net.ConnectException
 import java.net.MalformedURLException
 import java.net.SocketException
 import java.net.SocketTimeoutException
-
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 //Interface
 interface VolleyResult {
     fun onSuccess(response: JSONObject)
     fun onError(error: VolleyError?)
+}
+
+interface TokenResult {
+    fun onSuccess(token: GetTokenResult)
 }
 
 val ServerIP = "103.146.34.5"
@@ -59,7 +65,6 @@ fun sendDataGET(path: String, token: String, context: Context, result: VolleyRes
             result.onSuccess(response)
         },
         Response.ErrorListener { error ->
-            //TODO: Handle error
             result.onError(error)
         }
     ){
@@ -69,8 +74,9 @@ fun sendDataGET(path: String, token: String, context: Context, result: VolleyRes
             return headers
         }
     }
-    jsonObjectRequest.retryPolicy = DefaultRetryPolicy(5000,
-        5, 1F)
+    //jsonObjectRequest.retryPolicy = DefaultRetryPolicy(5000,
+    //    5, 1F)
+    jsonObjectRequest.setShouldCache(false)
     val queue = VolleySingleton.getInstance(context).requestQueue
     queue.add(jsonObjectRequest)
 }
@@ -117,6 +123,25 @@ fun toHomePage(context: Context, role: Int, name: String?) {
         intent.putExtra("name", name)
         context.startActivity(intent)
         //finish()
+    }
+}
+
+fun getToken(result: TokenResult) {
+    val auth = FirebaseAuth.getInstance()
+    val firebaseUser = auth.currentUser
+    if (firebaseUser != null) {
+        firebaseUser.getIdToken(false).addOnSuccessListener {
+            val expired = it.expirationTimestamp
+            val zoneId: ZoneId = ZoneId.systemDefault()
+            val current = LocalDateTime.now().plusMinutes(30).atZone(zoneId).toEpochSecond()
+            if (current > expired) {
+                println("Token expired, will get new one")
+                firebaseUser.getIdToken(true).addOnSuccessListener{ it2 ->
+                    result.onSuccess(it2)
+                }
+            } else
+                result.onSuccess(it)
+        }
     }
 }
 

@@ -26,6 +26,8 @@ class History : AppCompatActivity()
     var userData: JsonArray? = null
     var slot1Data: JsonObject? = null
     var slot2Data: JsonObject? = null
+    var count1 = "-"
+    var count2 = "-"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +38,6 @@ class History : AppCompatActivity()
             val jsonData = Gson().fromJson(dataPatient, JsonObject::class.java)
             if (jsonData.has("medicine_list")) {
                 userData = jsonData.get("medicine_list").asJsonArray
-                println(userData)
                 if (userData != null) {
                     for (i in 0 until userData!!.size()) {
                         val item = userData!!.get(i).asJsonObject
@@ -47,6 +48,14 @@ class History : AppCompatActivity()
                             slot2Data = item
                     }
                 }
+            }
+            if (jsonData.has("medicine_history")){
+                if (jsonData.get("medicine_history").asJsonObject.has("history1"))
+                    count1 = jsonData.get("medicine_history").asJsonObject
+                        .get("history1").asJsonArray.size().toString()
+                if (jsonData.get("medicine_history").asJsonObject.has("history2"))
+                    count2 = jsonData.get("medicine_history").asJsonObject
+                        .get("history2").asJsonArray.size().toString()
             }
         }
 
@@ -82,12 +91,12 @@ class History : AppCompatActivity()
                 val period = slot1Data!!.get("period").asString + " " + slot1Data!!.get("period_type").asString.toUpperCase()
                 layout.findViewWithTag<TextView>("name1").text = slot1Data!!.get("medicine_name").asString.toUpperCase()
                 layout.findViewWithTag<TextView>("period1").text = period
-                layout.findViewWithTag<TextView>("days1").text = slot1Data!!.get("interval").asString
+                layout.findViewWithTag<TextView>("days1").text = count1
             } else if (position == 1 && slot2Data != null) {
                 val period = slot2Data!!.get("period").asString + " " + slot2Data!!.get("period_type").asString.toUpperCase()
                 layout.findViewWithTag<TextView>("name2").text = slot2Data!!.get("medicine_name").asString.toUpperCase()
                 layout.findViewWithTag<TextView>("period2").text = period
-                layout.findViewWithTag<TextView>("days2").text = slot2Data!!.get("interval").asString
+                layout.findViewWithTag<TextView>("days2").text = count2
             }
 
             container.addView(layout)

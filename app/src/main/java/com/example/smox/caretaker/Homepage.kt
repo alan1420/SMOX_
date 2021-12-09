@@ -12,6 +12,7 @@ import com.example.smox.SplashActivity
 import com.android.volley.VolleyError
 import com.example.smox.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GetTokenResult
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import org.json.JSONObject
@@ -47,53 +48,58 @@ class Homepage : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val firebaseUser = auth.currentUser
 
-        firebaseUser?.getIdToken(true)?.addOnSuccessListener {
-            var urlPath = "get-caretaker-data"
-            val isFilePresent: Boolean = isFilePresent(this, "storage.json")
-            if (isFilePresent) {
-                var jsonLocalData = readFile(this, "storage.json")
-                var jsonData = Gson().fromJson(jsonLocalData, JsonObject::class.java)
-
-                if (intent.hasExtra("patientId")){
-                    urlPath = urlPath + "?patient_id=" + intent.getIntExtra("patientId", 0)
-                    println(intent.getIntExtra("patient_id", 0))
-                } else if (jsonData.has("patient_data")) {
-                    if (jsonData.get("patient_data").isJsonObject) {
-                        val pData = jsonData.get("patient_data").asJsonObject
-                        urlPath = urlPath + "?patient_id=" + pData.get("id").asString
-                    }
-                }
+        val dataUser = readFile(this, "storage.json")
+        if (dataUser != null) {
+            val jsonData = Gson().fromJson(dataUser, JsonObject::class.java)
+            if (jsonData.has("user_data")) {
+                val name = jsonData.getAsJsonObject("user_data").get("name").asString
+                findViewById<TextView>(R.id.sa).text = "HELLO, $name"
             }
+        }
 
-            sendDataGET(urlPath, it.token.toString(),this,
-                object : VolleyResult {
-                    override fun onSuccess(response: JSONObject) {
-                        println(urlPath)
-                        val data = response.getJSONObject("user_data").getString("name")
-                        findViewById<TextView>(R.id.sa).text = "HELLO, $data"
-                        val isFileCreated: Boolean = createFile(this@Homepage,
-                            "storage.json", response.toString())
-                        //proceed with storing the first todo or show ui
-                        if (!isFileCreated) {
-                            //show error or try again.
-                            Toast.makeText(this@Homepage,
-                                "Error menyimpan data ke penyimpanan internal",
-                                Toast.LENGTH_SHORT).show()
+        //Jika tidak ada update dari activity lain
+        if (intent.hasExtra("name")) {
+            getToken(object: TokenResult {
+                override fun onSuccess(token: GetTokenResult) {
+                    var urlPath = "get-caretaker-data"
+                    var jsonLocalData = readFile(this@Homepage, "storage.json")
+                    var jsonData = Gson().fromJson(jsonLocalData, JsonObject::class.java)
+
+                    if (jsonData.has("patient_data")) {
+                        if (jsonData.get("patient_data").isJsonObject) {
+                            val pData = jsonData.get("patient_data").asJsonObject
+                            urlPath = urlPath + "?patient_id=" + pData.get("id").asString
                         }
                     }
 
-                    override fun onError(error: VolleyError?) {
-                        if (error != null) {
-                            Log.d("Volley", getVolleyError(error))
-                            Toast.makeText(this@Homepage,
-                                getVolleyError(error),
-                                Toast.LENGTH_SHORT).show()
+                    sendDataGET(urlPath, token.token.toString(),this@Homepage,
+                        object : VolleyResult {
+                            override fun onSuccess(response: JSONObject) {
+                                println(urlPath)
+                                val isFileCreated: Boolean = createFile(this@Homepage,
+                                    "storage.json", response.toString())
+                                //proceed with storing the first todo or show ui
+                                if (!isFileCreated) {
+                                    //show error or try again.
+                                    Toast.makeText(this@Homepage,
+                                        "Error menyimpan data ke penyimpanan internal",
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            override fun onError(error: VolleyError?) {
+                                if (error != null) {
+                                    Log.d("Volley", getVolleyError(error))
+                                    Toast.makeText(this@Homepage,
+                                        getVolleyError(error),
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
-                    }
+                    )
                 }
-            )
+            })
         }
     }
 

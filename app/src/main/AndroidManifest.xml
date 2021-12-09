@@ -65,10 +65,7 @@
             android:name=".caretaker.Dosage"
             android:exported="false" />
         <activity
-            android:name=".caretaker.SetOne"
-            android:exported="false" />
-        <activity
-            android:name=".caretaker.SetTwo"
+            android:name=".caretaker.Set"
             android:exported="false" />
         <activity
             android:name=".caretaker.Patient"

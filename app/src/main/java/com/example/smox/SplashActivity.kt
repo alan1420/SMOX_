@@ -9,6 +9,7 @@ import android.util.Log
 import com.android.volley.VolleyError
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GetTokenResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
@@ -29,6 +30,12 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.launchpage)
 
         auth = Firebase.auth
+
+        val isFilePresent: Boolean = isFilePresent(this, "storage.json")
+        if (!isFilePresent) {
+            createFile(this,
+                "storage.json", "{}")
+        }
     }
 
     // [START on_start_check_user]
@@ -44,43 +51,50 @@ class SplashActivity : AppCompatActivity() {
         handler.postDelayed({
             if (user != null) {
                 val name = user.displayName.toString()
-                user.getIdToken(true).addOnSuccessListener {
-                    sendDataGET("signinCheck", it.token.toString(), this.applicationContext,
-                        object : VolleyResult {
-                            override fun onSuccess(response: JSONObject) {
-                                if (!response.has("error")) {
-                                    val isRegister = response.getBoolean("is_registered")
-                                    var isCompleted : Boolean? = null
-                                    if (response.has("is_completed"))
-                                        isCompleted = response.getBoolean("is_completed")
-                                    if (isRegister)
-                                        if (isCompleted == true) {
-                                            //Toast.makeText(this@SplashActivity, "Data lengkap", Toast.LENGTH_SHORT).show()
-                                            toHomePage(this@SplashActivity, response.getString("role").toInt(), response.getString("last_name"))
-                                        }
-                                        else
-                                            roleSelect()
-                                } else {
-                                    Toast.makeText(this@SplashActivity, "Please fill the data!", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this@SplashActivity, SignUp::class.java)
-                                    intent.putExtra("fullname", name)
-                                    intent.putExtra("uuid", user.uid)
-                                    startActivity(intent)
-                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                                }
-                            }
 
-                            override fun onError(error: VolleyError?) {
-                                if (error != null) {
-                                    Log.d("Volley", getVolleyError(error))
-                                    Toast.makeText(this@SplashActivity,
-                                        getVolleyError(error),
-                                        Toast.LENGTH_SHORT).show()
+                getToken(object: TokenResult {
+                    override fun onSuccess(token: GetTokenResult) {
+                        //TODO("Not yet implemented")
+                        println(token.token)
+                        println("Token expired at: " + token.expirationTimestamp)
+                        sendDataGET("signinCheck", token.token.toString(), this@SplashActivity,
+                            object : VolleyResult {
+                                override fun onSuccess(response: JSONObject) {
+                                    if (!response.has("error")) {
+                                        val isRegister = response.getBoolean("is_registered")
+                                        var isCompleted : Boolean? = null
+                                        if (response.has("is_completed"))
+                                            isCompleted = response.getBoolean("is_completed")
+                                        if (isRegister)
+                                            if (isCompleted == true) {
+                                                //Toast.makeText(this@SplashActivity, "Data lengkap", Toast.LENGTH_SHORT).show()
+                                                toHomePage(this@SplashActivity, response.getString("role").toInt(), response.getString("last_name"))
+                                            }
+                                            else
+                                                roleSelect()
+                                    } else {
+                                        Toast.makeText(this@SplashActivity, "Please fill the data!", Toast.LENGTH_SHORT).show()
+                                        val intent = Intent(this@SplashActivity, SignUp::class.java)
+                                        intent.putExtra("fullname", name)
+                                        intent.putExtra("uuid", user.uid)
+                                        startActivity(intent)
+                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                                    }
+                                }
+
+                                override fun onError(error: VolleyError?) {
+                                    if (error != null) {
+                                        Log.d("Volley", getVolleyError(error))
+                                        Toast.makeText(this@SplashActivity,
+                                            getVolleyError(error),
+                                            Toast.LENGTH_SHORT).show()
+                                    }
                                 }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
+                })
+
                 Log.d(TAG, "signInWithCredential:success")
             } else {
                 signInPage()
