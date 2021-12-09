@@ -57,11 +57,26 @@ class CaretakerController extends Controller
     public function addPatientMedicine(Request $request) {
         $data_req = $request->all();
         try {
-            PatientMedicine::upsert([$data_req], ['slot']);
-            $status = [
-                "message" => "Success!"
-            ];
-            return response()->json($status, 200);
+            $patientId = $data_req['patient_id'];
+            $slot = $data_req['slot'];
+            unset($data_req['patient_id']);
+            unset($data_req['slot']);
+            $data = PatientMedicine::updateOrCreate([
+                'patient_id' => $patientId,
+                'slot' => $slot
+            ], $data_req);
+            return response()->json($data, 200);				
+        } catch(\Illuminate\Database\QueryException $e){
+            return response('', 500);
+        } catch (\Throwable $e) {
+            return response('', 500);                
+        }       
+    }
+	
+	public function deletePatientMedicine($id) {
+        try {
+            PatientMedicine::destroy($id);
+            return response()->json(["a" => "b"], 200);				
         } catch(\Illuminate\Database\QueryException $e){
             return response('', 500);
         } catch (\Throwable $e) {

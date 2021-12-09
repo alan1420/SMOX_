@@ -23,7 +23,7 @@ class CreatePatientMedicineTable extends Migration
             $table->string('instruction');
             $table->integer('period');
             $table->string('period_type');
-            $table->integer('slot')->unique();
+            $table->integer('slot');
             $table->timestamps();
         });
     }

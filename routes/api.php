@@ -32,6 +32,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('add-patient/{id}', [CaretakerController::class, 'assignPatient']);
     Route::get('show-patient', [CaretakerController::class, 'showPatient']);
     Route::post('add-medicine', [CaretakerController::class, 'addPatientMedicine']);
+    Route::get('delete-medicine/{id}', [CaretakerController::class, 'deletePatientMedicine']);
     Route::get('get-caretaker-data', [CaretakerController::class, 'getCaretakerData']);
     
     Route::post('show-history', [PatientController::class, 'showHistory']);
