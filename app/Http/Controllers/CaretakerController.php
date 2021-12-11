@@ -135,7 +135,7 @@ class CaretakerController extends Controller
 
             $data_firebase = $this->auth->getUser($caretaker_uuid);
             $user_data->put('name', $caretaker->last_name);
-            $user_data->put('fullname', $data_firebase->displayName);
+            $user_data->put('fullname', "$caretaker->first_name $caretaker->last_name");
             $user_data->put('username', $caretaker->username);
             $user_data->put('birthday', $caretaker->birthday->format('F d, Y'));
             $user_data->put('email', $data_firebase->email);

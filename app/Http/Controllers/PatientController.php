@@ -95,8 +95,9 @@ class PatientController extends Controller
             $data_firebase = $this->auth->getUsers([$patient_uuid, $caretaker_uuid]);
             $fb_user = $data_firebase[$patient_uuid];
 			$user_data->put('id', $patient->id);
-            $user_data->put('fullname', $fb_user->displayName);
+            $user_data->put('fullname', "$patient->first_name $patient->last_name");
             $user_data->put('username', $patient->username);
+            $user_data->put('name', $patient->last_name);
             $user_data->put('birthday', $patient->birthday->format('F d, Y'));
             $user_data->put('email', $fb_user->email);
             $user_data->put('phoneNumber', $fb_user->phoneNumber);
