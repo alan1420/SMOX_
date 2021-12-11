@@ -31,10 +31,13 @@ class SplashActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        val isFilePresent: Boolean = isFilePresent(this, "storage.json")
-        if (!isFilePresent) {
+        if (!isFilePresent(this, "storage.json")) {
             createFile(this,
                 "storage.json", "{}")
+        }
+        if (!isFilePresent(this, "store_token.json")) {
+            createFile(this,
+                "store_token.json", "{}")
         }
     }
 
@@ -52,12 +55,9 @@ class SplashActivity : AppCompatActivity() {
             if (user != null) {
                 val name = user.displayName.toString()
 
-                getToken(object: TokenResult {
-                    override fun onSuccess(token: GetTokenResult) {
-                        //TODO("Not yet implemented")
-                        println(token.token)
-                        println("Token expired at: " + token.expirationTimestamp)
-                        sendDataGET("signinCheck", token.token.toString(), this@SplashActivity,
+                getToken(this, object: TokenResult {
+                    override fun onSuccess(token: String) {
+                        sendDataGET("signinCheck", token, this@SplashActivity,
                             object : VolleyResult {
                                 override fun onSuccess(response: JSONObject) {
                                     if (!response.has("error")) {

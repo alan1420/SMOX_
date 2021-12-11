@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationUtils
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.android.volley.VolleyError
@@ -14,51 +15,152 @@ import kotlinx.android.synthetic.main.p_homepage.*
 import com.example.smox.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.gson.Gson
+import com.google.gson.JsonObject
 import org.json.JSONObject
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class Homepage : AppCompatActivity() {
-    var jsonLocalData: String? = null
 
-    var firebaseUser: FirebaseUser? = null
-
-    private val buttonClick = AlphaAnimation(1f, 0.7f)
-    // [START declare_auth]
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
-    // [END declare_auth]
+    var slot1Data = JsonObject()
+    var slot2Data = JsonObject()
+    var dataUser = JsonObject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.p_homepage)
-        val data = intent.getStringExtra("name")
-        //println(data)
-        findViewById<TextView>(R.id.sa).text = "HELLO, $data"
+        if (intent.hasExtra("name")) {
+            val data = intent.getStringExtra("name")
+            findViewById<TextView>(R.id.sa).text = "HELLO, $data"
+        }
+    }
 
-        firebaseUser = auth.currentUser
+    override fun onResume() {
+        super.onResume()
 
-        firebaseUser?.getIdToken(true)?.addOnSuccessListener {
-            sendDataGET("get-patient-data", it.token.toString(),this,
-                object : VolleyResult {
-                    override fun onSuccess(response: JSONObject) {
-                        val isFileCreated: Boolean = createFile(this@Homepage,
-                            "storage.json", response.toString())
-                        if (!isFileCreated) {
-                            //show error or try again.
-                            Toast.makeText(this@Homepage,
-                                "Error menyimpan data ke penyimpanan internal",
-                                Toast.LENGTH_SHORT).show()
+        //Jika tidak ada update dari activity lain
+        if (intent.hasExtra("name")) {
+            getToken(this, object: TokenResult {
+                override fun onSuccess(token: String) {
+
+                    sendDataGET("get-patient-data", token,this@Homepage,
+                        object : VolleyResult {
+                            override fun onSuccess(response: JSONObject) {
+                                println(response)
+                                val isFileCreated: Boolean = createFile(this@Homepage,
+                                    "storage.json", response.toString())
+                                dataUser = Gson().fromJson(response.toString(), JsonObject::class.java)
+                                loadData()
+                                if (!isFileCreated) {
+                                    //show error or try again.
+                                    Toast.makeText(this@Homepage,
+                                        "Error menyimpan data ke penyimpanan internal",
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            override fun onError(error: VolleyError?) {
+                                if (error != null) {
+                                    Log.d("Volley", getVolleyError(error))
+                                    Toast.makeText(this@Homepage,
+                                        getVolleyError(error),
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
-                    }
-
-                    override fun onError(error: VolleyError?) {
-                        if (error != null) {
-                            Log.d("Volley", getVolleyError(error))
-                            Toast.makeText(this@Homepage,
-                                getVolleyError(error),
-                                Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                    )
                 }
-            )
+            })
+        } else {
+            val jsonData = readFile(this, "storage.json")
+            if (jsonData != null) {
+                dataUser = Gson().fromJson(jsonData, JsonObject::class.java)
+                loadData()
+            }
+        }
+    }
+
+    fun loadData() {
+        slot1Data = JsonObject()
+        slot2Data = JsonObject()
+        var upcoming1 = 0
+        var upcoming2 = 0
+        var stateA = false
+        var stateB = false
+
+        if (dataUser.has("user_data")) {
+            val name = dataUser.getAsJsonObject("user_data").get("name").asString
+            findViewById<TextView>(R.id.sa).text = "HELLO, $name"
+        }
+        if (dataUser.has("medicine_list")) {
+            dataUser.get("medicine_list").asJsonArray.forEach {
+                val objData = it.asJsonObject
+                val slot = objData.get("slot").asString
+                if (slot == "1") {
+                    slot1Data = objData
+                } else if (slot == "2") {
+                    slot2Data = objData
+                }
+            }
+        }
+
+        if (slot1Data.size() > 0) {
+            val startDate = ZonedDateTime.parse((slot1Data.get("updated_at").asString)).toLocalDate()
+            val startTime = LocalTime.parse(slot1Data.get("start_time").asString)
+            val startDateTime = startDate.atTime(startTime)
+            var upDt = startDateTime
+            while (upDt.isBefore(LocalDateTime.now())) {
+                upDt = upDt.plusHours(slot1Data.get("interval").asLong)
+            }
+            upcoming1 = upDt.toLocalTime().toSecondOfDay()
+        }
+
+        if (slot2Data.size() > 0) {
+            val startDate = ZonedDateTime.parse((slot2Data.get("updated_at").asString)).toLocalDate()
+            val startTime = LocalTime.parse(slot2Data.get("start_time").asString)
+            val startDateTime = startDate.atTime(startTime)
+            var upDt = startDateTime
+            while (upDt.isBefore(LocalDateTime.now())) {
+                upDt = upDt.plusHours(slot2Data.get("interval").asLong)
+            }
+            upcoming2 = upDt.toLocalTime().toSecondOfDay()
+        }
+        if(upcoming1 > 0) stateA = true
+        if(upcoming2 > 0) stateB = true
+
+        if(((upcoming1 < upcoming2) && (stateA && stateB)) || (stateA && !stateB)){
+            findViewById<TextView>(R.id.hour).text = LocalTime.ofSecondOfDay(upcoming1.toLong()).format(
+                DateTimeFormatter.ofPattern("hh")).toString()
+            findViewById<TextView>(R.id.minute).text = LocalTime.ofSecondOfDay(upcoming1.toLong()).format(
+                DateTimeFormatter.ofPattern("mm")).toString()
+            findViewById<TextView>(R.id.ampm).text = LocalTime.ofSecondOfDay(upcoming1.toLong()).format(
+                DateTimeFormatter.ofPattern("a")).toString()
+            findViewById<TextView>(R.id.medicine).text = slot1Data.get("medicine_name").asString
+            findViewById<TextView>(R.id.dosage).text = slot1Data.get("dosage").asString + " TABLET"
+            findViewById<TextView>(R.id.instruction).text = slot1Data.get("instruction").asString
+        }
+
+        if(((upcoming2 < upcoming1) && (stateA && stateB)) || (stateB && !stateA)){
+            findViewById<TextView>(R.id.hour).text = LocalTime.ofSecondOfDay(upcoming2.toLong()).format(
+                DateTimeFormatter.ofPattern("hh")).toString()
+            findViewById<TextView>(R.id.minute).text = LocalTime.ofSecondOfDay(upcoming2.toLong()).format(
+                DateTimeFormatter.ofPattern("mm")).toString()
+            findViewById<TextView>(R.id.ampm).text = LocalTime.ofSecondOfDay(upcoming2.toLong()).format(
+                DateTimeFormatter.ofPattern("a")).toString()
+            findViewById<TextView>(R.id.medicine).text = slot2Data.get("medicine_name").asString
+            findViewById<TextView>(R.id.dosage).text = slot2Data.get("dosage").asString + " TABLET"
+            findViewById<TextView>(R.id.instruction).text = slot2Data.get("instruction").asString
+        }
+
+        if (stateA || stateB) {
+            findViewById<RelativeLayout>(R.id.data).visibility = View.VISIBLE
+            findViewById<RelativeLayout>(R.id.nodata).visibility = View.INVISIBLE
+        } else {
+            findViewById<RelativeLayout>(R.id.nodata).visibility = View.VISIBLE
+            findViewById<RelativeLayout>(R.id.data).visibility = View.INVISIBLE
         }
     }
 

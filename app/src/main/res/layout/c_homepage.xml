@@ -27,139 +27,166 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:id="@+id/welcome">
+
         <TextView
             android:id="@+id/sa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="HELLO, "
-            android:textSize="24dp"
+            android:fontFamily="@font/opensans_extrabold"
             android:textColor="@color/white"
-            android:fontFamily="@font/opensans_extrabold">
-        </TextView>
+            android:textSize="24dp" />
     </RelativeLayout>
 
 
-
     <RelativeLayout
+        android:id="@+id/upcoming"
         android:layout_width="320dp"
         android:layout_height="145dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:background="@drawable/rect_green"
-        android:id="@+id/upcoming">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:alpha="0.9"
-            android:fontFamily="@font/opensans"
-            android:text="UPCOMING"
-            android:textColor="@color/brown"
-            android:textSize="14dp"
-            android:textStyle="bold">
-        </TextView>
+        android:background="@drawable/rect_green">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="35dp"
-            android:alpha="0.9"
-            android:fontFamily="@font/opensans"
-            android:text="09"
-            android:textColor="@color/brown"
-            android:textSize="64dp"
-            android:textStyle="bold">
-        </TextView>
+        <RelativeLayout
+            android:id="@+id/data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="95dp"
-            android:layout_marginLeft="95dp"
-            android:layout_marginTop="65dp"
-            android:alpha="0.9"
-            android:fontFamily="@font/opensans"
-            android:text="."
-            android:textColor="@color/brown"
-            android:textSize="36dp"
-            android:textStyle="bold">
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="UPCOMING"
+                android:textColor="@color/brown"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="105dp"
-            android:layout_marginLeft="105dp"
-            android:layout_marginTop="55dp"
-            android:alpha="0.9"
-            android:fontFamily="@font/opensans"
-            android:text="PM"
-            android:textColor="@color/brown"
-            android:textSize="16dp"
-            android:textStyle="bold">
-        </TextView>
+            <TextView
+                android:id="@+id/hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="35dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="-"
+                android:textColor="@color/brown"
+                android:textSize="64dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="105dp"
-            android:layout_marginLeft="105dp"
-            android:layout_marginTop="65dp"
-            android:alpha="0.9"
-            android:fontFamily="@font/opensans"
-            android:text="30"
-            android:textColor="@color/brown"
-            android:textSize="36dp"
-            android:textStyle="bold">
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="95dp"
+                android:layout_marginLeft="95dp"
+                android:layout_marginTop="65dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="."
+                android:textColor="@color/brown"
+                android:textSize="36dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:alpha="0.9"
-            android:fontFamily="@font/opensans"
-            android:text="MIRTAZAPINE"
-            android:textColor="@color/brown"
-            android:textSize="14dp"
-            android:textStyle="bold">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="40dp"
-            android:alpha="0.9"
-            android:fontFamily="@font/opensans"
-            android:text="1 TABLET"
-            android:textColor="@color/brown"
-            android:textSize="14dp"
-            android:textStyle="bold">
-        </TextView>
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="75dp"
-            android:alpha="0.9"
-            android:fontFamily="@font/opensans"
-            android:text="Sesudah makan &amp; Sebelum tidur"
-            android:textAlignment="textEnd"
-            android:textColor="@color/brown"
-            android:textSize="14dp">
-        </TextView>
+            <TextView
+                android:id="@+id/ampm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="105dp"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="55dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="-"
+                android:textColor="@color/brown"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="105dp"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="65dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="-"
+                android:textColor="@color/brown"
+                android:textSize="36dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="-"
+                android:textColor="@color/brown"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dosage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="-"
+                android:textColor="@color/brown"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/instruction"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="75dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="-"
+                android:textAlignment="textEnd"
+                android:textColor="@color/brown"
+                android:textSize="14dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/nodata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:alpha="0.9"
+                android:fontFamily="@font/opensans"
+                android:text="No Data"
+                android:textAlignment="center"
+                android:textColor="@color/brown"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
 
@@ -174,7 +201,6 @@
         android:orientation="horizontal">
 
         <RelativeLayout
-            android:id="@+id/dosage"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/rect_white"

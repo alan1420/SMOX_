@@ -36,9 +36,9 @@ class PatientList : AppCompatActivity() {
         // fill in any details dynamically here
         var data = ""
 
-        getToken(object: TokenResult {
-            override fun onSuccess(token: GetTokenResult) {
-                sendDataGET("show-patient", token.token.toString(), this@PatientList,
+        getToken(this, object: TokenResult {
+            override fun onSuccess(token: String) {
+                sendDataGET("show-patient", token, this@PatientList,
                     object : VolleyResult {
                         override fun onSuccess(response: JSONObject) {
                             if (!response.has("empty")) {
@@ -95,14 +95,13 @@ class PatientList : AppCompatActivity() {
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
         view.startAnimation(clickEffect)
         //Get Data!
-        getToken(object: TokenResult {
-            override fun onSuccess(token: GetTokenResult) {
+        getToken(this, object: TokenResult {
+            override fun onSuccess(token: String) {
                 var urlPath = "get-caretaker-data?patient_id=$id"
 
-                sendDataGET(urlPath, token.token.toString(),this@PatientList,
+                sendDataGET(urlPath, token,this@PatientList,
                     object : VolleyResult {
                         override fun onSuccess(response: JSONObject) {
-                            println(urlPath)
                             val isFileCreated: Boolean = createFile(this@PatientList,
                                 "storage.json", response.toString())
                             //proceed with storing the first todo or show ui

@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.example.smox.R
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smox.SplashActivity
+import com.example.smox.createFile
 import com.example.smox.readFile
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
@@ -44,6 +45,10 @@ class Menu : AppCompatActivity() {
 
     fun logout(view: View) {
         auth.signOut()
+        createFile(this,
+            "storage.json", "{}")
+        createFile(this,
+            "store_token.json", "{}")
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
         val intent = Intent(this, SplashActivity::class.java)

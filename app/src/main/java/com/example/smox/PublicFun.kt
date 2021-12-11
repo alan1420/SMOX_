@@ -8,6 +8,8 @@ import org.json.JSONObject
 import com.example.smox.patient.Homepage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GetTokenResult
+import com.google.gson.Gson
+import com.google.gson.JsonObject
 import org.apache.http.conn.ConnectTimeoutException
 import org.json.JSONException
 import org.xmlpull.v1.XmlPullParserException
@@ -27,7 +29,7 @@ interface VolleyResult {
 }
 
 interface TokenResult {
-    fun onSuccess(token: GetTokenResult)
+    fun onSuccess(token: String)
 }
 
 val ServerIP = "103.146.34.5"
@@ -74,8 +76,8 @@ fun sendDataGET(path: String, token: String, context: Context, result: VolleyRes
             return headers
         }
     }
-    //jsonObjectRequest.retryPolicy = DefaultRetryPolicy(5000,
-    //    5, 1F)
+    jsonObjectRequest.retryPolicy = DefaultRetryPolicy(5000,
+        5, 1F)
     jsonObjectRequest.setShouldCache(false)
     val queue = VolleySingleton.getInstance(context).requestQueue
     queue.add(jsonObjectRequest)
@@ -126,21 +128,34 @@ fun toHomePage(context: Context, role: Int, name: String?) {
     }
 }
 
-fun getToken(result: TokenResult) {
+fun getToken(context: Context, result: TokenResult) {
     val auth = FirebaseAuth.getInstance()
     val firebaseUser = auth.currentUser
     if (firebaseUser != null) {
-        firebaseUser.getIdToken(false).addOnSuccessListener {
-            val expired = it.expirationTimestamp
-            val zoneId: ZoneId = ZoneId.systemDefault()
-            val current = LocalDateTime.now().plusMinutes(30).atZone(zoneId).toEpochSecond()
-            if (current > expired) {
-                println("Token expired, will get new one")
-                firebaseUser.getIdToken(true).addOnSuccessListener{ it2 ->
-                    result.onSuccess(it2)
+        val tokenData = readFile(context, "store_token.json")
+        if (tokenData != null) {
+            val jsonData = Gson().fromJson(tokenData, JsonObject::class.java)
+            if (jsonData.has("expire")) {
+                val expire = jsonData.get("expire").asLong
+                val zoneId: ZoneId = ZoneId.systemDefault()
+                val current = LocalDateTime.now().plusMinutes(30).atZone(zoneId).toEpochSecond()
+                //If token not expired
+                if (current < expire) {
+                    println("Using old token, expired at: " + expire)
+                    val token = jsonData.get("token").asString
+                    result.onSuccess(token)
+                    return
                 }
-            } else
-                result.onSuccess(it)
+            }
+            firebaseUser.getIdToken(true).addOnSuccessListener{
+                println("Generating token, expired at: " + it.expirationTimestamp)
+                val newData = Gson().fromJson("{}", JsonObject::class.java)
+                newData.addProperty("token", it.token.toString())
+                newData.addProperty("expire", it.expirationTimestamp.toString())
+                createFile(context,
+                    "store_token.json", newData.toString())
+                result.onSuccess(it.token.toString())
+            }
         }
     }
 }

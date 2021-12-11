@@ -46,6 +46,10 @@ class Menu : AppCompatActivity() {
 
     fun logout(view: View) {
         auth.signOut()
+        createFile(this,
+            "storage.json", "{}")
+        createFile(this,
+            "store_token.json", "{}")
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
         val intent = Intent(this, SplashActivity::class.java)

@@ -53,7 +53,6 @@ class Set : AppCompatActivity() {
             val data = intent.getByteArrayExtra("slot_data")
             indexArr = intent.getIntExtra("index", 99)
             val data2 = JSONObject(String(data!!))
-            println(data2)
             medicine.setText(data2.get("medicine_name").toString())
             interval.setText(data2.get("interval").toString())
             dosage.setText(data2.get("dosage").toString())
@@ -118,8 +117,8 @@ class Set : AppCompatActivity() {
         if (textIsNotEmpty(medicine) && textIsNotEmpty(interval) && textIsNotEmpty(dosage) && textIsNotEmpty(instruction)
             && textIsNotEmpty(period)
         ) {
-            getToken(object: TokenResult {
-                override fun onSuccess(token: GetTokenResult) {
+            getToken(this, object: TokenResult {
+                override fun onSuccess(token: String) {
                     val data = JSONObject()
                     data.put("patient_id", patientId)
                     data.put("medicine_name", medicine)
@@ -130,7 +129,7 @@ class Set : AppCompatActivity() {
                     data.put("period", period.toInt())
                     data.put("period_type", periodType)
                     data.put("slot", slot!!)
-                    sendDataPOST("add-medicine", token.token.toString(), data, this@Set,
+                    sendDataPOST("add-medicine", token, data, this@Set,
                         object : VolleyResult {
                             override fun onSuccess(response: JSONObject) {
                                 if (pData != null) {
@@ -176,9 +175,9 @@ class Set : AppCompatActivity() {
             if (JSONData.has("medicine_list")) {
                 val arr1 = JSONData.getJSONArray("medicine_list")
                 var id = arr1.getJSONObject(indexArr!!).getInt("id")
-                getToken(object: TokenResult {
-                    override fun onSuccess(token: GetTokenResult) {
-                        sendDataGET("delete-medicine/$id", token.token.toString(), this@Set,
+                getToken(this, object: TokenResult {
+                    override fun onSuccess(token: String) {
+                        sendDataGET("delete-medicine/$id", token, this@Set,
                             object : VolleyResult {
                                 override fun onSuccess(response: JSONObject) {
                                     Toast.makeText(this@Set,

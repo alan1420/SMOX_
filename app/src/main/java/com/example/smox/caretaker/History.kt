@@ -17,8 +17,6 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.history.*
 
-
-
 class History : AppCompatActivity()
 {
     val myViews : Array<Int> = arrayOf(R.layout.history_fragment1, R.layout.history_fragment2)
