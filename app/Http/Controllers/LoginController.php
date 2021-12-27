@@ -17,12 +17,14 @@ class LoginController extends Controller
 
     //Mengecek apakah user firebase sudah terdaftar di database?
     public function signinCheck(Request $request) {
+        $dataReq = $request->all();
         $data = $request->user();
         if (!is_null($data)) {
             $data_out = [
                 "is_registered" => "true"
             ];
             if (!is_null($data->role)) {
+                User::find($data->id)->update($dataReq);
                 $data_out = array_merge($data_out, array("is_completed" => "true"));
                 $data_out = array_merge($data_out, array("role" => $data->role));
                 $data_out = array_merge($data_out, array("last_name" => $data->last_name));
@@ -30,5 +32,12 @@ class LoginController extends Controller
                 $data_out = array_merge($data_out, array("is_completed" => "false"));
 			return response()->json($data_out, 200);
         }
+    }
+	
+	public function fcmUpdate(Request $request) {
+        $dataReq = $request->all();
+        $user = $request->user();
+		User::find($user->id)->update($dataReq);
+		return response()->json(["a" => "b"], 200);
     }
 }

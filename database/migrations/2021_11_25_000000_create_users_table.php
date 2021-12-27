@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('role')->nullable();
             //$table->string('phoneNumber');
             //$table->string('email')->unique();
+            $table->string('fcm_token')->nullable();
             $table->timestamps();
         });
     }

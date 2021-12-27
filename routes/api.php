@@ -25,7 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('signup', [UserController::class, 'store']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('signinCheck', [LoginController::class, 'signinCheck']);
+    Route::post('signinCheck', [LoginController::class, 'signinCheck']);
+    Route::post('fcm-update', [LoginController::class, 'fcmUpdate']);
     Route::post('signup-finalize', [UserController::class, 'storeFinal']);
     
     Route::get('checkUsername/{username}', [CaretakerController::class, 'checkUser']);
@@ -39,4 +40,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('show-caretaker', [PatientController::class, 'showCaretaker']);
     Route::get('get-patient-data', [PatientController::class, 'getPatientData']);
 });
+
+Route::get('get-patient-data', [PatientController::class, 'getPatientData']);
 
