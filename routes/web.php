@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Classes\FirebaseToken;
+use App\Http\Controllers\PatientController;
 use App\Models\User;
 use App\Models\PatientAssignment;
 use App\Models\PatientHistory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Kreait\Firebase\Messaging\Notification;
+use Kreait\Firebase\Messaging\CloudMessage;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +25,6 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('get-patient-data', [PatientController::class, 'getPatientData']);
+
