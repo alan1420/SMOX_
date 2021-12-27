@@ -40,6 +40,3 @@ Route::middleware('auth:api')->group(function () {
     Route::get('show-caretaker', [PatientController::class, 'showCaretaker']);
     Route::get('get-patient-data', [PatientController::class, 'getPatientData']);
 });
-
-Route::get('get-patient-data', [PatientController::class, 'getPatientData']);
-
