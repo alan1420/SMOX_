@@ -9,14 +9,18 @@ use Illuminate\Http\Request;
 use Firebase\Auth\Token\Exception\InvalidToken;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Arr;
+use Kreait\Firebase\Messaging\Notification;
+use Kreait\Firebase\Messaging\CloudMessage;
 
 class CaretakerController extends Controller
 {
     public $auth;
+    public $messaging;
 
     public function __construct()
     {
         $this->auth = app('firebase.auth');
+        $this->messaging = app('firebase.messaging');
     }
 
     public function checkUser($username) {
@@ -65,6 +69,25 @@ class CaretakerController extends Controller
                 'patient_id' => $patientId,
                 'slot' => $slot
             ], $data_req);
+
+            if ($tokenfcm = User::find($patientId)->fcm_token != null) {
+                //FCM Codes
+                $deviceToken = $tokenfcm;
+                $title = 'SMOX-app';
+                $body = 'Caretaker has updated your data.';
+                $notification = Notification::create($title, $body);
+                // $data = [
+                //     'first_key' => 'First Value',
+                //     'second_key' => 'Second Value',
+                // ];
+
+                $message = CloudMessage::withTarget('token', $deviceToken)
+                    ->withNotification($notification) // optional
+                    //->withData($data) // optional
+                ;
+                $this->messaging->send($message);
+            }
+            
             return response()->json($data, 200);				
         } catch(\Illuminate\Database\QueryException $e){
             return response('', 500);
