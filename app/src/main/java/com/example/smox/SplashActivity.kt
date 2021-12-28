@@ -6,12 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Handler
 import android.util.Log
+import android.view.View
 import com.android.volley.VolleyError
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GetTokenResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 import org.json.JSONObject
 
 class SplashActivity : AppCompatActivity() {
@@ -23,6 +29,7 @@ class SplashActivity : AppCompatActivity() {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
+    private var fcm: FirebaseMessaging = FirebaseMessaging.getInstance()
     // [END declare_auth]
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +45,10 @@ class SplashActivity : AppCompatActivity() {
         if (!isFilePresent(this, "store_token.json")) {
             createFile(this,
                 "store_token.json", "{}")
+        }
+        if (!isFilePresent(this, "store_token_fcm.json")) {
+            createFile(this,
+                "store_token_fcm.json", "{}")
         }
     }
 
@@ -57,7 +68,17 @@ class SplashActivity : AppCompatActivity() {
 
                 getToken(this, object: TokenResult {
                     override fun onSuccess(token: String) {
-                        sendDataGET("signinCheck", token, this@SplashActivity,
+                        val newData = JSONObject()
+                        while(true) {
+                            var data = readFile(this@SplashActivity, "store_token_fcm.json")
+                            var jsonData = Gson().fromJson(data, JsonObject::class.java)
+                            if (jsonData.has("sync")) {
+                                newData.put("fcm_token", jsonData.get("fcm_token").asString)
+                                break
+                            }
+                        }
+                        println(newData)
+                        sendDataPOST("signinCheck", token, newData, this@SplashActivity,
                             object : VolleyResult {
                                 override fun onSuccess(response: JSONObject) {
                                     if (!response.has("error")) {
@@ -92,6 +113,7 @@ class SplashActivity : AppCompatActivity() {
                                 }
                             }
                         )
+
                     }
                 })
 

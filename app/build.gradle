@@ -55,13 +55,11 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth-ktx'
 
-    // Import the BoM for the Firebase platform
-    implementation platform('com.google.firebase:firebase-bom:29.0.0')
-
     // Declare the dependencies for the Firebase Cloud Messaging and Analytics libraries
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-messaging'
-    //implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
 
     // Also declare the dependency for the Google Play services library and specify its version
     implementation 'com.google.android.gms:play-services-auth:19.2.0'

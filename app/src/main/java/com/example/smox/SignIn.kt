@@ -26,6 +26,12 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.tasks.await
 import org.json.JSONObject
 
 
@@ -47,6 +53,7 @@ class SignIn : AppCompatActivity() {
 
     // [START declare_auth]
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var fcm: FirebaseMessaging = FirebaseMessaging.getInstance()
     // [END declare_auth]
 
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -72,7 +79,6 @@ class SignIn : AppCompatActivity() {
         mShowPassword = findViewById(R.id.showpassword)
         mHidePassword = findViewById(R.id.hidepassword)
 
-
         mShowPassword.visibility = View.VISIBLE;
         mHidePassword.visibility = View.INVISIBLE;
 
@@ -85,7 +91,6 @@ class SignIn : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         // [END config_signin]
-
     }
 
     // [START on_start_check_user]
@@ -170,11 +175,22 @@ class SignIn : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
+//        val fcmtoken = getFCMToken(this, fcm)
         if (user != null) {
             val name = user.displayName.toString()
             user.getIdToken(true).addOnSuccessListener {
                 Log.d("Token ID", it.token.toString()) // token #1
-                sendDataGET("signinCheck", it.token.toString(), this.applicationContext,
+                val newData = JSONObject()
+                while(true) {
+                    var data = readFile(this@SignIn, "store_token_fcm.json")
+                    var jsonData = Gson().fromJson(data, JsonObject::class.java)
+                    if (jsonData.has("sync")) {
+                        newData.put("fcm_token", jsonData.get("fcm_token").asString)
+                        break
+                    }
+                }
+                println(newData)
+                sendDataPOST("signinCheck", it.token.toString(), newData, this@SignIn,
                     object : VolleyResult {
                         override fun onSuccess(response: JSONObject) {
                             if (!response.has("error")) {

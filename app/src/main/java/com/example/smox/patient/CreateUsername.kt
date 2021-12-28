@@ -13,11 +13,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import org.json.JSONObject
 import com.example.smox.*
+import com.google.firebase.messaging.FirebaseMessaging
 
 class CreateUsername : AppCompatActivity() {
 
     var auth = FirebaseAuth.getInstance()
     var currentUser: FirebaseUser? = null
+    private var fcm: FirebaseMessaging = FirebaseMessaging.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +31,7 @@ class CreateUsername : AppCompatActivity() {
         currentUser = auth.currentUser
     }
 
-    fun register_p(view: View) {
+    suspend fun register_p(view: View) {
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
         val mUsername = findViewById<EditText>(R.id.enterusername).text.toString()

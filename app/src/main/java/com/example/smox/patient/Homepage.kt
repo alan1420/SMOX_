@@ -1,6 +1,9 @@
 package com.example.smox.patient
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,13 +13,18 @@ import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.android.volley.VolleyError
 import kotlinx.android.synthetic.main.p_homepage.*
 import com.example.smox.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -29,6 +37,8 @@ class Homepage : AppCompatActivity() {
     var slot2Data = JsonObject()
     var dataUser = JsonObject()
 
+    lateinit var  receiver: BroadcastReceiver
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.p_homepage)
@@ -36,10 +46,28 @@ class Homepage : AppCompatActivity() {
             val data = intent.getStringExtra("name")
             findViewById<TextView>(R.id.sa).text = "HELLO, $data"
         }
+
+        receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                val datafcm = intent?.getByteArrayExtra("fcm")
+                val jsonData = Gson().fromJson(datafcm?.let { String(it) }, JsonObject::class.java)
+
+                println(jsonData)
+
+                AlertDialog
+                    .Builder(this@Homepage)
+                    .setMessage(jsonData.toString())
+                    .setTitle("Ini adalah title")
+                    .setPositiveButton("Ok") {_,_ ->}
+                    .create().show()
+            }
+        }
     }
 
     override fun onResume() {
         super.onResume()
+        val filter = IntentFilter("INTENT_ACTION_SEND_MESSAGE")
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, filter)
 
         //Jika tidak ada update dari activity lain
         if (intent.hasExtra("name")) {
@@ -81,6 +109,11 @@ class Homepage : AppCompatActivity() {
                 loadData()
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver)
     }
 
     fun loadData() {
