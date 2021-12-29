@@ -11,6 +11,7 @@ import com.example.smox.SplashActivity
 import com.example.smox.createFile
 import com.example.smox.readFile
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.c_menu.*
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.c_menu.*
 class Menu : AppCompatActivity() {
 
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var fcm: FirebaseMessaging = FirebaseMessaging.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +47,13 @@ class Menu : AppCompatActivity() {
 
     fun logout(view: View) {
         auth.signOut()
+        fcm.deleteToken()
         createFile(this,
             "storage.json", "{}")
         createFile(this,
             "store_token.json", "{}")
+        createFile(this,
+            "store_token_fcm.json", "{}")
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
         val intent = Intent(this, SplashActivity::class.java)

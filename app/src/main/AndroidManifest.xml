@@ -41,10 +41,7 @@
             android:name=".patient.History"
             android:exported="false" />
         <activity
-            android:name=".patient.HistoryDetailOne"
-            android:exported="false" />
-        <activity
-            android:name=".patient.HistoryDetailTwo"
+            android:name=".patient.HistoryDetail"
             android:exported="false" />
         <activity
             android:name=".patient.Menu"
@@ -77,10 +74,7 @@
             android:name=".caretaker.History"
             android:exported="false" />
         <activity
-            android:name=".caretaker.HistoryDetailOne"
-            android:exported="false" />
-        <activity
-            android:name=".caretaker.HistoryDetailTwo"
+            android:name=".caretaker.HistoryDetail"
             android:exported="false" />
         <activity
             android:name=".caretaker.Menu"

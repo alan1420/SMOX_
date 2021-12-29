@@ -181,15 +181,11 @@ class SignIn : AppCompatActivity() {
             user.getIdToken(true).addOnSuccessListener {
                 Log.d("Token ID", it.token.toString()) // token #1
                 val newData = JSONObject()
-                while(true) {
-                    var data = readFile(this@SignIn, "store_token_fcm.json")
-                    var jsonData = Gson().fromJson(data, JsonObject::class.java)
-                    if (jsonData.has("sync")) {
-                        newData.put("fcm_token", jsonData.get("fcm_token").asString)
-                        break
-                    }
+                var data = readFile(this@SignIn, "store_token_fcm.json")
+                var jsonData = Gson().fromJson(data, JsonObject::class.java)
+                if (jsonData.has("sync")) {
+                    newData.put("fcm_token", jsonData.get("fcm_token").asString)
                 }
-                println(newData)
                 sendDataPOST("signinCheck", it.token.toString(), newData, this@SignIn,
                     object : VolleyResult {
                         override fun onSuccess(response: JSONObject) {

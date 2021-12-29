@@ -24,6 +24,8 @@ class History : AppCompatActivity()
     var userData: JsonArray? = null
     var slot1Data: JsonObject? = null
     var slot2Data: JsonObject? = null
+    var history1: JsonArray? = null
+    var history2: JsonArray? = null
     var count1 = "-"
     var count2 = "-"
 
@@ -49,11 +51,13 @@ class History : AppCompatActivity()
             }
             if (jsonData.has("medicine_history")){
                 if (jsonData.get("medicine_history").asJsonObject.has("history1"))
-                    count1 = jsonData.get("medicine_history").asJsonObject
-                        .get("history1").asJsonArray.size().toString()
+                    history1 = jsonData.get("medicine_history").asJsonObject
+                                .get("history1").asJsonArray
+                    count1 = history1?.size().toString()
                 if (jsonData.get("medicine_history").asJsonObject.has("history2"))
-                    count2 = jsonData.get("medicine_history").asJsonObject
-                        .get("history2").asJsonArray.size().toString()
+                    history2 = jsonData.get("medicine_history").asJsonObject
+                                .get("history2").asJsonArray
+                    count2 = history2?.size().toString()
             }
         }
 
@@ -117,7 +121,9 @@ class History : AppCompatActivity()
     }
 
     fun gotoHistoryDetailOne(view: View) {
-        val intent = Intent(this, HistoryDetailOne::class.java)
+        val intent = Intent(this, HistoryDetail::class.java)
+        if (history1 != null)
+            intent.putExtra("history", history1.toString())
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
@@ -125,7 +131,9 @@ class History : AppCompatActivity()
     }
 
     fun gotoHistoryDetailTwo(view: View) {
-        val intent = Intent(this, HistoryDetailTwo::class.java)
+        val intent = Intent(this, HistoryDetail::class.java)
+        if (history2 != null)
+            intent.putExtra("history", history2.toString())
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
