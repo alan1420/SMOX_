@@ -17,7 +17,7 @@ import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
-import kotlinx.android.synthetic.main.history_detail1.*
+import kotlinx.android.synthetic.main.history_detail.*
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.YearMonth
