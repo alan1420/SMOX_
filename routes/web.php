@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Classes\FirebaseToken;
+use App\Http\Controllers\CaretakerController;
 use App\Http\Controllers\PatientController;
 use App\Models\User;
 use App\Models\PatientAssignment;
@@ -27,4 +28,4 @@ Route::get('/', function () {
 });
 
 Route::get('get-patient-data', [PatientController::class, 'getPatientData']);
-
+Route::get('push-notification/{idpatient}/{idmedicine}', [CaretakerController::class, 'pushNotification']);

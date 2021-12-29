@@ -70,9 +70,9 @@ class CaretakerController extends Controller
                 'slot' => $slot
             ], $data_req);
 
-            if ($tokenfcm = User::find($patientId)->fcm_token != null) {
+            if (User::find($patientId)->fcm_token != null) {
                 //FCM Codes
-                $deviceToken = $tokenfcm;
+                $deviceToken = User::find($patientId)->fcm_token;
                 $title = 'SMOX-app';
                 $body = 'Caretaker has updated your data.';
                 $notification = Notification::create($title, $body);
@@ -104,6 +104,35 @@ class CaretakerController extends Controller
             return response('', 500);
         } catch (\Throwable $e) {
             return response('', 500);                
+        }       
+    }
+
+    public function pushNotification($idpatient, $idmedicine) {
+        try {
+            $medicinedata = PatientMedicine::find($idmedicine);
+            $patientdata = User::find($idpatient);	
+            if ($patientdata->fcm_token != null) {
+                //FCM Codes
+                $deviceToken = $patientdata->fcm_token;
+                $title = 'SMOX-app';
+                $body = 'Obat ' . $medicinedata->medicine_name . ' telah diminum';
+                $notification = Notification::create($title, $body);
+                // $data = [
+                //     'first_key' => 'First Value',
+                //     'second_key' => 'Second Value',
+                // ];
+
+                $message = CloudMessage::withTarget('token', $deviceToken)
+                    ->withNotification($notification) // optional
+                    //->withData($data) // optional
+                ;
+                return $this->messaging->send($message);
+            }
+            return "Nothing.";
+        } catch(\Illuminate\Database\QueryException $e){
+            return response('', 500);
+        } catch (\Throwable $e) {
+            return response($e, 500);                
         }       
     }
 
