@@ -107,10 +107,10 @@ class CaretakerController extends Controller
         }       
     }
 
-    public function pushNotification($idpatient, $idmedicine) {
+    public function pushNotification($idmedicine) {
         try {
             $medicinedata = PatientMedicine::find($idmedicine);
-            $patientdata = User::find($idpatient);	
+            $patientdata = $medicinedata->patient()->first();	
             if ($patientdata->fcm_token != null) {
                 //FCM Codes
                 $deviceToken = $patientdata->fcm_token;

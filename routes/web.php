@@ -28,4 +28,4 @@ Route::get('/', function () {
 });
 
 Route::get('get-patient-data', [PatientController::class, 'getPatientData']);
-Route::get('push-notification/{idpatient}/{idmedicine}', [CaretakerController::class, 'pushNotification']);
+Route::get('push-notification/{idmedicine}', [CaretakerController::class, 'pushNotification']);

@@ -12,7 +12,7 @@ class PatientMedicine extends Model
     protected $guarded = ['id'];
 
     public function patient(){
-        return $this->belongsTo(PatientAssignment::class, 'patient_id');
+        return $this->belongsTo(User::class, 'patient_id');
     }
 
     public function patientHistory(){
