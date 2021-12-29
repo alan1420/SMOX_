@@ -37,13 +37,11 @@ class ConfirmRole : AppCompatActivity() {
             sendDataPOST("signup-finalize", it.token.toString(), dataJson, this.applicationContext,
                 object : VolleyResult {
                     override fun onSuccess(response: JSONObject) {
-                        if (response != null) {
-                            val intent = Intent(this@ConfirmRole, Homepage::class.java)
-                            intent.putExtra("name", response.getString("name"))
-                            startActivity(intent)
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                            finish()
-                        }
+                        val intent = Intent(this@ConfirmRole, Homepage::class.java)
+                        intent.putExtra("name", response.getString("name"))
+                        startActivity(intent)
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                        finish()
                     }
 
                     override fun onError(error: VolleyError?) {
