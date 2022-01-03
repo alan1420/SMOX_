@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Firebase\Auth\Token\Exception\InvalidToken;
 use App\Http\Controllers\PatientController;
+use App\Models\PatientHistory;
 use Illuminate\Support\Arr;
 use Kreait\Firebase\Messaging\Notification;
 use Kreait\Firebase\Messaging\CloudMessage;
@@ -76,14 +77,13 @@ class CaretakerController extends Controller
                 $title = 'SMOX-app';
                 $body = 'Caretaker has updated your data.';
                 $notification = Notification::create($title, $body);
-                // $data = [
-                //     'first_key' => 'First Value',
-                //     'second_key' => 'Second Value',
-                // ];
+                $data = [
+                    'message' => $body,
+                ];
 
                 $message = CloudMessage::withTarget('token', $deviceToken)
                     ->withNotification($notification) // optional
-                    //->withData($data) // optional
+                    ->withData($data) // optional
                 ;
                 $this->messaging->send($message);
             }
@@ -117,20 +117,21 @@ class CaretakerController extends Controller
                 $title = 'SMOX-app';
                 $body = 'Obat ' . $medicinedata->medicine_name . ' telah diminum';
                 $notification = Notification::create($title, $body);
-                // $data = [
-                //     'first_key' => 'First Value',
-                //     'second_key' => 'Second Value',
-                // ];
+                $data = [
+                    'message' => $body,
+                ];
 
                 $message = CloudMessage::withTarget('token', $deviceToken)
                     ->withNotification($notification) // optional
-                    //->withData($data) // optional
+                    ->withData($data) // optional
                 ;
-                return $this->messaging->send($message);
+                $result = $this->messaging->send($message);
+                PatientHistory::create(['medicine_patient_id' => $idmedicine]);
+                return $result;
             }
             return "Nothing.";
         } catch(\Illuminate\Database\QueryException $e){
-            return response('', 500);
+            return response($e, 500);
         } catch (\Throwable $e) {
             return response($e, 500);                
         }       
