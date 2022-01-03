@@ -40,4 +40,11 @@ class LoginController extends Controller
 		User::find($user->id)->update($dataReq);
 		return response()->json(["a" => "b"], 200);
     }
+	
+	public function logout() {
+        $user = request()->user();
+		User::find($user->id)->update(['fcm_token' => null]);
+		$this->auth->revokeRefreshTokens($user->uuid);
+		return response()->json(["a" => "b"], 200);
+    }
 }

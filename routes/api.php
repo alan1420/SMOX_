@@ -26,6 +26,7 @@ Route::post('signup', [UserController::class, 'store']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('signinCheck', [LoginController::class, 'signinCheck']);
+    Route::get('logout', [LoginController::class, 'logout']);
     Route::post('fcm-update', [LoginController::class, 'fcmUpdate']);
     Route::post('signup-finalize', [UserController::class, 'storeFinal']);
     
