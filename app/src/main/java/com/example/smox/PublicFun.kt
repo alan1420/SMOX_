@@ -29,8 +29,8 @@ interface TokenResult {
     fun onSuccess(token: String)
 }
 
-//val ServerIP = "103.146.34.6"
-val ServerIP = "192.168.0.88"
+val ServerIP = "103.146.34.6"
+//val ServerIP = "192.168.0.88"
 
 fun sendDataPOST(path: String, token: String, dataJson: JSONObject, context: Context, result: VolleyResult) {
     val url = "http://$ServerIP/smox/public/api/$path"
