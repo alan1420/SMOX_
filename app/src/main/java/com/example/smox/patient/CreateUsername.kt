@@ -1,6 +1,7 @@
 package com.example.smox.patient
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,19 +14,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import org.json.JSONObject
 import com.example.smox.*
-import com.google.firebase.messaging.FirebaseMessaging
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 
 class CreateUsername : AppCompatActivity() {
 
     var auth = FirebaseAuth.getInstance()
     var currentUser: FirebaseUser? = null
-    private var fcm: FirebaseMessaging = FirebaseMessaging.getInstance()
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.p_username)
+
+        sharedPref = getSharedPreferences("smox", MODE_PRIVATE)
     }
 
     override fun onStart() {
@@ -40,10 +40,9 @@ class CreateUsername : AppCompatActivity() {
         if (textIsNotEmpty(mUsername)) {
             val dataJson = JSONObject()
 
-            var data = readFile(this@CreateUsername, "store_token_fcm.json")
-            var jsonData = Gson().fromJson(data, JsonObject::class.java)
-            if (jsonData.has("sync")) {
-                dataJson.put("fcm_token", jsonData.get("fcm_token").asString)
+            val fcmToken = sharedPref.getString("fcm_token", null)
+            if (fcmToken != null) {
+                dataJson.put("fcm_token", fcmToken)
             }
 
             currentUser?.getIdToken(true)?.addOnSuccessListener {

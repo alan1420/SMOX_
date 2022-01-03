@@ -7,27 +7,21 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
-import com.example.smox.R
 import androidx.appcompat.app.AppCompatActivity
-import com.example.smox.SplashActivity
-import com.example.smox.createFile
-import com.example.smox.readFile
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.messaging.FirebaseMessaging
+import com.android.volley.VolleyError
+import com.example.smox.*
 import kotlinx.android.synthetic.main.c_menu.*
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import org.json.JSONObject
 
 class Menu : AppCompatActivity() {
-
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private var fcm: FirebaseMessaging = FirebaseMessaging.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.c_menu)
 
-        var userData = readFile(this, "storage.json")
+        val userData = readFile(this, "storage.json")
         if (userData != null) {
             val jsonData = Gson().fromJson(userData, JsonObject::class.java)
             val userData = jsonData.get("user_data").asJsonObject
@@ -35,34 +29,47 @@ class Menu : AppCompatActivity() {
             findViewById<TextView>(R.id.birthday).text = userData.get("birthday").getAsString()
             findViewById<TextView>(R.id.email).text = userData.get("email").getAsString()
             findViewById<TextView>(R.id.phoneNumber).text = userData.get("phoneNumber").getAsString()
-            //println(userData)
         }
     }
 
     fun backtoHome(view: View) {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
         view.startAnimation(clickEffect)
     }
 
     fun logout(view: View) {
-        auth.signOut()
-        fcm.deleteToken()
-        createFile(this,
-            "storage.json", "{}")
-        createFile(this,
-            "store_token.json", "{}")
-        createFile(this,
-            "store_token_fcm.json", "{}")
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        view.startAnimation(clickEffect)
-        val intent = Intent(this, SplashActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-        finish()
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        getToken(this, object: TokenResult {
+            override fun onSuccess(token: String) {
+                sendDataGET("logout", token,this@Menu,
+                    object : VolleyResult {
+                        override fun onSuccess(response: JSONObject) {
+                            getSharedPreferences("smox", MODE_PRIVATE).edit().remove("auth_token").remove("auth_expire").apply()
+                            createFile(this@Menu,
+                                "storage.json", "{}")
+                            val clickEffect = AnimationUtils.loadAnimation(this@Menu, R.anim.scale_down)
+                            view.startAnimation(clickEffect)
+                            val intent = Intent(this@Menu, SplashActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                            finish()
+                            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                        }
+
+                        override fun onError(error: VolleyError?) {
+                            if (error != null) {
+                                Log.d("Volley", getVolleyError(error))
+                                Toast.makeText(this@Menu,
+                                    getVolleyError(error),
+                                    Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                )
+            }
+        })
     }
 }

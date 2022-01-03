@@ -101,7 +101,7 @@ class SignUp : AppCompatActivity() {
         val birthday = mBirthday?.text.toString()
         val phoneNumber = mPhoneNumber?.text.toString()
         val password = mPassword?.text.toString()
-        //val CPassword = mCPassword!!.text.toString()
+        val CPassword = mCPassword?.text.toString()
 
         val data = JSONObject()
         data.put("first_name", firstName)
@@ -109,14 +109,17 @@ class SignUp : AppCompatActivity() {
         data.put("birthday", birthday)
         data.put("phoneNumber", phoneNumber)
 
-        //println(data)
         if(textIsNotEmpty(firstName) && textIsNotEmpty(lastName) && textIsNotEmpty(birthday)
             && textIsNotEmpty(phoneNumber)) {
             if (!isGoogle) {
                 if (textIsNotEmpty(mEmail?.text.toString()) && textIsNotEmpty(password)) {
                     data.put("email", mEmail!!.text.toString())
                     data.put("password", password)
-                } else {
+                } else if (password != CPassword) {
+                    Toast.makeText(this@SignUp, "Please check your password!", Toast.LENGTH_SHORT).show()
+                    return
+                }
+                else {
                     Toast.makeText(this@SignUp, "Please re-check your data!", Toast.LENGTH_SHORT).show()
                     return
                 }

@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.smox.R
 import com.google.gson.Gson
 import com.google.gson.JsonArray
-import com.kizitonwose.calendarview.*
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
@@ -21,7 +20,6 @@ import kotlinx.android.synthetic.main.history_detail.*
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.YearMonth
-import java.util.*
 
 
 class HistoryDetail : AppCompatActivity() {

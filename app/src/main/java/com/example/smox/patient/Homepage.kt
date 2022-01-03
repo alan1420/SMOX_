@@ -77,7 +77,6 @@ class Homepage : AppCompatActivity() {
                     sendDataGET("get-patient-data", token,this@Homepage,
                         object : VolleyResult {
                             override fun onSuccess(response: JSONObject) {
-                                println(response)
                                 val isFileCreated: Boolean = createFile(this@Homepage,
                                     "storage.json", response.toString())
                                 dataUser = Gson().fromJson(response.toString(), JsonObject::class.java)

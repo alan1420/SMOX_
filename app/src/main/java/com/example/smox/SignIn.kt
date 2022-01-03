@@ -1,6 +1,7 @@
 package com.example.smox
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -11,6 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
@@ -45,6 +47,7 @@ class SignIn : AppCompatActivity() {
     private lateinit var wave: Wave
     private lateinit var mSignInText: TextView
     var firebaseUser: FirebaseUser? = null
+    private lateinit var sharedPref: SharedPreferences
 
     private val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
         firebaseUser = firebaseAuth.currentUser
@@ -62,6 +65,8 @@ class SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_in)
+
+        sharedPref = getSharedPreferences("smox", MODE_PRIVATE)
 
         mSignInText = findViewById(R.id.textSignIn)
         progressbar = findViewById(R.id.spin_kit)
@@ -175,16 +180,14 @@ class SignIn : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-//        val fcmtoken = getFCMToken(this, fcm)
         if (user != null) {
             val name = user.displayName.toString()
             user.getIdToken(true).addOnSuccessListener {
                 Log.d("Token ID", it.token.toString()) // token #1
                 val newData = JSONObject()
-                var data = readFile(this@SignIn, "store_token_fcm.json")
-                var jsonData = Gson().fromJson(data, JsonObject::class.java)
-                if (jsonData.has("sync")) {
-                    newData.put("fcm_token", jsonData.get("fcm_token").asString)
+                val fcmToken = sharedPref.getString("fcm_token" , null)
+                if (fcmToken != null) {
+                    newData.put("fcm_token", fcmToken)
                 }
                 sendDataPOST("signinCheck", it.token.toString(), newData, this@SignIn,
                     object : VolleyResult {

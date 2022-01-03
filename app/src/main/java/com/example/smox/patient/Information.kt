@@ -25,7 +25,6 @@ class Information : AppCompatActivity() {
                 findViewById<TextView>(R.id.caretakerBirthday).text = userData.get("birthday").asString
                 findViewById<TextView>(R.id.caretakerEmail).text = userData.get("email").asString
                 findViewById<TextView>(R.id.caretakerPhone).text = userData.get("phoneNumber").asString
-                //println(userData)
             }
         }
     }

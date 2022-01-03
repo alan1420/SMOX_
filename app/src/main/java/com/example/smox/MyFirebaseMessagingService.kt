@@ -6,21 +6,15 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         Log.d("FCM", "Refreshed token: $token")
 
-        val newData = Gson().fromJson("{}", JsonObject::class.java)
-        newData.addProperty("fcm_token", token)
-        newData.addProperty("sync", false)
-        createFile(this,
-            "store_token_fcm.json", newData.toString())
-        // If you want to send messages to this application instance or
-        // manage this apps subscriptions on the server side, send the
-        // FCM registration token to your app server.
-        //sendRegistrationToServer(token)
+        val edit = getSharedPreferences("smox", MODE_PRIVATE).edit()
+        edit.putString("fcm_token", token)
+        edit.putBoolean("fcm_sync", false)
+        edit.apply()
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {

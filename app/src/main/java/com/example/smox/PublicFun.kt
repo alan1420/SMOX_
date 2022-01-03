@@ -7,18 +7,10 @@ import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONObject
 import com.example.smox.patient.Homepage
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.messaging.FirebaseMessaging
-import com.google.gson.Gson
-import com.google.gson.JsonObject
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.tasks.await
 import org.apache.http.conn.ConnectTimeoutException
 import org.json.JSONException
 import org.xmlpull.v1.XmlPullParserException
 import java.io.*
-import java.lang.Exception
 import java.lang.StringBuilder
 import java.net.ConnectException
 import java.net.MalformedURLException
@@ -37,8 +29,8 @@ interface TokenResult {
     fun onSuccess(token: String)
 }
 
-val ServerIP = "103.146.34.6"
-//val ServerIP = "192.168.0.88"
+//val ServerIP = "103.146.34.6"
+val ServerIP = "192.168.0.88"
 
 fun sendDataPOST(path: String, token: String, dataJson: JSONObject, context: Context, result: VolleyResult) {
     val url = "http://$ServerIP/smox/public/api/$path"
@@ -137,30 +129,26 @@ fun getToken(context: Context, result: TokenResult) {
     val auth = FirebaseAuth.getInstance()
     val firebaseUser = auth.currentUser
     if (firebaseUser != null) {
-        val tokenData = readFile(context, "store_token.json")
-        if (tokenData != null) {
-            val jsonData = Gson().fromJson(tokenData, JsonObject::class.java)
-            if (jsonData.has("expire")) {
-                val expire = jsonData.get("expire").asLong
-                val zoneId: ZoneId = ZoneId.systemDefault()
-                val current = LocalDateTime.now().plusMinutes(30).atZone(zoneId).toEpochSecond()
-                //If token not expired
-                if (current < expire) {
-                    println("Using old token, expired at: " + expire)
-                    val token = jsonData.get("token").asString
-                    result.onSuccess(token)
-                    return
-                }
+        val sharedPref = context.getSharedPreferences("smox", Context.MODE_PRIVATE)
+        val authToken = sharedPref.getString("auth_token", null)
+        val authExpire = sharedPref.getLong("auth_expire", 69)
+        if (authExpire.compareTo(69) != 0) {
+            val zoneId: ZoneId = ZoneId.systemDefault()
+            val current = LocalDateTime.now().plusMinutes(30).atZone(zoneId).toEpochSecond()
+            //If token not expired
+            if (current < authExpire) {
+                println("Using old token, expired at: " + authExpire)
+                authToken?.let { result.onSuccess(it) }
+                return
             }
-            firebaseUser.getIdToken(true).addOnSuccessListener{
-                println("Generating token, expired at: " + it.expirationTimestamp)
-                val newData = Gson().fromJson("{}", JsonObject::class.java)
-                newData.addProperty("token", it.token.toString())
-                newData.addProperty("expire", it.expirationTimestamp.toString())
-                createFile(context,
-                    "store_token.json", newData.toString())
-                result.onSuccess(it.token.toString())
-            }
+        }
+        firebaseUser.getIdToken(true).addOnSuccessListener{
+            println("Generating token, expired at: " + it.expirationTimestamp)
+            val edit = sharedPref.edit()
+            edit.putString("auth_token", it.token.toString())
+            edit.putLong("auth_expire", it.expirationTimestamp)
+            edit.apply()
+            result.onSuccess(it.token.toString())
         }
     }
 }

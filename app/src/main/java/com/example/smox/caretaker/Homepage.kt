@@ -54,7 +54,6 @@ class Homepage : AppCompatActivity() {
         setContentView(R.layout.c_homepage)
         if (intent.hasExtra("name")) {
             val data = intent.getStringExtra("name")
-            //println(data)
             findViewById<TextView>(R.id.sa).text = "HELLO, $data"
         }
 

@@ -44,7 +44,6 @@ class Dosage : AppCompatActivity() {
             if (jsonData.has("medicine_list")) {
                 val scheduleData = jsonData.get("medicine_list").asJsonArray
                 for (i in 0 until scheduleData.size()) {
-                    //println(scheduleData)
                     val item = scheduleData.get(i).asJsonObject
                     val slot = item.get("slot").asInt
                     if (slot == 1) {

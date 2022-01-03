@@ -72,7 +72,6 @@ class Set : AppCompatActivity() {
             if (jsonData.has("patient_data")) {
                 val userData = jsonData.get("patient_data").asJsonObject
                 patientId = userData.get("id").asInt
-                //println(userData)
             }
         }
 

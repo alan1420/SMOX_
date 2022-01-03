@@ -21,13 +21,14 @@ class Patient : AppCompatActivity() {
         if (pData != null) {
             val jsonData = Gson().fromJson(pData, JsonObject::class.java)
             if (jsonData.has("patient_data")) {
-                val userData = jsonData.get("patient_data").asJsonObject
-                findViewById<TextView>(R.id.fullname).text = userData.get("fullname").getAsString()
-                findViewById<TextView>(R.id.birthday).text = userData.get("birthday").getAsString()
-                findViewById<TextView>(R.id.email).text = userData.get("email").getAsString()
-                findViewById<TextView>(R.id.phoneNumber).text = userData.get("phoneNumber").getAsString()
-                patient_name = userData.get("fullname").getAsString()
-                //println(userData)
+                if (jsonData.get("patient_data").isJsonObject) {
+                    val userData = jsonData.get("patient_data").asJsonObject
+                    findViewById<TextView>(R.id.fullname).text = userData.get("fullname").getAsString()
+                    findViewById<TextView>(R.id.birthday).text = userData.get("birthday").getAsString()
+                    findViewById<TextView>(R.id.email).text = userData.get("email").getAsString()
+                    findViewById<TextView>(R.id.phoneNumber).text = userData.get("phoneNumber").getAsString()
+                    patient_name = userData.get("fullname").getAsString()
+                }
             }
         }
     }
