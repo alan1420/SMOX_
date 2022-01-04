@@ -1,0 +1,51 @@
+name: Build and Release
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and Release APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set-up JDK environment
+        uses: actions/setup-java@v2
+        with:
+          distribution: zulu
+          java-version: 11
+
+      - name: Put API to file
+        run: 'echo ${{ secrets.API_KEY }} | base64 -di > app/google-services.json'
+
+      - name: Build all artifacts
+        id: buildAllApks
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 6.5
+          arguments: assembleRelease --warning-mode none
+
+      - uses: r0adkll/sign-android-release@v1
+        name: APK Signing
+        id: sign_app
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_STORE_PASSWORD }}
+
+      - name: Rename file
+        run: mv app-release-unsigned-signed.apk smox.apk
+        working-directory: ./app/build/outputs/apk/release
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: app/build/outputs/apk/release/smox.apk
+          generate_release_notes: true
