@@ -112,14 +112,10 @@ class SignUp : AppCompatActivity() {
         if(textIsNotEmpty(firstName) && textIsNotEmpty(lastName) && textIsNotEmpty(birthday)
             && textIsNotEmpty(phoneNumber)) {
             if (!isGoogle) {
-                if (textIsNotEmpty(mEmail?.text.toString()) && textIsNotEmpty(password)) {
+                if (textIsNotEmpty(mEmail?.text.toString()) && textIsNotEmpty(password) && password == CPassword) {
                     data.put("email", mEmail!!.text.toString())
                     data.put("password", password)
-                } else if (password != CPassword) {
-                    Toast.makeText(this@SignUp, "Please check your password!", Toast.LENGTH_SHORT).show()
-                    return
-                }
-                else {
+                } else {
                     Toast.makeText(this@SignUp, "Please re-check your data!", Toast.LENGTH_SHORT).show()
                     return
                 }
@@ -130,8 +126,8 @@ class SignUp : AppCompatActivity() {
             val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
             view.startAnimation(clickEffect)
 
-            progressbar.visibility = View.VISIBLE;
-            mSignUpText.visibility = View.INVISIBLE;
+            progressbar.visibility = View.VISIBLE
+            mSignUpText.visibility = View.INVISIBLE
 
             sendDataPOST("signup", "null", data, this.applicationContext,
                 object : VolleyResult {
@@ -155,8 +151,8 @@ class SignUp : AppCompatActivity() {
                                 messageError,
                                 Toast.LENGTH_SHORT).show()
                         }
-                        progressbar.visibility = View.INVISIBLE;
-                        mSignUpText.visibility = View.VISIBLE;
+                        progressbar.visibility = View.INVISIBLE
+                        mSignUpText.visibility = View.VISIBLE
                     }
                 }
             )

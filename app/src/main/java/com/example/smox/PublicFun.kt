@@ -195,3 +195,7 @@ fun isFilePresent(context: Context, fileName: String): Boolean {
 fun textIsNotEmpty(text: String) :Boolean {
     return text.trim().isNotEmpty()
 }
+
+fun textIsEmpty(text: String) :Boolean {
+    return text.trim().isEmpty()
+}
