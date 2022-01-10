@@ -92,7 +92,7 @@ class PatientList : AppCompatActivity() {
     }
 
     fun clickCard(view: View, id: Int) {
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
+        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
         view.startAnimation(clickEffect)
         //Get Data!
         getToken(this, object: TokenResult {

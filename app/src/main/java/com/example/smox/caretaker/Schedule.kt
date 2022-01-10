@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smox.R
 import com.example.smox.readFile
+import com.github.ybq.android.spinkit.style.Wave
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 
