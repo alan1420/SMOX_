@@ -119,25 +119,5 @@ class History : AppCompatActivity()
         val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_up)
         view.startAnimation(clickEffect)
     }
-
-    fun gotoHistoryDetailOne(view: View) {
-        val intent = Intent(this, HistoryDetail::class.java)
-        if (history1 != null)
-            intent.putExtra("history", history1.toString())
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        view.startAnimation(clickEffect)
-    }
-
-    fun gotoHistoryDetailTwo(view: View) {
-        val intent = Intent(this, HistoryDetail::class.java)
-        if (history2 != null)
-            intent.putExtra("history", history2.toString())
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        view.startAnimation(clickEffect)
-    }
 }
 

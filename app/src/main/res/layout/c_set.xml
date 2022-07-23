@@ -141,7 +141,7 @@
                 android:layout_marginTop="150dp"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="Hours"
+                android:text="Minutes"
                 android:textColor="@color/brown"
                 android:textSize="14dp"
                 android:layout_alignParentRight="true">

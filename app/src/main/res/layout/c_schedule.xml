@@ -170,12 +170,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="165dp"
+                android:layout_marginStart="155dp"
                 android:layout_marginLeft="165dp"
                 android:layout_marginTop="160dp"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto_thin_italic"
-                android:text="HOURS"
+                android:text="MINUTES"
                 android:textColor="@color/brown"
                 android:textSize="24dp"
                 android:textStyle="bold">
@@ -315,12 +315,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="165dp"
+                android:layout_marginStart="155dp"
                 android:layout_marginLeft="165dp"
                 android:layout_marginTop="160dp"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto_thin_italic"
-                android:text="HOURS"
+                android:text="MINUTES"
                 android:textColor="@color/brown"
                 android:textSize="24dp"
                 android:textStyle="bold">

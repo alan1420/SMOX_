@@ -119,26 +119,6 @@ class History : AppCompatActivity()
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-
-    fun gotoHistoryDetailOne(view: View) {
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        view.startAnimation(clickEffect)
-        val intent = Intent(this, HistoryDetail::class.java)
-        if (history1 != null)
-            intent.putExtra("history", history1.toString())
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
-
-    fun gotoHistoryDetailTwo(view: View) {
-        val clickEffect = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        view.startAnimation(clickEffect)
-        val intent = Intent(this, HistoryDetail::class.java)
-        if (history2 != null)
-            intent.putExtra("history", history2.toString())
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
 }
 
 
