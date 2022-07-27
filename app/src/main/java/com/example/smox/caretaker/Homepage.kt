@@ -170,7 +170,7 @@ class Homepage : AppCompatActivity() {
             val startDateTime = startDate.atTime(startTime)
             var upDt = startDateTime
             while (upDt.isBefore(LocalDateTime.now())) {
-                upDt = upDt.plusHours(slot1Data.get("interval").asLong)
+                upDt = upDt.plusMinutes(slot1Data.get("interval").asLong)
             }
             upcoming1 = upDt.toLocalTime().toSecondOfDay()
         }
@@ -181,7 +181,7 @@ class Homepage : AppCompatActivity() {
             val startDateTime = startDate.atTime(startTime)
             var upDt = startDateTime
             while (upDt.isBefore(LocalDateTime.now())) {
-                upDt = upDt.plusHours(slot2Data.get("interval").asLong)
+                upDt = upDt.plusMinutes(slot2Data.get("interval").asLong)
             }
             upcoming2 = upDt.toLocalTime().toSecondOfDay()
         }
