@@ -60,7 +60,7 @@ fun sendDataPOST(path: String, token: String, dataJson: JSONObject, context: Con
 }
 
 fun sendDataGET(path: String, token: String, context: Context, result: VolleyResult) {
-    val url = "http://$ServerIP/smox/public/api/$path"
+    val url = "http://$ServerIP/api/$path"
     val jsonObjectRequest = object: JsonObjectRequest(Method.GET, url, null,
         Response.Listener<JSONObject> { response ->
             result.onSuccess(response)
