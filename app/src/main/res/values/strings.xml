@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">SMOX</string>
     <string-array name="period_list">
-        <item>Days</item>
-        <item>Weeks</item>
-        <item>Months</item>
-        <item>Years</item>
+        <item>Hari</item>S
+        <item>Minggu</item>
+        <item>Bulan</item>
+        <item>Tahun</item>
     </string-array>
     <string name="period">Period</string>
     <string name="open">Open</string>

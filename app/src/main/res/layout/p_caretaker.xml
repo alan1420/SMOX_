@@ -2,49 +2,48 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background3">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    tools:context=".caretaker.Patient">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="backtoHome">
-        <ImageView
-            android:id="@+id/account"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/i_back"
-            android:alpha="0.9">
-        </ImageView>
+        android:id="@+id/up"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/backgroud1">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:onClick="backtoHome">
+            <ImageView
+                android:id="@+id/account"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/i_back"
+                android:alpha="0.9">
+            </ImageView>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CARETAKER"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
     </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CARETAKER"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:alpha="0.9"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/white"
-        android:textSize="18dp">
-    </TextView>
-
-    <ImageView
-        android:id="@+id/picture"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="75dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/im_caretaker">
-    </ImageView>
-
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_below="@id/picture"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/up"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/rect_white"
@@ -55,150 +54,147 @@
             android:layout_height="wrap_content"
             android:padding="20dp">
             <LinearLayout
-                android:layout_width="290dp"
-                android:layout_height="25dp"
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true">
 
                 <TextView
-                    android:layout_width="70dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.9"
-                    android:fontFamily="@font/roboto"
-                    android:text="Name"
+                    android:fontFamily="@font/opensans"
+                    android:text="Nama"
                     android:textColor="@color/brown"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.9"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
                     android:text=":"
                     android:textColor="@color/brown"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
 
 
                 <TextView
                     android:id="@+id/caretakerName"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
+                    android:tag="fullname"
                     android:textColor="@color/green_dark"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="290dp"
-                android:layout_height="25dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp">
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row1"
+                android:layout_centerHorizontal="true">
 
                 <TextView
-                    android:layout_width="70dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.9"
-                    android:fontFamily="@font/roboto"
-                    android:text="Birthday"
+                    android:fontFamily="@font/opensans"
+                    android:text="Tanggal lahir"
                     android:textColor="@color/brown"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.9"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
                     android:text=":"
                     android:textColor="@color/brown"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/caretakerBirthday"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
+                    android:tag="birthday"
                     android:textColor="@color/green_dark"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="290dp"
-                android:layout_height="25dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="60dp">
+                android:id="@+id/row3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row2"
+                android:layout_centerHorizontal="true">
 
                 <TextView
-                    android:layout_width="70dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.9"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
                     android:text="Email"
                     android:textColor="@color/brown"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.9"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
                     android:text=":"
                     android:textColor="@color/brown"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/caretakerEmail"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
+                    android:tag="email"
                     android:textColor="@color/green_dark"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="290dp"
-                android:layout_height="25dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="90dp">
+                android:id="@+id/row4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row3"
+                android:layout_centerHorizontal="true">
 
                 <TextView
-                    android:layout_width="70dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.9"
-                    android:fontFamily="@font/roboto"
-                    android:text="Call"
+                    android:fontFamily="@font/opensans"
+                    android:text="No. HP"
                     android:textColor="@color/brown"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.9"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
                     android:text=":"
                     android:textColor="@color/brown"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/caretakerPhone"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/opensans"
+                    android:tag="phoneNumber"
                     android:textColor="@color/green_dark"
-                    android:textSize="18dp">
-                </TextView>
+                    android:textSize="18dp" />
             </LinearLayout>
 
         </RelativeLayout>
     </RelativeLayout>
+
 
 </RelativeLayout>

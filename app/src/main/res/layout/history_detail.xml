@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:alpha="0.9"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/opensans"
         android:textColor="@color/white"
         android:textSize="18dp" />
 
@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:alpha="0.9"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/opensans"
         android:text="Your Achievement"
         android:textColor="@color/brown"
         android:textSize="18dp"
@@ -59,7 +59,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:alpha="0.9"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/opensans"
             android:text="14"
             android:textColor="@color/brown"
             android:textSize="80dp" />

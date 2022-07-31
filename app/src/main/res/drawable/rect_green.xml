@@ -13,7 +13,7 @@
     <!-- Background -->
     <item>
         <shape>
-            <solid android:color="#D5EEBB" />
+            <solid android:color="@color/backgroud1" />
             <corners android:radius="5dp" />
         </shape>
     </item>

@@ -3,34 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background3">
+    android:background="@color/background">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="backtoHome">
-        <ImageView
-            android:id="@+id/account"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/i_back"
-            android:alpha="0.9">
-        </ImageView>
-    </RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/backgroud1">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:onClick="backtoHome">
+            <ImageView
+                android:id="@+id/account"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/i_back"
+                android:alpha="0.9">
+            </ImageView>
+        </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HISTORY"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:alpha="0.9"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/white"
-        android:textSize="18dp">
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RIAWAYAT"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
+    </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:layout_width="320dp"

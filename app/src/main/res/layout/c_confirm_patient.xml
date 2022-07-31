@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background4">
+    android:background="@color/background">
 
     <RelativeLayout
         android:layout_width="335dp"
@@ -18,7 +18,7 @@
             android:layout_centerHorizontal="true"
             android:alpha="0.9"
             android:fontFamily="@font/opensans"
-            android:text="Confirm your patient"
+            android:text="Konfirmasi Pasien"
             android:textColor="@color/brown"
             android:textSize="20dp"
             android:textStyle="bold">
@@ -32,7 +32,7 @@
             android:alpha="0.9"
             android:fontFamily="@font/opensans_italic"
             android:gravity="center_horizontal"
-            android:text="make sure the data below belongs to your patient"
+            android:text="Pastikan data dibawah ini sudah benar data pasien anda"
             android:textAlignment="center"
             android:textColor="@color/brown"
             android:textSize="18dp">
@@ -45,11 +45,11 @@
             android:layout_marginTop="135dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="Name"
+                android:text="Nama"
                 android:textColor="@color/brown"
                 android:textSize="18dp">
             </TextView>
@@ -81,11 +81,11 @@
             android:layout_marginTop="165dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="Birthday"
+                android:text="Tanggal Lahir"
                 android:textColor="@color/brown"
                 android:textSize="18dp">
             </TextView>
@@ -116,7 +116,7 @@
             android:layout_marginTop="195dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
@@ -151,11 +151,11 @@
             android:layout_marginTop="225dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
                 android:fontFamily="@font/roboto"
-                android:text="Call"
+                android:text="No. HP"
                 android:textColor="@color/brown"
                 android:textSize="18dp">
             </TextView>
@@ -192,7 +192,7 @@
                 android:textSize="20dp"
                 android:text="Confirm"
                 android:fontFamily="@font/opensans"
-                android:textColor="@color/brown"
+                android:textColor="@color/white"
                 android:alpha="0.8"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"/>

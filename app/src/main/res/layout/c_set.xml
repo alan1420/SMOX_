@@ -2,81 +2,64 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background3">
+    android:background="@color/background">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="backtoHome">
-        <ImageView
-            android:id="@+id/account"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/i_back"
-            android:alpha="0.9">
-        </ImageView>
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/backgroud1">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:onClick="backtoHome">
+            <ImageView
+                android:id="@+id/account"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/i_back"
+                android:alpha="0.9">
+            </ImageView>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ATUR PROSEDUR"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SET"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:alpha="0.9"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/white"
-        android:textSize="18dp">
-    </TextView>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="55dp">
         <RelativeLayout
-            android:layout_width="325dp"
-            android:layout_height="540dp"
+            android:layout_width="350dp"
+            android:layout_height="550dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@drawable/rect_white"
             android:id="@+id/adpatient">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/save_slot1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom|end"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="@color/green"
-                android:src="@drawable/i_save"
-                android:onClick="save">
-            </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="540dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/background_rect_long">
-            </ImageView>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
-                android:layout_marginLeft="110dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:alpha="0.9"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:text="SLOT 1"
                 android:textColor="@color/brown"
                 android:textSize="20dp"
+                android:textStyle="bold"
                 android:id="@+id/slot">
             </TextView>
 
@@ -85,23 +68,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="50dp"
-                android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="The Medicine"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/opensans"
+                android:text="Nama Obat"
                 android:textColor="@color/green_dark"
                 android:textSize="14dp">
             </TextView>
 
             <EditText
                 android:id="@+id/medicine_name"
-                android:layout_width="240dp"
+                android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="85dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="75dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/rect_stroke"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:paddingLeft="5dp"
                 android:textColor="@color/brown"
                 android:textSize="14dp"></EditText>
@@ -111,23 +93,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="120dp"
-                android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Interval"
+                android:layout_marginTop="130dp"
+                android:fontFamily="@font/opensans"
+                android:text="Rentang jadwal"
                 android:textColor="@color/green_dark"
                 android:textSize="14dp">
             </TextView>
 
             <EditText
                 android:id="@+id/interval"
-                android:layout_width="190dp"
+                android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="145dp"
+                android:layout_marginRight="75dp"
+                android:layout_marginTop="155dp"
                 android:background="@drawable/rect_stroke"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:inputType="number"
                 android:paddingLeft="5dp"
                 android:textColor="@color/brown"
@@ -136,12 +117,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="60dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginTop="150dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="160dp"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Minutes"
+                android:fontFamily="@font/opensans"
+                android:text="Menit"
                 android:textColor="@color/brown"
                 android:textSize="14dp"
                 android:layout_alignParentRight="true">
@@ -152,23 +132,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="190dp"
+                android:layout_marginTop="200dp"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Dosage"
+                android:fontFamily="@font/opensans"
+                android:text="Dosis"
                 android:textColor="@color/green_dark"
-                android:textSize="14dp">
-            </TextView>
+                android:textSize="14dp"></TextView>
 
             <EditText
                 android:id="@+id/dosage"
-                android:layout_width="190dp"
+                android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="215dp"
+                android:layout_marginRight="75dp"
+                android:layout_marginTop="225dp"
                 android:background="@drawable/rect_stroke"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:inputType="number"
                 android:paddingLeft="5dp"
                 android:textColor="@color/brown"
@@ -177,11 +156,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="60dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginTop="220dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="230dp"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:text="Tablet"
                 android:textColor="@color/brown"
                 android:textSize="14dp"
@@ -193,23 +171,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="260dp"
+                android:layout_marginTop="270dp"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Instruction for use"
+                android:fontFamily="@font/opensans"
+                android:text="Aturan konsumsi"
                 android:textColor="@color/green_dark"
                 android:textSize="14dp">
             </TextView>
 
             <EditText
                 android:id="@+id/instruction"
-                android:layout_width="240dp"
+                android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="285dp"
+                android:layout_marginTop="295dp"
                 android:background="@drawable/rect_stroke"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:paddingLeft="5dp"
                 android:textColor="@color/brown"
                 android:textSize="14dp"></EditText>
@@ -219,9 +197,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="330dp"
+                android:layout_marginTop="340dp"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:text="Start Time"
                 android:textColor="@color/green_dark"
                 android:textSize="14dp">
@@ -229,13 +207,13 @@
 
             <EditText
                 android:id="@+id/starttime"
-                android:layout_width="120dp"
+                android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="355dp"
+                android:layout_marginRight="150dp"
+                android:layout_marginTop="365dp"
                 android:background="@drawable/rect_stroke"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:paddingLeft="5dp"
                 android:textColor="@color/brown"
                 android:textSize="14dp"></EditText>
@@ -245,9 +223,8 @@
                 android:layout_width="110dp"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginEnd="60dp"
-                android:layout_marginRight="60dp"
-                android:layout_marginTop="353dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="363dp"
                 android:background="@drawable/rect_green"
                 android:onClick="getTime">
                 <TextView
@@ -258,7 +235,7 @@
                     android:alpha="0.9"
                     android:fontFamily="@font/opensans"
                     android:text="Get Current Time"
-                    android:textColor="@color/brown"
+                    android:textColor="@color/white"
                     android:textSize="12dp" />
             </RelativeLayout>
 
@@ -267,23 +244,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="400dp"
+                android:layout_marginTop="410dp"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Period"
+                android:fontFamily="@font/opensans"
+                android:text="Target"
                 android:textColor="@color/green_dark"
                 android:textSize="14dp">
             </TextView>
 
             <EditText
                 android:id="@+id/period"
-                android:layout_width="120dp"
+                android:layout_width="match_parent"
                 android:layout_height="37dp"
-                android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="425dp"
+                android:layout_marginRight="150dp"
+                android:layout_marginTop="435dp"
                 android:background="@drawable/rect_stroke"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:inputType="number"
                 android:paddingLeft="5dp"
                 android:textColor="@color/brown"
@@ -293,27 +270,47 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="110dp"
-                android:layout_height="42dp"
+                android:layout_height="50dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="420dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginRight="60dp">
+                android:layout_marginTop="425dp"
+                android:layout_marginEnd="20dp">
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="none"
-                    android:text="Days"
-                    android:textSize="14dp"
+                    android:text="Hari"
+                    android:textSize="12dp"
                     android:textColor="@color/brown"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <RelativeLayout
-                android:layout_width="220dp"
+                android:layout_width="180dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="482dp"
+                android:layout_marginTop="495dp"
+                android:background="@drawable/rect_green"
+                android:id="@+id/save_slot1"
+                android:onClick="save">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:alpha="0.9"
+                    android:fontFamily="@font/opensans"
+                    android:text="Simpan"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="495dp"
                 android:background="@drawable/rect_green"
                 android:onClick="markAsDone">
                 <TextView
@@ -323,8 +320,8 @@
                     android:gravity="center_vertical"
                     android:alpha="0.9"
                     android:fontFamily="@font/opensans"
-                    android:text="Mark as Done"
-                    android:textColor="@color/brown"
+                    android:text="Prosedur selesai"
+                    android:textColor="@color/white"
                     android:textSize="12dp" />
             </RelativeLayout>
         </RelativeLayout>

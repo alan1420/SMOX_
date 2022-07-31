@@ -19,15 +19,15 @@
         <LinearLayout
             android:id="@+id/row1"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Name"
+                android:fontFamily="@font/opensans"
+                android:text="Nama"
                 android:textColor="@color/brown"
                 android:textSize="18dp" />
 
@@ -35,7 +35,7 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:text=":"
                 android:textColor="@color/brown"
                 android:textSize="18dp" />
@@ -45,7 +45,7 @@
                 android:id="@+id/fullname"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:tag="fullname"
                 android:textColor="@color/green_dark"
                 android:textSize="18dp" />
@@ -54,16 +54,16 @@
         <LinearLayout
             android:id="@+id/row2"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/row1"
             android:layout_centerHorizontal="true">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Birthday"
+                android:fontFamily="@font/opensans"
+                android:text="Tanggal lahir"
                 android:textColor="@color/brown"
                 android:textSize="18dp" />
 
@@ -71,7 +71,7 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:text=":"
                 android:textColor="@color/brown"
                 android:textSize="18dp" />
@@ -80,7 +80,7 @@
                 android:id="@+id/birthday"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:tag="birthday"
                 android:textColor="@color/green_dark"
                 android:textSize="18dp" />
@@ -89,15 +89,15 @@
         <LinearLayout
             android:id="@+id/row3"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/row2"
             android:layout_centerHorizontal="true">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:text="Email"
                 android:textColor="@color/brown"
                 android:textSize="18dp" />
@@ -106,7 +106,7 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:text=":"
                 android:textColor="@color/brown"
                 android:textSize="18dp" />
@@ -115,7 +115,7 @@
                 android:id="@+id/email"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:tag="email"
                 android:textColor="@color/green_dark"
                 android:textSize="18dp" />
@@ -124,16 +124,16 @@
         <LinearLayout
             android:id="@+id/row4"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/row3"
             android:layout_centerHorizontal="true">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Call"
+                android:fontFamily="@font/opensans"
+                android:text="No. HP"
                 android:textColor="@color/brown"
                 android:textSize="18dp" />
 
@@ -141,7 +141,7 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:text=":"
                 android:textColor="@color/brown"
                 android:textSize="18dp" />
@@ -150,7 +150,7 @@
                 android:id="@+id/phoneNumber"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:tag="phoneNumber"
                 android:textColor="@color/green_dark"
                 android:textSize="18dp" />

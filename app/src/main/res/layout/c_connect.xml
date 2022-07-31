@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background4">
+    android:background="@color/background">
 
     <RelativeLayout
         android:layout_width="330dp"
@@ -18,7 +18,7 @@
             android:layout_centerHorizontal="true"
             android:alpha="0.9"
             android:fontFamily="@font/opensans"
-            android:text="Connect with your patient"
+            android:text="Hubungkan pasien"
             android:textColor="@color/brown"
             android:textSize="20dp"
             android:textStyle="bold">
@@ -31,7 +31,7 @@
             android:layout_marginTop="55dp"
             android:alpha="0.9"
             android:fontFamily="@font/opensans_italic"
-            android:text="by entering the patient's username"
+            android:text="Pasien yang akan anda pantau"
             android:textColor="@color/brown"
             android:textAlignment="center"
             android:textSize="18dp"
@@ -67,11 +67,11 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rect_stroke_bottom"
                     android:fontFamily="@font/opensans"
-                    android:hint="Enter patient's username"
+                    android:hint="Masukkan username pasien"
                     android:paddingLeft="5dp"
                     android:textColor="@color/brown"
                     android:textColorHint="@color/green_dark"
-                    android:textSize="18dp"></EditText>
+                    android:textSize="16dp"></EditText>
             </RelativeLayout>
         </LinearLayout>
 
@@ -88,7 +88,7 @@
                 android:textSize="20dp"
                 android:text="Connect"
                 android:fontFamily="@font/opensans"
-                android:textColor="@color/brown"
+                android:textColor="@color/white"
                 android:alpha="0.8"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"/>

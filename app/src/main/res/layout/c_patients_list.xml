@@ -3,35 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background3"
+    android:background="@color/background"
     tools:context=".caretaker.PatientList">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="back">
-        <ImageView
-            android:id="@+id/account"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="13dp"
-            android:src="@drawable/i_back"
-            android:alpha="0.9">
-        </ImageView>
-    </RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/backgroud1">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:onClick="back">
+            <ImageView
+                android:id="@+id/account"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/i_back"
+                android:alpha="0.9">
+            </ImageView>
+        </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PATIENTS"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:alpha="0.9"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/white"
-        android:textSize="18dp">
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DAFTAR PASIEN"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:alpha="0.9"
+            android:fontFamily="@font/opensans"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -50,8 +55,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:alpha="0.9"
-                android:fontFamily="@font/roboto"
-                android:text="Click the card to choose patient."
+                android:fontFamily="@font/opensans"
+                android:text="Klik kartu pasien untuk memilih"
                 android:textColor="@color/brown"
                 android:textSize="18dp"></TextView>
 

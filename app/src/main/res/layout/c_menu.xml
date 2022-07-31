@@ -5,56 +5,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white1">
 
+    
+    
     <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="@color/green_dark"
-        android:padding="20dp"
-        android:id="@+id/header">
+        android:layout_height="200dp"
+        android:background="@color/backgroud1"
+        android:padding="20dp">
+
         <TextView
             android:id="@+id/fullname"
-            android:layout_marginTop="60dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Fullname"
-            android:textSize="48dp"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/green"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/opensans"
+            android:text="Nama Lengkap"
+            android:textColor="@color/white"
+            android:textSize="45dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/birthday"
-            android:layout_marginTop="130dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Birthday"
-            android:textSize="18dp"
-            android:fontFamily="@font/roboto"
+            android:layout_marginTop="85dp"
+            android:fontFamily="@font/opensans"
+            android:text="Tanggal Lahir"
             android:textColor="@color/white"
-            android:textStyle="italic" />
+            android:textSize="18dp"
+            android:textStyle="" />
 
         <TextView
             android:id="@+id/email"
-            android:layout_marginTop="150dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Email"
-            android:textSize="18dp"
-            android:fontFamily="@font/roboto"
+            android:layout_marginTop="110dp"
+            android:fontFamily="@font/opensans"
+            android:text="Email"
             android:textColor="@color/white"
-            android:textStyle="italic" />
+            android:textSize="18dp"
+            android:textStyle="" />
 
         <TextView
             android:id="@+id/phoneNumber"
-            android:layout_marginTop="175dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Phone"
-            android:textSize="18dp"
-            android:fontFamily="@font/roboto"
+            android:layout_marginTop="135dp"
+            android:fontFamily="@font/opensans"
+            android:text="No. Hp"
             android:textColor="@color/white"
-            android:textStyle="italic" />
+            android:textSize="18dp"
+            android:textStyle="" />
 
+        
     </RelativeLayout>
 
     <RelativeLayout
@@ -81,40 +85,29 @@
                 android:text="Logout"
                 android:layout_marginLeft="10dp"
                 android:textSize="18dp"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/opensans"
                 android:textColor="@color/brown">
             </TextView>
         </LinearLayout>
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YOUR ACCOUNT"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
-        android:alpha="0.9"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/white"
-        android:textSize="18dp">
-    </TextView>
-
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
         android:onClick="backtoHome">
         <ImageView
             android:id="@+id/account"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
             android:src="@drawable/i_back_right"
             android:alpha="0.9">
         </ImageView>
     </RelativeLayout>
+
+
 
 </RelativeLayout>

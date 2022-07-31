@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background4"
+    android:background="@color/background"
     tools:context=".patient.CreateUsername">
 
     <RelativeLayout
@@ -20,7 +20,7 @@
             android:layout_marginTop="25dp"
             android:alpha="0.9"
             android:fontFamily="@font/opensans"
-            android:text="Set your username"
+            android:text="Atur Username"
             android:textColor="@color/brown"
             android:textSize="20dp"
             android:textStyle="bold">
@@ -57,7 +57,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rect_stroke_bottom"
                     android:fontFamily="@font/opensans"
-                    android:hint="Enter your username"
+                    android:hint="Masukkan username"
                     android:paddingLeft="5dp"
                     android:textColor="@color/brown"
                     android:textColorHint="@color/green_dark"
@@ -73,7 +73,7 @@
             android:alpha="0.9"
             android:fontFamily="@font/opensans_italic"
             android:gravity="center_horizontal"
-            android:text="This username will be used when the caretaker connects his account with your account"
+            android:text="*Username ini akan digunakan oleh Carteker untuk menghubungkan akun kepada akun anda"
             android:textAlignment="center"
             android:textColor="@color/brown"
             android:textSize="16dp"></TextView>
@@ -95,7 +95,7 @@
                 android:alpha="0.8"
                 android:fontFamily="@font/opensans"
                 android:text="Set"
-                android:textColor="@color/brown"
+                android:textColor="@color/white"
                 android:textSize="20dp" />
         </RelativeLayout>
     </RelativeLayout>
